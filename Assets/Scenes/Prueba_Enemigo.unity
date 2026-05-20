@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8381615c2ae7024da18c27ab6b85ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraSystem
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1138260097}
   flashEffect: {fileID: 0}
   photoDistance: 15
 --- !u!114 &73973861
@@ -599,8 +599,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
   characterCamera: {fileID: 895319991}
   moveSpeed: 5
-  verticalVelocity: 0
   jumpForce: 8
+  verticalVelocity: 0
   pushForce: 4
   moveInput: {x: 0, y: 0}
 --- !u!1 &761712798
@@ -989,6 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   flashlightSystem: {fileID: 73973861}
+  cameraSystem: {fileID: 73973860}
 --- !u!4 &864192173
 Transform:
   m_ObjectHideFlags: 0

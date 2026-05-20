@@ -388,13 +388,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &697692402
+--- !u!43 &477150207
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-17426
+  m_Name: pb_Mesh57936
   serializedVersion: 12
   m_SubMeshes:
   - serializedVersion: 2
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
   m_SerializedVersion: 0
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 3
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
@@ -745,10 +745,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BarneyController
   Player: {fileID: 122850007}
-  NormalSpeed: 3.5
-  SlowedSpeed: 2
+  WalkSpeed: 1
+  RunSpeed: 4
   RangeVision: 10
-  point: 0
+  PlayerDetected: 0
 --- !u!195 &1347442343
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1130,6 +1130,7 @@ GameObject:
   - component: {fileID: 1714883638}
   - component: {fileID: 1714883637}
   - component: {fileID: 1714883636}
+  - component: {fileID: 1714883642}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1158,7 +1159,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 697692402}
+  m_Mesh: {fileID: 477150207}
 --- !u!33 &1714883637
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -1166,7 +1167,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714883635}
-  m_Mesh: {fileID: 697692402}
+  m_Mesh: {fileID: 477150207}
 --- !u!23 &1714883638
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1451,7 +1452,7 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 697692402}
+  m_Mesh: {fileID: 477150207}
   m_VersionIndex: 67
   m_IsSelectable: 1
   m_SelectedFaces: 
@@ -1472,6 +1473,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1714883642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714883635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1780762485
 PrefabInstance:
   m_ObjectHideFlags: 0
