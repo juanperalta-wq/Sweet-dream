@@ -1,5 +1,6 @@
 using MoreMountains.Tools;
 using Sirenix.OdinInspector;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,7 +24,8 @@ public class BarneyController : MonoBehaviour
     [FoldoutGroup("Variables")]
     private string currentAnim = "";
     #endregion
-
+    //temporal
+    public Transform PointA;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -35,6 +37,7 @@ public class BarneyController : MonoBehaviour
     {
         Detection();
         Animations();
+        DetectPoint();
     }
     #region Animations
     public void Animations()
@@ -89,4 +92,13 @@ public class BarneyController : MonoBehaviour
         anim.SetTrigger(state);
     }
     #endregion
+    //temporal
+    public void DetectPoint()
+    {
+        float distanceToPoint = Vector3.Distance(transform.position, PointA.position);
+        if(distanceToPoint <= RangeVision)
+        {
+            agent.SetDestination(PointA.position);
+        }
+    }
 }

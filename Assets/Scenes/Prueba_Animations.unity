@@ -791,37 +791,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &955394838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 955394839}
-  m_Layer: 0
-  m_Name: PointC
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &955394839
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955394838}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7617502, y: 0, z: -9.39077}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1069160396}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069160395
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,9 +821,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1469675405}
-  - {fileID: 955394839}
-  - {fileID: 2091108469}
-  - {fileID: 1605438270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1383170438
@@ -1233,37 +1199,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &1605438269
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1605438270}
-  m_Layer: 0
-  m_Name: PointD
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1605438270
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605438269}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7617502, y: 0, z: 3.45923}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1069160396}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714883635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,37 +1576,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!1 &2091108468
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2091108469}
-  m_Layer: 0
-  m_Name: PointB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2091108469
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091108468}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.067639, y: 0, z: 3.45923}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1069160396}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7453818962265334896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1685,21 +1589,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 122850007}
     - target: {fileID: 5935484411306948060, guid: 6c0b51848cfd22848a5fe286ca10dd95, type: 3}
+      propertyPath: PointA
+      value: 
+      objectReference: {fileID: 1469675405}
+    - target: {fileID: 5935484411306948060, guid: 6c0b51848cfd22848a5fe286ca10dd95, type: 3}
       propertyPath: PuntoA
       value: 
       objectReference: {fileID: 1469675405}
     - target: {fileID: 5935484411306948060, guid: 6c0b51848cfd22848a5fe286ca10dd95, type: 3}
       propertyPath: PuntoB
       value: 
-      objectReference: {fileID: 2091108469}
+      objectReference: {fileID: 0}
     - target: {fileID: 5935484411306948060, guid: 6c0b51848cfd22848a5fe286ca10dd95, type: 3}
       propertyPath: PuntoC
       value: 
-      objectReference: {fileID: 955394839}
+      objectReference: {fileID: 0}
     - target: {fileID: 5935484411306948060, guid: 6c0b51848cfd22848a5fe286ca10dd95, type: 3}
       propertyPath: PuntoD
       value: 
-      objectReference: {fileID: 1605438270}
+      objectReference: {fileID: 0}
     - target: {fileID: 7390012949411454097, guid: 6c0b51848cfd22848a5fe286ca10dd95, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3624

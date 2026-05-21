@@ -199,6 +199,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Item1"",
+                    ""type"": ""Button"",
+                    ""id"": ""0bbaade2-b7c5-476a-936f-9f7f596f6b82"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Item2"",
+                    ""type"": ""Button"",
+                    ""id"": ""952c2db9-e5a9-4cab-87ce-78da5c5dfd22"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -617,6 +635,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Photo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44cda520-b78e-47d6-8f39-8d4280203895"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Item1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c3e7176-14a1-4ed9-b113-ecdb9c86d75d"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Item2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1216,6 +1256,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Flashlight = m_Player.FindAction("Flashlight", throwIfNotFound: true);
         m_Player_Photo = m_Player.FindAction("Photo", throwIfNotFound: true);
+        m_Player_Item1 = m_Player.FindAction("Item1", throwIfNotFound: true);
+        m_Player_Item2 = m_Player.FindAction("Item2", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1321,6 +1363,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Flashlight;
     private readonly InputAction m_Player_Photo;
+    private readonly InputAction m_Player_Item1;
+    private readonly InputAction m_Player_Item2;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1380,6 +1424,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Photo".
         /// </summary>
         public InputAction @Photo => m_Wrapper.m_Player_Photo;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Item1".
+        /// </summary>
+        public InputAction @Item1 => m_Wrapper.m_Player_Item1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Item2".
+        /// </summary>
+        public InputAction @Item2 => m_Wrapper.m_Player_Item2;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1442,6 +1494,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Photo.started += instance.OnPhoto;
             @Photo.performed += instance.OnPhoto;
             @Photo.canceled += instance.OnPhoto;
+            @Item1.started += instance.OnItem1;
+            @Item1.performed += instance.OnItem1;
+            @Item1.canceled += instance.OnItem1;
+            @Item2.started += instance.OnItem2;
+            @Item2.performed += instance.OnItem2;
+            @Item2.canceled += instance.OnItem2;
         }
 
         /// <summary>
@@ -1489,6 +1547,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Photo.started -= instance.OnPhoto;
             @Photo.performed -= instance.OnPhoto;
             @Photo.canceled -= instance.OnPhoto;
+            @Item1.started -= instance.OnItem1;
+            @Item1.performed -= instance.OnItem1;
+            @Item1.canceled -= instance.OnItem1;
+            @Item2.started -= instance.OnItem2;
+            @Item2.performed -= instance.OnItem2;
+            @Item2.canceled -= instance.OnItem2;
         }
 
         /// <summary>
@@ -1873,6 +1937,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPhoto(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Item1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnItem1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Item2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnItem2(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

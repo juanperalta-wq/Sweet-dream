@@ -5,23 +5,22 @@ using Sirenix.OdinInspector;
 
 public class FirstPersonController : MonoBehaviour
 {
-    [Title("Referencias")]
+    [FoldoutGroup("Referencias")]
     public InputSystem_Actions inputs;
+    [FoldoutGroup("Referencias")]
     private CharacterController controller;
+    [FoldoutGroup("Referencias")]
     public CinemachineCamera characterCamera;
-
-    [Title("Movimiento")]
-    [SuffixLabel("u/s")] public float moveSpeed = 5f;
-
-    [Title("Salto")]
-    [SuffixLabel("fuerza")] public float jumpForce = 10;
-    [ReadOnly] public float verticalVelocity = 0;
-
-    [Title("Colisiones")]
-    [SuffixLabel("fuerza")] public float pushForce = 4;
-
-    [Title("Debug")]
-    [ReadOnly, SerializeField] private Vector2 moveInput;
+    [FoldoutGroup("Referencias")]
+    private Vector2 moveInput;
+    [FoldoutGroup("Movimiento")]
+    public float moveSpeed = 5f;
+    [FoldoutGroup("Movimiento")]
+    public float jumpForce = 10;
+    [FoldoutGroup("Movimiento")]
+    public float verticalVelocity = 0;
+    [FoldoutGroup("Movimiento")]
+    public float pushForce = 4;
 
     private void Awake()
     {
@@ -76,11 +75,11 @@ public class FirstPersonController : MonoBehaviour
         verticalVelocity = jumpForce;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    /*private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Vector3 pushDir = (hit.transform.position - transform.position).normalized;
 
         if (hit.rigidbody != null && hit.rigidbody.linearVelocity == Vector3.zero)
             hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
-    }
+    }*/
 }
