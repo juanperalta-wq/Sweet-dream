@@ -1,6 +1,7 @@
+using MoreMountains.Tools;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
-using Sirenix.OdinInspector;
 
 public class BarneyController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class BarneyController : MonoBehaviour
     private Animator anim;
     [FoldoutGroup("Variables")]
     public bool PlayerDetected = false;
+    [FoldoutGroup("Variables")]
+    private string currentAnim = "";
     #endregion
 
     void Start()
@@ -33,7 +36,7 @@ public class BarneyController : MonoBehaviour
         Detection();
         Animations();
     }
-
+    #region Animations
     public void Animations()
     {
         float currentSpeed = agent.velocity.magnitude;
@@ -51,7 +54,8 @@ public class BarneyController : MonoBehaviour
             SetAnimation("Walk");
         }
     }
-
+    #endregion
+    #region Detection
     public void Detection()
     {
         if (Player == null) return;
@@ -72,8 +76,8 @@ public class BarneyController : MonoBehaviour
             agent.ResetPath();
         }
     }
-
-    private string currentAnim = "";
+    #endregion
+    #region SetAnimation
     private void SetAnimation(string state)
     {
         if (currentAnim == state) return;
@@ -84,4 +88,5 @@ public class BarneyController : MonoBehaviour
         anim.ResetTrigger("Run");
         anim.SetTrigger(state);
     }
+    #endregion
 }
