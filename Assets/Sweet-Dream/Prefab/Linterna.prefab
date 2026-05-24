@@ -229,8 +229,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 255071893868e6440ad5255ce7f8c9ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2169706529078395549}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 255071893868e6440ad5255ce7f8c9ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7941916865810922292}
   m_SourcePrefab: {fileID: 100100000, guid: 255071893868e6440ad5255ce7f8c9ff, type: 3}
+--- !u!1 &5986200806269964184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 255071893868e6440ad5255ce7f8c9ff, type: 3}
+  m_PrefabInstance: {fileID: 6904625413250478793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7941916865810922292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986200806269964184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec8dd8b162f7ec4b888b200fd81b6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashlightSystem
+  flashlight: {fileID: 3069103614001899166}
+  playerCamera: {fileID: 0}
+  flashlightDistance: 12
 --- !u!4 &6365997804620387618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 255071893868e6440ad5255ce7f8c9ff, type: 3}

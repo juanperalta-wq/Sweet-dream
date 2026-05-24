@@ -5,9 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/UI_Inicio.unity
+    guid: f4d62fb21b8dfab4d8761a3e280c589b
+  - enabled: 1
+    path: Assets/Scenes/Scene_Home.unity
+    guid: dc04200f7e5b4f845bbedbe41a03aafb
+  - enabled: 1
+    path: Assets/Scenes/UI_Derrota.unity
+    guid: 645aa39742c38a64f98aa94c975fa17e
+  - enabled: 1
+    path: Assets/Scenes/Sweet-Dream.unity
+    guid: 3e58b3bd8219c8542a82a6c80fe3a35e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

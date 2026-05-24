@@ -5,14 +5,15 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     #region variables
-    [FoldoutGroup("Variables")]
+    [FoldoutGroup("Referencias")]
     [SerializeField] private Transform player;
-    [FoldoutGroup("Variables")]
+    [FoldoutGroup("Referencias")]
     [SerializeField]private NavMeshAgent agent;
-    [FoldoutGroup("Variables")]
+    [FoldoutGroup("Referencias")]
     [SerializeField]private EnemyBase enemyBase;
     [FoldoutGroup("Variables")]
     [SerializeField]private bool canMove = true;
+
     #endregion
     private void Awake()
     {

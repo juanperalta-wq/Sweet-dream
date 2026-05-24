@@ -5,8 +5,9 @@ public class EnemyBase : MonoBehaviour
 {
     [FoldoutGroup("Variables")]
     public bool diesFromCamera;
+    [FoldoutGroup("Variables")]
     public bool scaredOfFlashlight;
-
+    [FoldoutGroup("Referencias")]
     private EnemyAI enemyAI;
 
     private void Awake()
