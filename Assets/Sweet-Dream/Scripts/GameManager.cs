@@ -6,8 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Systems")]
+    [FoldoutGroup("References")]
     public FlashlightSystem flashlightSystem;
+    [FoldoutGroup("References")]
     public CameraSystem cameraSystem;
 
     private void Awake()
