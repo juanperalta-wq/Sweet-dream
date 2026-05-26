@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [FoldoutGroup("References")]
     public CameraSystem cameraSystem;
 
+    [Header("Databases")]
+    public MusicDatabase musicDatabase;
     private void Awake()
     {
         // Evita duplicados
