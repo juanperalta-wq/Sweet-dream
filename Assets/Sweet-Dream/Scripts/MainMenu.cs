@@ -11,8 +11,9 @@ public class MainMenu : MonoBehaviour
     [Required] public GameObject botonQuit;
     [Required] public GameObject botonOption;
 
-    [Title("Input")]
+    [TabGroup("navigateAction")]
     public InputAction navigateAction;
+    [TabGroup("selectAction")]
     public InputAction selectAction;
 
     [Title("Eventos")]

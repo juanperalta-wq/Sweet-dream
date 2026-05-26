@@ -2295,6 +2295,140 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &1064549251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064549253}
+  - component: {fileID: 1064549252}
+  m_Layer: 0
+  m_Name: OdinInspectorExample
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1064549252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064549251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a768d15ac0df654d944e8a76479e6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExamplesOdinInspector
+  progressBar: 75
+  colorProgressBar: 50
+  inlineValue: 5
+  inlineProperty:
+    x: 0
+    y: 0
+  targetScene: 
+  weaponType: 
+  spacedInt: 0
+  centeredField: 1
+  speed: 5
+  description: "Escribe una descripci\xF3n..."
+  notes: 
+  odinNotes: 
+  readOnlyInfo: Solo lectura visual
+  spacedField: 0
+  health: 100
+  damage: 10
+  requiredName: 
+  maxSpeed: 15
+  strength: 10
+  agility: 8
+  intelligence: 12
+  enableAI: 1
+  detectionRadius: 5
+  detectionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  jumpSound: {fileID: 0}
+  attackSound: {fileID: 0}
+  vfxPrefab: {fileID: 0}
+  playerColor: {r: 1, g: 1, b: 1, a: 1}
+  posX: 0
+  posY: 0
+  posZ: 0
+  leftField: Campo izquierdo
+  rightField: Campo derecho
+  isEnemy: 0
+  aggroRange: 10
+  friendlyRadius: 5
+  showLowHealthWarning: 0
+  hasWeapon: 0
+  weaponDamage: 25
+  weaponRange: 3
+  canJump: 1
+  jumpForce: 7.87
+  fallSpeed: 9.8
+  initialLives: 3
+  currentScore: 0
+  guid: ABC-123-XYZ
+  spawnPoint: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  mana: 50
+  stamina: 80
+  level: 1
+  timeScale: 1
+  spawnAmountRange: {x: 2, y: 2}
+  positiveOnly: 1
+  difficulty: 1
+  gameState: 0
+  itemNames: []
+  readOnlyList: 010000000200000003000000
+  enemyTable: []
+  keybindings:
+    keys: []
+    values: []
+  icon: {fileID: 0}
+  texture: {fileID: 0}
+  particlePrefab: {fileID: 0}
+  sceneTarget: {fileID: 0}
+  childBone: {fileID: 0}
+  embeddedConfig: {fileID: 0}
+  configFilePath: 
+  saveFolderPath: 
+  greenField: 1
+  redField: 1
+  paletteColor: {r: 0, g: 0, b: 0, a: 0}
+  customColor: {r: 0, g: 1, b: 1, a: 1}
+  trackedSpeed: 5
+  trackedColor: {r: 1, g: 1, b: 1, a: 1}
+  trackedList: []
+  enableDash: 0
+  dashSpeed: 20
+  dashCooldown: 1.5
+  dashCharges: 2
+  enableDoubleJump: 0
+  doubleJumpForce: 6
+  maxJumps: 2
+  contextHealth: 50
+  alwaysFirst: Ordenado con PropertyOrder(-1)
+--- !u!4 &1064549253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064549251}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.90979, y: -0, z: 4.01996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1103089854 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 4912036394883860993, guid: f48d9fc549726b84fa3f7da1e61e09d4, type: 3}
@@ -3375,6 +3509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2113358390}
+  - component: {fileID: 2113358391}
   m_Layer: 0
   m_Name: Feel
   m_TagString: Untagged
@@ -3397,6 +3532,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113358391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113358389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
+  Feedbacks: []
+  InitializationMode: 2
+  AutoInitialization: 1
+  SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
+  AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
+  DurationMultiplier: 1
+  TimescaleMultiplier: 1
+  RandomizeDuration: 0
+  RandomDurationMultiplier: {x: 0.5, y: 1.5}
+  DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 0
+  OnlyPlayIfWithinRange: 0
+  RangeCenter: {fileID: 0}
+  RangeDistance: 5
+  UseRangeFalloff: 0
+  RangeFalloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RemapRangeFalloff: {x: 0, y: 1}
+  IgnoreRangeEvents: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  CanPlay: 1
+  CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStop:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnChangeDirection:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInitializationComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    OnEnable:
+      m_PersistentCalls:
+        m_Calls: []
+    OnDisable:
+      m_PersistentCalls:
+        m_Calls: []
+  DebugActive: 0
+  InScriptDrivenPause: 0
+  FeedbacksList: []
+  KeepPlayModeChanges: 0
+  PerformanceMode: 0
+  RestoreInitialValuesOnDisable: 0
+  StopFeedbacksOnDisable: 0
+  PlayCount: 0
+  MMF_ChannelMode: 0
+  MMF_Channel: 0
+  MMF_ChannelDefinition: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &3309040792390999667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3595,3 +3844,4 @@ SceneRoots:
   - {fileID: 895319992}
   - {fileID: 2113358390}
   - {fileID: 1512178473}
+  - {fileID: 1064549253}

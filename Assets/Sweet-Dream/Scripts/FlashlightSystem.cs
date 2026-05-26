@@ -3,13 +3,16 @@ using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 public class FlashlightSystem : MonoBehaviour
 {
+    [TabGroup("Light")]
+    [Required]
     [SerializeField] private Light flashlight;
+    [TabGroup("Camera")]
+    [Required]  
     [SerializeField] private Camera playerCamera;
-
+    [TabGroup("Light")]
+    [Range(1, 20)]
     [SerializeField] private float flashlightDistance = 12f;
-
     private InputSystem_Actions inputs;
-
     private bool isOn;
 
     private void Awake()
