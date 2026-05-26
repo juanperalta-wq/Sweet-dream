@@ -1,9 +1,92 @@
-using UnityEngine;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using System;
 using System.Collections.Generic;
-
+using UnityEngine;
+using System.Collections;
 public class ExamplesOdinInspector : MonoBehaviour
 {
+    // ─────────────────────────────────────────
+    // PROGRESO Y BARRAS
+    // ─────────────────────────────────────────
+
+    [Title("Progreso y Barras")]
+    [ProgressBar(0, 100)]
+    public float progressBar = 75f;
+
+    [ProgressBar(0, 100, ColorGetter = "GetProgressColor", DrawValueLabel = true)]
+    public float colorProgressBar = 50f;
+    private Color GetProgressColor => Color.Lerp(Color.red, Color.green, colorProgressBar / 100f);
+
+
+    // ─────────────────────────────────────────
+    // INLINE Y ANIDADO
+    // ─────────────────────────────────────────
+
+    [Title("Inline y Anidado")]
+    [InlineButton("ResetInlineValue", "Reset")]
+    public float inlineValue = 5f;
+    private void ResetInlineValue() => inlineValue = 5f;
+
+    [InlineProperty]
+    public InlineExample inlineProperty = new InlineExample();
+
+
+    // ─────────────────────────────────────────
+    // BÚSQUEDA Y FILTRO
+    // ─────────────────────────────────────────
+
+    [Title("Búsqueda y Filtro")]
+    [ValueDropdown("GetSceneNames")]
+    public string targetScene;
+    private IEnumerable<string> GetSceneNames() => new[] { "Menu", "Home", "Boss" };
+
+    [ValueDropdown("GetWeaponTypes")]
+    public string weaponType;
+    private IEnumerable<string> GetWeaponTypes() => new[] { "Espada", "Arco", "Magia", "Lanza" };
+
+
+    // ─────────────────────────────────────────
+    // ESPACIADO Y SEPARADORES
+    // ─────────────────────────────────────────
+
+    [Title("Espaciado")]
+    [PropertySpace(spaceBefore: 15, spaceAfter: 15)]
+    public int spacedInt = 0;
+
+    [Title("Título Centrado", "Subtítulo centrado", titleAlignment: TitleAlignments.Centered)]
+    public float centeredField = 1f;
+
+
+    // ─────────────────────────────────────────
+    // SERIALIZACIÓN AVANZADA
+    // ─────────────────────────────────────────
+
+    [Title("Serialización Avanzada")]
+    [NonSerialized, ShowInInspector]
+    public string runtimeOnly = "No se guarda en el objeto";
+
+    [OdinSerialize]
+    public Dictionary<string, int> odinDictionary = new Dictionary<string, int>();
+
+
+    // ─────────────────────────────────────────
+    // RESPONSIVE BUTTONS
+    // ─────────────────────────────────────────
+
+    [Title("Responsive Buttons")]
+    [ResponsiveButtonGroup("AccionesResponsive")]
+    [Button("Acción 1")]
+    private void ResponsiveAction1() => Debug.Log("Acción 1");
+
+    [ResponsiveButtonGroup("AccionesResponsive")]
+    [Button("Acción 2")]
+    private void ResponsiveAction2() => Debug.Log("Acción 2");
+
+    [ResponsiveButtonGroup("AccionesResponsive")]
+    [Button("Acción 3")]
+    private void ResponsiveAction3() => Debug.Log("Acción 3");
+
     // ─────────────────────────────────────────
     // SECCIÓN 1: LABELS Y VISUAL
     // ─────────────────────────────────────────
@@ -206,8 +289,8 @@ public class ExamplesOdinInspector : MonoBehaviour
     [Button("Randomizar")]
     private void RandomizeStats()
     {
-        speed = Random.Range(1f, 20f);
-        health = Random.Range(1, 100);
+        speed = UnityEngine.Random.Range(1f, 20f);
+        health = UnityEngine.Random.Range(1, 100);
     }
 
 
@@ -360,6 +443,13 @@ public class ExamplesOdinInspector : MonoBehaviour
 // ─────────────────────────────────────────
 
 [System.Serializable]
+public class InlineExample
+{
+    public float x;
+    public float y;
+}
+
+[System.Serializable]
 public class EnemyData
 {
     [TableColumnWidth(120)]
@@ -384,6 +474,7 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>,
 
 public enum DifficultyLevel { Easy, Normal, Hard, Extreme }
 public enum GameState { MainMenu, Playing, Paused, GameOver }
+
 
 // Crea este ScriptableObject en otro archivo:
 // [CreateAssetMenu] public class ExampleSO : ScriptableObject { public string configName; public int value; }

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using Sirenix.OdinInspector;
 public class FlashlightSystem : MonoBehaviour
 {
     [SerializeField] private Light flashlight;
