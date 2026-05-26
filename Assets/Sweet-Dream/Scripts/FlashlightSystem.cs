@@ -12,26 +12,12 @@ public class FlashlightSystem : MonoBehaviour
     [TabGroup("Light")]
     [Range(1, 20)]
     [SerializeField] private float flashlightDistance = 12f;
-    private InputSystem_Actions inputs;
     private bool isOn;
 
-    private void Awake()
-    {
-        inputs = new InputSystem_Actions();
-    }
 
     private void OnEnable()
     {
-        inputs.Enable();
-
-        inputs.Player.Flashlight.performed += ToggleFlashlight;
-    }
-
-    private void OnDisable()
-    {
-        inputs.Player.Flashlight.performed -= ToggleFlashlight;
-
-        inputs.Disable();
+        PlayerInputs.OnFlashlight += ToggleFlashlight;
     }
 
     void Update()
@@ -42,7 +28,7 @@ public class FlashlightSystem : MonoBehaviour
         }
     }
 
-    void ToggleFlashlight(InputAction.CallbackContext context)
+    void ToggleFlashlight()
     {
         isOn = !isOn;
 

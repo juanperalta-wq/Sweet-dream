@@ -8,7 +8,7 @@ public class CameraSystem : MonoBehaviour
     [FoldoutGroup("Variables")]
     [SerializeField] private Camera playerCamera;
     [FoldoutGroup("Variables")]
-    [SerializeField] private GameObject flashEffect;
+    [SerializeField] private GameObject flashEffect;//->remover
     [FoldoutGroup("Variables")]
     [SerializeField] private float photoDistance = 15f;
     [FoldoutGroup("Variables")]
