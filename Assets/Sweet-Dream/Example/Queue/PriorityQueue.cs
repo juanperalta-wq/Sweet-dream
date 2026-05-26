@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 
 public class PriorityQueue<T>
@@ -52,8 +52,6 @@ public class PriorityQueue<T>
         newNode.SetNext(evaluator.Next);
         evaluator.SetNext(newNode);
 
-        /*tail.SetNext(newNode);
-        tail = newNode;*/
     }
 
     public T Dequeue()
@@ -94,4 +92,4 @@ public class PriorityQueue<T>
     #region Getters
     public int Count => count;
     #endregion
-}
+}*/
