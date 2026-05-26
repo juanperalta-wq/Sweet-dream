@@ -9,4 +9,6 @@ public class BaseEnemyData : ScriptableObject
     public float Speed;
     [FoldoutGroup("Enemy Properties")]
     public float RangeVision;
+    [FoldoutGroup("Enemy Properties")]
+    public float RangeAttack;
 }

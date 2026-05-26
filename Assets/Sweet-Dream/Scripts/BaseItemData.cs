@@ -4,7 +4,5 @@ using Sirenix.OdinInspector;
 public class BaseItemData : ScriptableObject
 {
     [FoldoutGroup("Item Properties")]
-    public bool IsOn;
-    [FoldoutGroup("Item Properties")]
-    public float battery;
+    public string NameItem;
 }
