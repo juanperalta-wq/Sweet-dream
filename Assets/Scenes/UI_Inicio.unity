@@ -732,90 +732,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   botonPlay: {fileID: 1787270724}
-  botonQuit: {fileID: 61844096}
   botonOption: {fileID: 2080755073}
-  navigateAction:
-    m_Name: Navigate
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d7aba579-ce0e-48b2-a5cd-79f5312a53e4
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 3D Vector
-      m_Id: 2d0691d9-c5ee-4a09-8afd-01a019699b50
-      m_Path: 3DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Navigate
-      m_Flags: 4
-    - m_Name: up
-      m_Id: cc1fe6f1-870e-42b2-9caa-a40544f482f7
-      m_Path: <Keyboard>/upArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Navigate
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 7ae6400c-1f79-4eae-83c6-2d0f882ee70e
-      m_Path: <Keyboard>/downArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Navigate
-      m_Flags: 8
-    - m_Name: left
-      m_Id: c6070b1b-1361-4cc9-ba3d-9f1eaaf1e6fb
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Navigate
-      m_Flags: 8
-    - m_Name: right
-      m_Id: a3cd5979-9b86-45df-b362-400c0e9770fc
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Navigate
-      m_Flags: 8
-    - m_Name: forward
-      m_Id: 4533dcf9-92b2-454d-a681-f49b7c09e95e
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Navigate
-      m_Flags: 8
-    - m_Name: backward
-      m_Id: bff714c2-5a40-444c-97e6-e93ca3245973
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Navigate
-      m_Flags: 8
-    m_Flags: 0
-  selectAction:
-    m_Name: Select
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: b2fc56a2-7274-48de-bc4b-76f241237d4e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 2b6dbe17-1e0a-445b-94c8-3b96e2546187
-      m_Path: <Keyboard>/enter
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Select
-      m_Flags: 0
-    m_Flags: 0
+  botonQuit: {fileID: 61844096}
 --- !u!1 &572662249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1586,7 @@ MonoBehaviour:
   greenField: 1
   redField: 1
   paletteColor: {r: 0, g: 0, b: 0, a: 0}
-  customColor: {r: 0, g: 1, b: 1, a: 1}
+  customColor: {r: 0.545, g: 0.329, b: 0.318, a: 1}
   trackedSpeed: 5
   trackedColor: {r: 1, g: 1, b: 1, a: 1}
   trackedList: []
@@ -2002,6 +1920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   flashlightSystem: {fileID: 0}
   cameraSystem: {fileID: 0}
+  musicDatabase: {fileID: 0}
 --- !u!4 &1956499612
 Transform:
   m_ObjectHideFlags: 0

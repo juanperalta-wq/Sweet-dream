@@ -113,24 +113,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Item1",
-                    "type": "Button",
-                    "id": "0bbaade2-b7c5-476a-936f-9f7f596f6b82",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item2",
-                    "type": "Button",
-                    "id": "952c2db9-e5a9-4cab-87ce-78da5c5dfd22",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -516,28 +498,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Photo",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "44cda520-b78e-47d6-8f39-8d4280203895",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Item1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6c3e7176-14a1-4ed9-b113-ecdb9c86d75d",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Item2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -6296,11 +6296,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14106b1e5ef16a441bee1ebdf39b53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
+  controller: {fileID: 451652747}
   characterCamera: {fileID: 2136573700}
   moveSpeed: 5
   jumpForce: 10
-  verticalVelocity: 0
   pushForce: 4
+  moveInput: {x: 0, y: 0}
+  verticalVelocity: 0
+  isGrounded: 0
 --- !u!143 &451652747
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9571,7 +9574,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 95d64fda697510a4f842f1c422de669d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -7865565698888602925, guid: 83fdb5ee2d2152c44805a40bad7a2192, type: 3}
+      objectReference: {fileID: -7865565698888602925, guid: 02a1447c1b3561f4093982d58022d58b, type: 3}
     - target: {fileID: 919132149155446097, guid: 95d64fda697510a4f842f1c422de669d, type: 3}
       propertyPath: m_Name
       value: Sillon
@@ -10552,7 +10555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 79a3fcad48f3b0c4da5327a965659ad7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.279079
+      value: 4.689
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 79a3fcad48f3b0c4da5327a965659ad7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10912,6 +10915,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 02a1447c1b3561f4093982d58022d58b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 02a1447c1b3561f4093982d58022d58b, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -7865565698888602925, guid: 02a1447c1b3561f4093982d58022d58b, type: 3}
     - target: {fileID: 919132149155446097, guid: 02a1447c1b3561f4093982d58022d58b, type: 3}
       propertyPath: m_Name
       value: Estante de Cocina (1)
@@ -19668,6 +19679,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 83fdb5ee2d2152c44805a40bad7a2192, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 83fdb5ee2d2152c44805a40bad7a2192, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -7865565698888602925, guid: 83fdb5ee2d2152c44805a40bad7a2192, type: 3}
     - target: {fileID: 919132149155446097, guid: 83fdb5ee2d2152c44805a40bad7a2192, type: 3}
       propertyPath: m_Name
       value: Estante de cocina inferior (1)

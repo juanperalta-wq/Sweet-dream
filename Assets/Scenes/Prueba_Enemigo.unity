@@ -720,6 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   flashlightSystem: {fileID: 0}
   cameraSystem: {fileID: 0}
+  musicDatabase: {fileID: 0}
 --- !u!4 &864192173
 Transform:
   m_ObjectHideFlags: 0
@@ -2334,8 +2335,8 @@ MonoBehaviour:
   weaponType: 
   spacedInt: 0
   centeredField: 1
-  speed: 5
-  description: "Escribe una descripci\xF3n..."
+  speed: 40.38
+  description: 
   notes: 
   odinNotes: 
   readOnlyInfo: Solo lectura visual
@@ -2359,7 +2360,7 @@ MonoBehaviour:
   posX: 0
   posY: 0
   posZ: 0
-  leftField: Campo izquierdo
+  leftField: 
   rightField: Campo derecho
   isEnemy: 0
   aggroRange: 10
@@ -2401,7 +2402,7 @@ MonoBehaviour:
   greenField: 1
   redField: 1
   paletteColor: {r: 0, g: 0, b: 0, a: 0}
-  customColor: {r: 0, g: 1, b: 1, a: 1}
+  customColor: {r: 0.165, g: 0.271, b: 0.11, a: 1}
   trackedSpeed: 5
   trackedColor: {r: 1, g: 1, b: 1, a: 1}
   trackedList: []
