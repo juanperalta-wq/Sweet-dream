@@ -24,9 +24,6 @@ public class MainMenu : MonoBehaviour
     [FoldoutGroup("Debug"), ReadOnly, ShowInInspector]
     private Node<GameObject> current;
 
-    [FoldoutGroup("Debug"), ReadOnly, ShowInInspector]
-    private string currentButtonName => current?.Value?.name ?? "Ninguno";
-
     private InputSystem_Actions inputs;
     private CircularDoubleLinkedList<GameObject> menuItems = new();
 
