@@ -1,31 +1,52 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [Title("Botones del Menú")]
-    [Required] public GameObject botonPlay;
-    [Required] public GameObject botonQuit;
-    [Required] public GameObject botonOption;
+    [BoxGroup("Botones"), Required]
+    [SerializeField] private GameObject botonPlay;
 
-    [TabGroup("navigateAction")]
-    public InputAction navigateAction;
-    [TabGroup("selectAction")]
-    public InputAction selectAction;
+    [BoxGroup("Botones"), Required]
+    [SerializeField] private GameObject botonOption;
 
-    [Title("Eventos")]
+    [BoxGroup("Botones"), Required]
+    [SerializeField] private GameObject botonQuit;
+
+    [BoxGroup("Eventos")]
     public Action<GameObject> onHighlight;
+
+    [BoxGroup("Eventos")]
     public Action<GameObject> onSelect;
 
-    [FoldoutGroup("Debug")]
-    [ReadOnly, ShowInInspector] private Node<GameObject> current;
+    [FoldoutGroup("Debug"), ReadOnly, ShowInInspector]
+    private Node<GameObject> current;
 
+    private InputSystem_Actions inputs;
     private CircularDoubleLinkedList<GameObject> menuItems = new();
 
-    void Start()
+    public void Awake()
+    {
+        inputs = new InputSystem_Actions();
+    }
+
+    public void OnEnable()
+    {
+        inputs.Enable();
+        inputs.UI.Navigate.performed += OnNavigate;
+        inputs.UI.Submit.performed += OnSelect;
+    }
+
+    public void OnDisable()
+    {
+        inputs.UI.Navigate.performed -= OnNavigate;
+        inputs.UI.Submit.performed -= OnSelect;
+        inputs.Disable();
+    }
+
+    public void Start()
     {
         menuItems.Add(botonPlay);
         menuItems.Add(botonOption);
@@ -35,63 +56,46 @@ public class MainMenu : MonoBehaviour
         onHighlight?.Invoke(current.Value);
     }
 
-    void OnEnable()
+    public void OnNavigate(InputAction.CallbackContext ctx)
     {
-        navigateAction.Enable();
-        selectAction.Enable();
-
-        navigateAction.performed += OnNavigate;
-        selectAction.performed += OnSelect;
-    }
-
-    void OnDisable()
-    {
-        navigateAction.performed -= OnNavigate;
-        selectAction.performed -= OnSelect;
-
-        navigateAction.Disable();
-        selectAction.Disable();
-    }
-
-    private void OnNavigate(InputAction.CallbackContext ctx)
-    {
-        Vector3 input = ctx.ReadValue<Vector3>();
+        Vector2 input = ctx.ReadValue<Vector2>();
 
         if (input.y < 0)
         {
             current = current.Next;
             onHighlight?.Invoke(current.Value);
-            Debug.Log("Destacando:" + current.Value.name);
+            Debug.Log("Destacando: " + current.Value.name);
         }
         else if (input.y > 0)
         {
             current = current.Prev;
             onHighlight?.Invoke(current.Value);
-            Debug.Log("Destacando:" +current.Value.name);
+            Debug.Log("Destacando: " + current.Value.name);
         }
     }
 
-    private void OnSelect(InputAction.CallbackContext ctx)
+    public void OnSelect(InputAction.CallbackContext ctx)
     {
         onSelect?.Invoke(current.Value);
 
-        if (current.Value == botonPlay)
-            PlayGame();
-        else if (current.Value == botonOption)
-            OpenOptions();
-        else if (current.Value == botonQuit)
-            QuitGame();
+        if (current.Value == botonPlay) PlayGame();
+        else if (current.Value == botonOption) OpenOptions();
+        else if (current.Value == botonQuit) QuitGame();
     }
+    [GUIColor(0.6f, 0.8f, 1f)]
+    [Button("Opciones", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void OpenOptions()
     {
         Debug.Log("Options");
     }
-
+    [GUIColor(0.5f, 1f, 0.5f)]
+    [Button("Play", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void PlayGame()
     {
         SceneManager.LoadScene("Scene_Home");
     }
-
+    [GUIColor(1f, 0.4f, 0.4f)]
+    [Button("Salir", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void QuitGame()
     {
         Application.Quit();

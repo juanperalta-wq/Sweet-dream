@@ -5,24 +5,41 @@ using Sirenix.OdinInspector;
 
 public class FirstPersonController : MonoBehaviour
 {
-    [FoldoutGroup("Referencias")]
-    public InputSystem_Actions inputs;
-    [FoldoutGroup("Referencias")]
-    private CharacterController controller;
-    [FoldoutGroup("Referencias")]
-    public CinemachineCamera characterCamera;
-    [FoldoutGroup("Referencias")]
-    private Vector2 moveInput;
-    [FoldoutGroup("Movimiento")]
-    public float moveSpeed = 5f;
-    [FoldoutGroup("Movimiento")]
-    public float jumpForce = 10;
-    [FoldoutGroup("Movimiento")]
-    public float verticalVelocity = 0;
-    [FoldoutGroup("Movimiento")]
-    public float pushForce = 4;
+    [TabGroup("Referencias"), Required]
+    [SerializeField] private CharacterController controller;
 
-    private void Awake()
+    [TabGroup("Referencias"), Required]
+    [SerializeField] private CinemachineCamera characterCamera;
+
+    [TabGroup("Movimiento"), LabelWidth(110)]
+    [PropertyRange(0.1f, 10f)]
+    [SerializeField] private float moveSpeed = 5f;
+
+    [TabGroup("Movimiento"), LabelWidth(110)]
+    [PropertyRange(0.1f, 20f)]
+    [SerializeField] private float jumpForce = 10f;
+
+    [TabGroup("Movimiento"), LabelWidth(110)]
+    [Range(1, 10)]
+    [SerializeField] private float pushForce = 4f;
+
+    [TabGroup("Debug"), ReadOnly]
+    [SerializeField] private Vector2 moveInput;
+
+    [TabGroup("Debug"), ReadOnly]
+    [SerializeField] private float verticalVelocity;
+
+    [TabGroup("Debug"), ReadOnly]
+    [SerializeField] private bool isGrounded;
+
+    [TabGroup("Interaccion"), LabelWidth(110)]
+    [SerializeField] private LayerMask interactableLayer;
+
+    [TabGroup("Interaccion")]
+    [SerializeField] private float distancia = 2f;
+    private InputSystem_Actions inputs;
+
+    public void Awake()
     {
         inputs = new();
         controller = GetComponent<CharacterController>();
@@ -30,26 +47,31 @@ public class FirstPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
-        inputs.Enable();
+        inputs.Enable();    
+        inputs.Player.Interact.performed += ctx => Interact();
         inputs.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
         inputs.Player.Jump.performed += OnJump;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         inputs.Player.Jump.performed -= OnJump;
+        inputs.Player.Interact.performed -= ctx => Interact();
+        inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
+        inputs.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
         inputs.Disable();
     }
 
-    void Update()
+    public void Update()
     {
-        OnMove();
+        isGrounded = controller.isGrounded;
+        Move();
     }
-
-    public void OnMove()
+    #region Move
+    public void Move()
     {
         Vector3 cameraForwardDir = characterCamera.transform.forward;
         cameraForwardDir.y = 0;
@@ -68,18 +90,50 @@ public class FirstPersonController : MonoBehaviour
 
         controller.Move(moveDir * Time.deltaTime);
     }
-
-    private void OnJump(InputAction.CallbackContext context)
+    #endregion
+    #region OnJump
+    public void OnJump(InputAction.CallbackContext context)
     {
         if (!controller.isGrounded) return;
         verticalVelocity = jumpForce;
     }
-
-    /*private void OnControllerColliderHit(ControllerColliderHit hit)
+    #endregion
+    #region collider
+    public void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Vector3 pushDir = (hit.transform.position - transform.position).normalized;
 
         if (hit.rigidbody != null && hit.rigidbody.linearVelocity == Vector3.zero)
             hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
-    }*/
+    }
+    #endregion
+    #region Gizmos
+    //draw gizmos en la camara 
+    private void OnDrawGizmos()
+    {
+
+        if (characterCamera != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(characterCamera.transform.position, characterCamera.transform.forward * distancia);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(characterCamera.transform.position + characterCamera.transform.forward * distancia, 0.1f);
+        }
+    }
+    #endregion
+    #region Interact
+    public void Interact() //esto se puede mejorar con un sistema de eventos, pero por ahora es suficiente para el prototipo
+    {
+        Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, distancia, interactableLayer))
+        {
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactable.Interact();
+            }
+        }
+    }
+    #endregion
 }

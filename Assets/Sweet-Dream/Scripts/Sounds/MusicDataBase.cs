@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "MusicDatabase", menuName = "Scriptable Objects/MusicDatabase")]
 public class MusicDatabase : SerializedScriptableObject
 {
+    [Title("Sounds")]
     public Dictionary<string, AudioClip> ClipDatabase = new();
 
     public AudioClip GetAudio(string audioName)

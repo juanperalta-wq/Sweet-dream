@@ -1,104 +1,119 @@
-using MoreMountains.Tools;
 using Sirenix.OdinInspector;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class BarneyController : MonoBehaviour
 {
     #region Variables
-    [FoldoutGroup("Variables")] 
-    public Transform Player;
-    [FoldoutGroup("Variables")] 
-    public float WalkSpeed = 1f;
-    [FoldoutGroup("Variables")] 
-    public float RunSpeed = 4f;
-    [FoldoutGroup("Variables")] 
-    public float RangeVision = 10f;
-    [FoldoutGroup("Variables")] 
-    private NavMeshAgent agent;
-    [FoldoutGroup("Variables")] 
-    private Animator anim;
-    [FoldoutGroup("Variables")]
-    public bool PlayerDetected = false;
-    [FoldoutGroup("Variables")]
-    private string currentAnim = "";
+    [TabGroup("Referencias"), Required]
+    [SerializeField] private Transform player;
+
+    [TabGroup("Referencias"), Required]
+    [SerializeField] private NavMeshAgent agent;
+
+    [TabGroup("Referencias"), Required]
+    [SerializeField] private Animator anim;
+
+    [TabGroup("Movimiento"), LabelWidth(110)]
+    [Range(1, 10)]
+    [SerializeField] private float walkSpeed = 1f;
+
+    [TabGroup("Movimiento"), LabelWidth(110)]
+    [Range(1, 10)]
+    [SerializeField] private float runSpeed = 4f;
+
+    [TabGroup("Detección"), LabelWidth(110)]
+    [Range(1, 10)]
+    [SerializeField] private float rangeVision = 10f;
+
+    [TabGroup("Temporal"), Required]
+    [SerializeField] private Transform pointA;
+
+    [TabGroup("Debug"), ReadOnly]
+    [SerializeField] private bool playerDetected;
+
+    [TabGroup("Debug"), ReadOnly]
+    [SerializeField] private string currentAnim;
+
+    [TabGroup("Debug"), ReadOnly]
+    [SerializeField] private float currentSpeed;
     #endregion
-    //temporal
-    public Transform PointA;
-    void Start()
+
+    private static readonly int IdleHash = Animator.StringToHash("Idle");
+    private static readonly int WalkHash = Animator.StringToHash("Walk");
+    private static readonly int RunHash = Animator.StringToHash("Run");
+
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
-        agent.speed = WalkSpeed;
+        agent.speed = walkSpeed;
     }
 
-    void Update()
+         void Update()
     {
         Detection();
         Animations();
         DetectPoint();
     }
+
     #region Animations
     public void Animations()
     {
-        float currentSpeed = agent.velocity.magnitude;
+        currentSpeed = agent.velocity.magnitude;
 
         if (currentSpeed < 0.1f)
-        {
-            SetAnimation("Idle");
-        }
-        else if (currentSpeed >= RunSpeed * 0.5f)
-        {
-            SetAnimation("Run");
-        }
+            SetAnimation("Idle", IdleHash);
+        else if (currentSpeed >= runSpeed * 0.5f)
+            SetAnimation("Run", RunHash);
         else
-        {
-            SetAnimation("Walk");
-        }
+            SetAnimation("Walk", WalkHash);
     }
     #endregion
+
     #region Detection
     public void Detection()
     {
-        if (Player == null) return;
+        if (player == null) return;
 
-        float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= RangeVision)
+        if (distanceToPlayer <= rangeVision)
         {
-            PlayerDetected = true;
-            agent.speed = RunSpeed;
+            playerDetected = true;
+            agent.speed = runSpeed;
             agent.ResetPath();
-            agent.SetDestination(Player.position);
+            agent.SetDestination(player.position);
         }
         else
         {
-            PlayerDetected = false;
-            agent.speed = WalkSpeed;
+            playerDetected = false;
+            agent.speed = walkSpeed;
             agent.ResetPath();
         }
     }
     #endregion
+
     #region SetAnimation
-    private void SetAnimation(string state)
+    public void SetAnimation(string state, int hash)
     {
         if (currentAnim == state) return;
         currentAnim = state;
 
-        anim.ResetTrigger("Idle");
-        anim.ResetTrigger("Walk");
-        anim.ResetTrigger("Run");
-        anim.SetTrigger(state);
+        anim.ResetTrigger(IdleHash);
+        anim.ResetTrigger(WalkHash);
+        anim.ResetTrigger(RunHash);
+        anim.SetTrigger(hash);
     }
     #endregion
-    //temporal
+
+    #region Temporal
     public void DetectPoint()
     {
-        float distanceToPoint = Vector3.Distance(transform.position, PointA.position);
-        if(distanceToPoint <= RangeVision)
-        {
-            agent.SetDestination(PointA.position);
-        }
+        if (pointA == null) return;
+        float distanceToPoint = Vector3.Distance(transform.position, pointA.position);
+        if (distanceToPoint <= rangeVision)
+            agent.SetDestination(pointA.position);
     }
+    #endregion
 }

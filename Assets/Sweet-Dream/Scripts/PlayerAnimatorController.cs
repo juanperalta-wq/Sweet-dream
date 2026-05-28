@@ -1,11 +1,15 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PlayerAnimatorController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [FoldoutGroup("Variables")]
+    private Animator anim;
+    [FoldoutGroup("Variables")]
+    private string currentAnim = "";
+    private void Awake()
     {
-        
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame

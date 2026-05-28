@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 public class FlashlightSystem : MonoBehaviour
 {
@@ -7,33 +6,22 @@ public class FlashlightSystem : MonoBehaviour
     [Required]
     [SerializeField] private Light flashlight;
     [TabGroup("Camera")]
-    [Required]  
+    [Required]
     [SerializeField] private Camera playerCamera;
     [TabGroup("Light")]
     [Range(1, 20)]
     [SerializeField] private float flashlightDistance = 12f;
-    private InputSystem_Actions inputs;
     private bool isOn;
 
-    private void Awake()
-    {
-        inputs = new InputSystem_Actions();
-    }
 
     private void OnEnable()
     {
-        inputs.Enable();
-
-        inputs.Player.Flashlight.performed += ToggleFlashlight;
+        PlayerInputs.OnFlashlight += ToggleFlashlight;
     }
-
     private void OnDisable()
     {
-        inputs.Player.Flashlight.performed -= ToggleFlashlight;
-
-        inputs.Disable();
+        PlayerInputs.OnFlashlight -= ToggleFlashlight;
     }
-
     void Update()
     {
         if (isOn)
@@ -42,7 +30,7 @@ public class FlashlightSystem : MonoBehaviour
         }
     }
 
-    void ToggleFlashlight(InputAction.CallbackContext context)
+    void ToggleFlashlight()
     {
         isOn = !isOn;
 
@@ -51,7 +39,7 @@ public class FlashlightSystem : MonoBehaviour
 
     void DetectEnemy()
     {
-        Ray ray = new Ray(playerCamera.transform.position,playerCamera.transform.forward);
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, flashlightDistance))
         {
