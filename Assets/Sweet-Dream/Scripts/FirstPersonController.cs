@@ -32,6 +32,11 @@ public class FirstPersonController : MonoBehaviour
     [TabGroup("Debug"), ReadOnly]
     [SerializeField] private bool isGrounded;
 
+    [TabGroup("Interaccion"), LabelWidth(110)]
+    [SerializeField] private LayerMask interactableLayer;
+
+    [TabGroup("Interaccion")]
+    [SerializeField] private float distancia = 2f;
     private InputSystem_Actions inputs;
 
     public void Awake()
@@ -44,7 +49,8 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnEnable()
     {
-        inputs.Enable();
+        inputs.Enable();    
+        inputs.Player.Interact.performed += ctx => Interact();
         inputs.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
         inputs.Player.Jump.performed += OnJump;
@@ -53,6 +59,9 @@ public class FirstPersonController : MonoBehaviour
     public void OnDisable()
     {
         inputs.Player.Jump.performed -= OnJump;
+        inputs.Player.Interact.performed -= ctx => Interact();
+        inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
+        inputs.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
         inputs.Disable();
     }
 
@@ -61,7 +70,7 @@ public class FirstPersonController : MonoBehaviour
         isGrounded = controller.isGrounded;
         Move();
     }
-
+    #region Move
     public void Move()
     {
         Vector3 cameraForwardDir = characterCamera.transform.forward;
@@ -81,13 +90,15 @@ public class FirstPersonController : MonoBehaviour
 
         controller.Move(moveDir * Time.deltaTime);
     }
-
+    #endregion
+    #region OnJump
     public void OnJump(InputAction.CallbackContext context)
     {
         if (!controller.isGrounded) return;
         verticalVelocity = jumpForce;
     }
-
+    #endregion
+    #region collider
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Vector3 pushDir = (hit.transform.position - transform.position).normalized;
@@ -95,4 +106,34 @@ public class FirstPersonController : MonoBehaviour
         if (hit.rigidbody != null && hit.rigidbody.linearVelocity == Vector3.zero)
             hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
     }
+    #endregion
+    #region Gizmos
+    //draw gizmos en la camara 
+    private void OnDrawGizmos()
+    {
+
+        if (characterCamera != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(characterCamera.transform.position, characterCamera.transform.forward * distancia);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(characterCamera.transform.position + characterCamera.transform.forward * distancia, 0.1f);
+        }
+    }
+    #endregion
+    #region Interact
+    public void Interact() //esto se puede mejorar con un sistema de eventos, pero por ahora es suficiente para el prototipo
+    {
+        Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, distancia, interactableLayer))
+        {
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactable.Interact();
+            }
+        }
+    }
+    #endregion
 }
