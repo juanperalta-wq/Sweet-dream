@@ -416,10 +416,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a43ff24cc555744ea31b459d4280b54, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a43ff24cc555744ea31b459d4280b54, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1187427801}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a43ff24cc555744ea31b459d4280b54, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1187427802}
   m_SourcePrefab: {fileID: 100100000, guid: 8a43ff24cc555744ea31b459d4280b54, type: 3}
 --- !u!1 &761712798
 GameObject:
@@ -2810,6 +2820,11 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &939618981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a43ff24cc555744ea31b459d4280b54, type: 3}
+  m_PrefabInstance: {fileID: 724200984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1055152571
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,6 +3542,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a43ff24cc555744ea31b459d4280b54, type: 3}
   m_PrefabInstance: {fileID: 724200984}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1187427801
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939618981}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.37, y: 0.22944802, z: 1.8000004}
+  m_Center: {x: 0, y: 0.13114473, z: 0}
+--- !u!114 &1187427802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939618981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  onOpen: {fileID: 1055152573}
+  onClose: {fileID: 877059875}
+  abierta: 0
 --- !u!1 &1265928559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4386,6 +4437,10 @@ PrefabInstance:
       propertyPath: characterCamera
       value: 
       objectReference: {fileID: 895319991}
+    - target: {fileID: 4843546498255054960, guid: a153e08138340cf4699f7239d01c54a1, type: 3}
+      propertyPath: interactableLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
