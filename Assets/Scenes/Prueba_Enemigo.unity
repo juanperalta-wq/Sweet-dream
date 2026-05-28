@@ -311,8 +311,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 912216772}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.88811827
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.065
+      value: 0.065000534
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -320,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.285
+      value: -0.28499985
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
       propertyPath: m_LocalRotation.w
@@ -354,10 +358,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: EspejoMovible
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2120793139}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2120793142}
   m_SourcePrefab: {fileID: 100100000, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
 --- !u!1 &209459207 stripped
 GameObject:
@@ -384,39 +398,6 @@ MonoBehaviour:
   flashlight: {fileID: 1103089854}
   playerCamera: {fileID: 1138260097}
   flashlightDistance: 12
---- !u!1 &417305780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 417305781}
-  m_Layer: 0
-  m_Name: espejo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &417305781
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417305780}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.40392, y: 0, z: 6.09607}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2087288852}
-  - {fileID: 912216772}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474941970
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +656,7 @@ MonoBehaviour:
         Mode: 2
         RotationSpace: 0
         MovementMode: 0
-        AnimateRotationDuration: 0.2
+        AnimateRotationDuration: 1
         AnimatePositionSpeed: 1
         RemapCurveZero: 0
         RemapCurveOne: 360
@@ -1975,7 +1956,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 912216772}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PivotEspejo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1991,12 +1972,12 @@ Transform:
   m_GameObject: {fileID: 912216771}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3660803, y: 0, z: 1.85393}
+  m_LocalPosition: {x: -1.1061802, y: 0.067, z: 2.3481598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2120793138}
-  m_Father: {fileID: 417305781}
+  m_Father: {fileID: 1923921063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &916946383
 GameObject:
@@ -4606,19 +4587,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 417305781}
+    m_TransformParent: {fileID: 1923921063}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e49030b8f9d7d3e49b547504c49c3240, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.88811827
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e49030b8f9d7d3e49b547504c49c3240, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4405994
+      value: -1.1806993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e49030b8f9d7d3e49b547504c49c3240, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e49030b8f9d7d3e49b547504c49c3240, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5691624
+      value: 2.0633922
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e49030b8f9d7d3e49b547504c49c3240, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4882,7 +4867,7 @@ MonoBehaviour:
         Mode: 2
         RotationSpace: 0
         MovementMode: 0
-        AnimateRotationDuration: 0.2
+        AnimateRotationDuration: 1
         AnimatePositionSpeed: 1
         RemapCurveZero: 0
         RemapCurveOne: 360
@@ -5278,6 +5263,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6688323420923920632, guid: 36db33a71c2970143be8d92ff19fdea3, type: 3}
   m_PrefabInstance: {fileID: 1846910998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1923921062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923921063}
+  m_Layer: 0
+  m_Name: Mirror
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1923921063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923921062}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.66382, y: 0, z: 5.60184}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 912216772}
+  - {fileID: 2087288852}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009394243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
+  m_PrefabInstance: {fileID: 138500189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2087288852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e49030b8f9d7d3e49b547504c49c3240, type: 3}
@@ -5288,6 +5311,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6db624ebf8df174caf86a59a6b08750, type: 3}
   m_PrefabInstance: {fileID: 138500189}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120793139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009394243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  onOpen: {fileID: 1775428519}
+  onClose: {fileID: 634877080}
+  abierta: 0
+--- !u!65 &2120793142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009394243}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7104757, y: 0.72, z: 0.86000013}
+  m_Center: {x: 0.07999618, y: 0, z: 0.43000007}
 --- !u!1001 &3309040792390999667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5556,4 +5615,4 @@ SceneRoots:
   - {fileID: 1064549253}
   - {fileID: 5816364359296652615}
   - {fileID: 474941971}
-  - {fileID: 417305781}
+  - {fileID: 1923921063}
