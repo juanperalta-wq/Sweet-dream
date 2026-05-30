@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Door
+  - Interactable
   - Water
   - UI
   - Walls

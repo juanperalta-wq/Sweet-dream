@@ -1,8 +1,8 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "ItemBaseData", menuName = "Scriptable Objects/BaseItem")]
-public class BaseItem : ScriptableObject
+[CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/BaseItem")]
+public class ItemData : ScriptableObject
 {
     [BoxGroup("Info"), HorizontalGroup("Info/Split", 160), PreviewField(150, ObjectFieldAlignment.Left)]
     [HideLabel]
@@ -17,6 +17,9 @@ public class BaseItem : ScriptableObject
     [VerticalGroup("Info/Split/Details"), LabelWidth(80)]
     [SerializeField] private ItemType type;
 
+    [VerticalGroup("Info/Split/Details"), LabelWidth(80)]
+    [SerializeField] private float sanity;
+
     [BoxGroup("Description"), HideLabel, MultiLineProperty(4)]
     [SerializeField] private string description;
 
@@ -26,5 +29,6 @@ public class BaseItem : ScriptableObject
     public string ItemName => itemName;
     public ItemType Type => type;
     public string Description => description;
+    public float Sanity => sanity;
     #endregion
 }

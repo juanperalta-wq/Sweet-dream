@@ -1,9 +1,9 @@
 public enum ItemType
 {
     None,
-    KeyItems,
     Equipment,
-    Consumable
+    Consumable,
+    EasterEgg
 }
 public enum EnemyType
 {
