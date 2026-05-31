@@ -164,11 +164,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14106b1e5ef16a441bee1ebdf39b53ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
+  controller: {fileID: -5044546078146161313}
   characterCamera: {fileID: 0}
   moveSpeed: 5
   jumpForce: 10
-  verticalVelocity: 0
   pushForce: 4
+  moveInput: {x: 0, y: 0}
+  verticalVelocity: 0
+  isGrounded: 0
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  distancia: 2
 --- !u!114 &-9197395436982064869
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,9 +11,6 @@ public class BarneyController : MonoBehaviour
     [TabGroup("Referencias"), Required]
     [SerializeField] private NavMeshAgent agent;
 
-    [TabGroup("Referencias"), Required]
-    [SerializeField] private Animator anim;
-
     [TabGroup("Movimiento"), LabelWidth(110)]
     [Range(1, 10)]
     [SerializeField] private float walkSpeed = 1f;
@@ -33,43 +30,28 @@ public class BarneyController : MonoBehaviour
     [SerializeField] private bool playerDetected;
 
     [TabGroup("Debug"), ReadOnly]
-    [SerializeField] private string currentAnim;
-
-    [TabGroup("Debug"), ReadOnly]
     [SerializeField] private float currentSpeed;
     #endregion
 
-    private static readonly int IdleHash = Animator.StringToHash("Idle");
-    private static readonly int WalkHash = Animator.StringToHash("Walk");
-    private static readonly int RunHash = Animator.StringToHash("Run");
+    public static readonly int IdleHash = Animator.StringToHash("Idle");
+    public static readonly int WalkHash = Animator.StringToHash("Walk");
+    public static readonly int RunHash = Animator.StringToHash("Run");
 
-    private void Start()
+    public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>();
         agent.speed = walkSpeed;
     }
 
-         void Update()
-    {
-        Detection();
-        Animations();
-        DetectPoint();
-    }
-
-    #region Animations
-    public void Animations()
+    // Agrega esto en Update:
+    void Update()
     {
         currentSpeed = agent.velocity.magnitude;
+        Detection();
 
-        if (currentSpeed < 0.1f)
-            SetAnimation("Idle", IdleHash);
-        else if (currentSpeed >= runSpeed * 0.5f)
-            SetAnimation("Run", RunHash);
-        else
-            SetAnimation("Walk", WalkHash);
+        if (!playerDetected)
+            DetectPoint();
     }
-    #endregion
 
     #region Detection
     public void Detection()
@@ -89,24 +71,9 @@ public class BarneyController : MonoBehaviour
         {
             playerDetected = false;
             agent.speed = walkSpeed;
-            agent.ResetPath();
         }
     }
     #endregion
-
-    #region SetAnimation
-    public void SetAnimation(string state, int hash)
-    {
-        if (currentAnim == state) return;
-        currentAnim = state;
-
-        anim.ResetTrigger(IdleHash);
-        anim.ResetTrigger(WalkHash);
-        anim.ResetTrigger(RunHash);
-        anim.SetTrigger(hash);
-    }
-    #endregion
-
     #region Temporal
     public void DetectPoint()
     {
@@ -115,5 +82,13 @@ public class BarneyController : MonoBehaviour
         if (distanceToPoint <= rangeVision)
             agent.SetDestination(pointA.position);
     }
+    #endregion
+
+    #region Getters Setters
+    public float WalkSpeed => walkSpeed;
+    public float RunSpeed => runSpeed;
+    public float RangeVision => rangeVision;
+    public bool PlayerDetected => playerDetected;
+    public float CurrentSpeed => currentSpeed;
     #endregion
 }

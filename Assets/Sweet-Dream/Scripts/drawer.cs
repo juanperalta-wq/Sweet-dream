@@ -10,12 +10,24 @@ public class drawer : MonoBehaviour, IInteractable
     [TabGroup("Feedbacks"), Required]
     public MMFeedbacks onClose;
 
+    [TabGroup("Configuracion")]
+    [SerializeField] private float cooldown = 1f;
+
+    private float cooldownTimer = 0f;
+
     [TabGroup("Debug"), ReadOnly]
     [SerializeField] private bool abierta = false;
 
+    private void Update()
+    {
+        if (cooldownTimer > 0)
+            cooldownTimer -= Time.deltaTime;
+    }
     public void Interact()
     {
-        if (!abierta)
+        if (cooldownTimer > 0) return;
+
+        if (!abierta)   
         {
             onOpen.PlayFeedbacks();
             abierta = true;
@@ -25,5 +37,7 @@ public class drawer : MonoBehaviour, IInteractable
             onClose.PlayFeedbacks();
             abierta = false;
         }
+
+        cooldownTimer = cooldown;
     }
 }
