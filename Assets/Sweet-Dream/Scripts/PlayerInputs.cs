@@ -9,6 +9,8 @@ public class PlayerInputs : MonoBehaviour
     public static event Action OnJump;
     public static event Action OnFlashlight;
     public static event Action OnTakePhoto;
+    public static event Action OnInteract;
+
     private void Awake()
     {
         inputs = new();
@@ -19,6 +21,7 @@ public class PlayerInputs : MonoBehaviour
         inputs.Player.Move.performed += ctx => OnMoveInputChange?.Invoke(ctx.ReadValue<Vector2>());
         inputs.Player.Move.canceled += ctx => OnMoveInputChange?.Invoke(Vector2.zero);
         inputs.Player.Jump.performed += ctx => OnJump?.Invoke();
+        inputs.Player.Interact.performed += ctx => OnInteract?.Invoke();
 
         inputs.Player.Flashlight.performed += ctx => OnFlashlight?.Invoke();
         inputs.Player.Photo.performed += ctx => OnTakePhoto?.Invoke();
@@ -28,6 +31,7 @@ public class PlayerInputs : MonoBehaviour
         inputs.Player.Move.performed -= ctx => OnMoveInputChange?.Invoke(ctx.ReadValue<Vector2>());
         inputs.Player.Move.canceled -= ctx => OnMoveInputChange?.Invoke(Vector2.zero);
         inputs.Player.Jump.performed -= ctx => OnJump?.Invoke();
+        inputs.Player.Interact.performed -= ctx => OnInteract?.Invoke();
         inputs.Player.Flashlight.performed -= ctx => OnFlashlight?.Invoke();
         inputs.Player.Photo.performed -= ctx => OnTakePhoto?.Invoke();
         inputs.Disable();
