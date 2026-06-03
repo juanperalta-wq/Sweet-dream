@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 using Sirenix.OdinInspector;
 
@@ -37,11 +36,9 @@ public class FirstPersonController : MonoBehaviour
 
     [TabGroup("Interaccion")]
     [SerializeField] private float distancia = 2f;
-    private InputSystem_Actions inputs;
 
     public void Awake()
     {
-        inputs = new();
         controller = GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -49,20 +46,16 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnEnable()
     {
-        inputs.Enable();    
-        inputs.Player.Interact.performed += ctx => Interact();
-        inputs.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
-        inputs.Player.Jump.performed += OnJump;
+        PlayerInputs.OnMoveInputChange += HandleMove;
+        PlayerInputs.OnJump += HandleJump;
+        PlayerInputs.OnInteract += Interact;
     }
 
     public void OnDisable()
     {
-        inputs.Player.Jump.performed -= OnJump;
-        inputs.Player.Interact.performed -= ctx => Interact();
-        inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
-        inputs.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
-        inputs.Disable();
+        PlayerInputs.OnMoveInputChange -= HandleMove;
+        PlayerInputs.OnJump -= HandleJump;
+        PlayerInputs.OnInteract -= Interact;
     }
 
     public void Update()
@@ -70,7 +63,13 @@ public class FirstPersonController : MonoBehaviour
         isGrounded = controller.isGrounded;
         Move();
     }
+
     #region Move
+    private void HandleMove(Vector2 input)
+    {
+        moveInput = input;
+    }
+
     public void Move()
     {
         Vector3 cameraForwardDir = characterCamera.transform.forward;
@@ -91,14 +90,16 @@ public class FirstPersonController : MonoBehaviour
         controller.Move(moveDir * Time.deltaTime);
     }
     #endregion
-    #region OnJump
-    public void OnJump(InputAction.CallbackContext context)
+
+    #region Jump
+    private void HandleJump()
     {
         if (!controller.isGrounded) return;
         verticalVelocity = jumpForce;
     }
     #endregion
-    #region collider
+
+    #region Collider
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Vector3 pushDir = (hit.transform.position - transform.position).normalized;
@@ -107,11 +108,10 @@ public class FirstPersonController : MonoBehaviour
             hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
     }
     #endregion
+
     #region Gizmos
-    //draw gizmos en la camara 
     private void OnDrawGizmos()
     {
-
         if (characterCamera != null)
         {
             Gizmos.color = Color.red;
@@ -122,6 +122,7 @@ public class FirstPersonController : MonoBehaviour
         }
     }
     #endregion
+
     #region Interact
     public void Interact() //esto se puede mejorar con un sistema de eventos, pero por ahora es suficiente para el prototipo
     {
