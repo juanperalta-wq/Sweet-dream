@@ -2,7 +2,7 @@ using MoreMountains.Feedbacks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable
+public class InteractableObject : MonoBehaviour, IInteractable
 {
     [TabGroup("Feedbacks"), Required]
     public MMFeedbacks onOpen;
