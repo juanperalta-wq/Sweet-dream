@@ -11,10 +11,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d69eb639e86888c4695683882ba9befc, type: 3}
   m_Name: Barnilla
-  m_EditorClassIdentifier: Assembly-CSharp::BaseItem
-  icon: {fileID: 21300002, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
-  id: 0
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  icon: {fileID: 21300012, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+  id: 1
   itemName: Barnilla
-  type: 0
+  type: 2
   sanity: 20
-  description: Barnilla
+  stackeable: 0
+  description: Barnilla que aumenta tu cordura

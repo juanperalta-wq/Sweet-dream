@@ -1,41 +1,42 @@
+
+
 using System;
 using UnityEngine;
-using Sirenix.OdinInspector;
-public class DoubleLinkedList<T> //: MonoBehaviour
+
+public class LinkedList<T> : MonoBehaviour
 {
-    [FoldoutGroup("List")]
     public Node<T> head = null;
-    [FoldoutGroup("List")]
-    public Node<T> tail = null;
-    [FoldoutGroup("Variables")]
     public int Count;
 
-    //->O(1)
     public virtual void Add(T value)
     {
-        Node<T> newNode = new(value);
+        Node<T> tempNode = new(value);
 
         //-> Cuando no hay nuingun elemento en la lista
         if (head == null)
         {
-            head = newNode;
-            tail = newNode;
+            head = tempNode;
         }
-        else if (head != null)
+        else
         {
-            tail.SetNext(newNode);
-            newNode.SetPrev(tail);
-            tail = newNode;
+            Node<T> Evaluator = head;
+
+            while (Evaluator.Next != null)
+            {
+                Evaluator = Evaluator.Next;
+            }
+
+            Evaluator.SetNext(tempNode);
+
         }
         Count++;
     }
 
-
-    //->O(1)
+    //->O(n)
     public void RemoveLast()
     {
 
-        //Node<T> Evaluator = head;
+        Node<T> Evaluator = head;
 
         if (Count == 0)
         {
@@ -45,20 +46,28 @@ public class DoubleLinkedList<T> //: MonoBehaviour
         else if (Count == 1)
         {
             head = null;
-            tail = null;
             Count--;
         }
-        else if (Count >= 2)
+        else if (Count == 2)
         {
-            Node<T> Evaluator = tail.Prev;
-            tail.SetPrev(null);
-            Evaluator.SetNext(null);
-            tail = Evaluator;
-
-
+            head.SetNext(null);
             Count--;
         }
+        else if (Count > 2)
+        {
+            while (Evaluator != null)
+            {
+                if (Evaluator.Next.Next == null)
+                {
+                    break;
+                }
 
+                Evaluator = Evaluator.Next;
+            }
+
+            Evaluator.SetNext(null);
+            Count--;
+        }
 
     }
     //-> O(1)
@@ -68,7 +77,6 @@ public class DoubleLinkedList<T> //: MonoBehaviour
         if (Count <= 1)
         {
             head = null;
-            tail = null;
             Count--;
             return;
         }
@@ -81,7 +89,7 @@ public class DoubleLinkedList<T> //: MonoBehaviour
 
     }
 
-    public void TraverseInOrder(Action<Node<T>> action)
+    public void Traverse(Action<Node<T>> action)
     {
         Node<T> Evaluator = head;
         while (Evaluator != null)
@@ -92,17 +100,5 @@ public class DoubleLinkedList<T> //: MonoBehaviour
             Evaluator = Evaluator.Next;
         }
     }
-    public void TraverseInReverse(Action<Node<T>> action)
-    {
-        Node<T> Evaluator = tail;
-        while (Evaluator != null)
-        {
-            //  Debug.Log(Evaluator.Value);
-            action(Evaluator);
-
-            Evaluator = Evaluator.Prev;
-        }
-    }
-
 
 }

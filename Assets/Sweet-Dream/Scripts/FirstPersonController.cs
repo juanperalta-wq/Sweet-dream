@@ -32,7 +32,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool isGrounded;
 
     [TabGroup("Interaccion"), LabelWidth(110)]
-    [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private LayerMask Interactable;
 
     [TabGroup("Interaccion")]
     [SerializeField] private float distancia = 2f;
@@ -109,7 +109,7 @@ public class FirstPersonController : MonoBehaviour
     }
     #endregion
 
-    #region Gizmos
+   /* #region Gizmos
     private void OnDrawGizmos()
     {
         if (characterCamera != null)
@@ -121,13 +121,13 @@ public class FirstPersonController : MonoBehaviour
             Gizmos.DrawSphere(characterCamera.transform.position + characterCamera.transform.forward * distancia, 0.1f);
         }
     }
-    #endregion
+    #endregion*/
 
     #region Interact
     public void Interact() //esto se puede mejorar con un sistema de eventos, pero por ahora es suficiente para el prototipo
     {
         Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, distancia, interactableLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, distancia, Interactable))
         {
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)

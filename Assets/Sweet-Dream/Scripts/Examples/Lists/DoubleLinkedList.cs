@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
-
-public class CircularDoubleLinkedList<T>// : MonoBehaviour
+using Sirenix.OdinInspector;
+public class DoubleLinkedList<T> //: MonoBehaviour
 {
+    [FoldoutGroup("List")]
     public Node<T> head = null;
+    [FoldoutGroup("List")]
     public Node<T> tail = null;
+    [FoldoutGroup("Variables")]
     public int Count;
 
     //->O(1)
@@ -17,19 +20,12 @@ public class CircularDoubleLinkedList<T>// : MonoBehaviour
         {
             head = newNode;
             tail = newNode;
-
-            head.SetPrev(tail);
-            tail.SetNext(head);
-
         }
         else if (head != null)
         {
             tail.SetNext(newNode);
             newNode.SetPrev(tail);
             tail = newNode;
-
-            head.SetPrev(tail);
-            tail.SetNext(head);
         }
         Count++;
     }
@@ -59,8 +55,6 @@ public class CircularDoubleLinkedList<T>// : MonoBehaviour
             Evaluator.SetNext(null);
             tail = Evaluator;
 
-            head.SetPrev(tail);
-            tail.SetNext(head);
 
             Count--;
         }
@@ -81,12 +75,7 @@ public class CircularDoubleLinkedList<T>// : MonoBehaviour
 
         Node<T> Evaluator = head.Next;
         head.SetNext(null);
-        head.SetPrev(null);
         head = Evaluator;
-
-        head.SetPrev(tail);
-        tail.SetNext(head);
-
         Count--;
 
 
@@ -95,29 +84,55 @@ public class CircularDoubleLinkedList<T>// : MonoBehaviour
     public void TraverseInOrder(Action<Node<T>> action)
     {
         Node<T> Evaluator = head;
-        int count = 0;
-        while (count < Count)
+        while (Evaluator != null)
         {
             //  Debug.Log(Evaluator.Value);
             action(Evaluator);
 
             Evaluator = Evaluator.Next;
-            count++;
         }
     }
     public void TraverseInReverse(Action<Node<T>> action)
     {
         Node<T> Evaluator = tail;
-        int count = 0;
-        while (count < Count)
+        while (Evaluator != null)
         {
             //  Debug.Log(Evaluator.Value);
             action(Evaluator);
 
             Evaluator = Evaluator.Prev;
-            count++;
         }
     }
+    public void RemoveNode(Node<T> node)
+    {
+        if (node == null || Count == 0)
+        {
+            Debug.Log("No se puede eliminar un nodo nulo o lista vacía");
+            return;
+        }
 
+        if (Count == 1)
+        {
+            head = null;
+            tail = null;
+            Count--;
+            return;
+        }
+
+        if (node == head)
+        {
+            RemoveFirst();
+            return;
+        }
+        if (node == tail)
+        {
+            RemoveLast();
+            return;
+        }
+
+        node.Prev.SetNext(node.Next);
+        node.Next.SetPrev(node.Prev);
+        Count--;
+    }
 
 }

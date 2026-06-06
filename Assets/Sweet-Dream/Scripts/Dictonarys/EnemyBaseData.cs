@@ -27,9 +27,6 @@ public class EnemyBaseData : ScriptableObject
     [SerializeField] private float health;
 
     [BoxGroup("Stats"), LabelWidth(90)]
-    [SerializeField] private float speed;
-
-    [BoxGroup("Stats"), LabelWidth(90)]
     [SerializeField] private float damage;
 
     [BoxGroup("Stats"), LabelWidth(90)]
@@ -49,7 +46,6 @@ public class EnemyBaseData : ScriptableObject
     public EnemyType EnemyType => enemyType;
     public WeaknessType Weakness => weakness;
     public float Health => health;
-    public float Speed => speed;
     public float Damage => damage;
     public float DetectionRange => detectionRange;
     public string Description => description;

@@ -20,6 +20,9 @@ public class ItemData : ScriptableObject
     [VerticalGroup("Info/Split/Details"), LabelWidth(80)]
     [SerializeField] private float sanity;
 
+    [VerticalGroup("Info/Split/Details"), LabelWidth(80)]
+    [SerializeField] private bool stackeable;
+    public bool Stackeable => stackeable;
     [BoxGroup("Description"), HideLabel, MultiLineProperty(4)]
     [SerializeField] private string description;
 

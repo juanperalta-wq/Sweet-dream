@@ -1,7 +1,6 @@
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -24,26 +23,18 @@ public class MainMenu : MonoBehaviour
     [FoldoutGroup("Debug"), ReadOnly, ShowInInspector]
     private Node<GameObject> current;
 
-    private InputSystem_Actions inputs;
     private CircularDoubleLinkedList<GameObject> menuItems = new();
-
-    public void Awake()
-    {
-        inputs = new InputSystem_Actions();
-    }
 
     public void OnEnable()
     {
-        inputs.Enable();
-        inputs.UI.Navigate.performed += OnNavigate;
-        inputs.UI.Submit.performed += OnSelect;
+        MenuInputs.OnNavigate += HandleNavigate;
+        MenuInputs.OnSubmit += HandleSubmit;
     }
 
     public void OnDisable()
     {
-        inputs.UI.Navigate.performed -= OnNavigate;
-        inputs.UI.Submit.performed -= OnSelect;
-        inputs.Disable();
+        MenuInputs.OnNavigate -= HandleNavigate;
+        MenuInputs.OnSubmit -= HandleSubmit;
     }
 
     public void Start()
@@ -56,25 +47,23 @@ public class MainMenu : MonoBehaviour
         onHighlight?.Invoke(current.Value);
     }
 
-    public void OnNavigate(InputAction.CallbackContext ctx)
+    private void HandleNavigate(Vector2 input)
     {
-        Vector2 input = ctx.ReadValue<Vector2>();
-
         if (input.y < 0)
         {
             current = current.Next;
+            Debug.Log(current.Value.name);
             onHighlight?.Invoke(current.Value);
-            Debug.Log("Destacando: " + current.Value.name);
         }
         else if (input.y > 0)
         {
             current = current.Prev;
+            Debug.Log(current.Value.name);
             onHighlight?.Invoke(current.Value);
-            Debug.Log("Destacando: " + current.Value.name);
         }
     }
 
-    public void OnSelect(InputAction.CallbackContext ctx)
+    private void HandleSubmit()
     {
         onSelect?.Invoke(current.Value);
 
@@ -82,18 +71,21 @@ public class MainMenu : MonoBehaviour
         else if (current.Value == botonOption) OpenOptions();
         else if (current.Value == botonQuit) QuitGame();
     }
+
     [GUIColor(0.6f, 0.8f, 1f)]
     [Button("Opciones", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void OpenOptions()
     {
         Debug.Log("Options");
     }
+
     [GUIColor(0.5f, 1f, 0.5f)]
     [Button("Play", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void PlayGame()
     {
         SceneManager.LoadScene("Scene_Home");
     }
+
     [GUIColor(1f, 0.4f, 0.4f)]
     [Button("Salir", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void QuitGame()
