@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public FlashlightSystem flashlightSystem;
     [FoldoutGroup("References")]
     public CameraSystem cameraSystem;
+    [FoldoutGroup("References")]
+    public MusicPool musicPool;
 
     [Header("Databases")]
     public MusicDatabase musicDatabase;

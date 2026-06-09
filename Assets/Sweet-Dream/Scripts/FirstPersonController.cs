@@ -37,11 +37,26 @@ public class FirstPersonController : MonoBehaviour
     [TabGroup("Interaccion")]
     [SerializeField] private float distancia = 2f;
 
+    [TabGroup("Audio")]
+    [SerializeField] private float stepDistance = 2f;
+
+    private float distanceTravelled;
+    private Vector3 lastPosition;
+
+    private string[] footstepNames =
+    {
+    "FootStep01",
+    "FootStep02",
+    "FootStep03"
+    };
+
     public void Awake()
     {
         controller = GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        lastPosition = transform.position;
     }
 
     public void OnEnable()
@@ -62,6 +77,8 @@ public class FirstPersonController : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
         Move();
+
+        HandleFootsteps();
     }
 
     #region Move
@@ -90,6 +107,36 @@ public class FirstPersonController : MonoBehaviour
         controller.Move(moveDir * Time.deltaTime);
     }
     #endregion
+
+    private void HandleFootsteps()
+    {
+        if (!controller.isGrounded)
+        {
+            distanceTravelled = 0;
+            lastPosition = transform.position;
+            return;
+        }
+
+        if (moveInput == Vector2.zero)
+        {
+            distanceTravelled = 0;
+            lastPosition = transform.position;
+            return;
+        }
+
+        distanceTravelled += Vector3.Distance(transform.position,lastPosition);
+
+        lastPosition = transform.position;
+
+        if (distanceTravelled >= stepDistance)
+        {
+            int randomIndex = Random.Range(0, footstepNames.Length);
+
+            GameManager.Instance.musicPool.PlayAudio(footstepNames[randomIndex]);
+
+            distanceTravelled = 0;
+        }
+    }
 
     #region Jump
     private void HandleJump()
