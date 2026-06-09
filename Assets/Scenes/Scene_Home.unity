@@ -3904,6 +3904,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5678690244596147026, guid: 1230c55b59c3c324ebf03456310ef141, type: 3}
   m_PrefabInstance: {fileID: 221426699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &223164010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223164011}
+  - component: {fileID: 223164012}
+  m_Layer: 0
+  m_Name: MusicPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &223164011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223164010}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1541130361}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &223164012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223164010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68e9ca10c2b4824abae0b6437155a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicPool
+  SoundPlayerPrefab: {fileID: 8193941879047821115, guid: 01ee303afbf864149bf6a885da3491b3, type: 3}
+  size: 20
 --- !u!1 &229155786
 GameObject:
   m_ObjectHideFlags: 0
@@ -23163,6 +23209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541130361}
   - component: {fileID: 1541130362}
+  - component: {fileID: 1541130363}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -23182,7 +23229,8 @@ Transform:
   m_LocalPosition: {x: -0.9148, y: 1.43565, z: -3.81514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 223164011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1541130362
@@ -23197,6 +23245,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5f101c8e9dfac46afe40573e7bbb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputs
+--- !u!114 &1541130363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541130359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b531195b5d2b1d44e90cc7ef65d0f396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  flashlightSystem: {fileID: 0}
+  cameraSystem: {fileID: 0}
+  musicPool: {fileID: 223164012}
+  musicDatabase: {fileID: 11400000, guid: 800193694aff3b74790834dd473ec553, type: 2}
 --- !u!1 &1542234263
 GameObject:
   m_ObjectHideFlags: 0
@@ -26002,6 +26066,10 @@ PrefabInstance:
     - target: {fileID: -9064019959398950462, guid: 11e3fc1e301fedd42b6d4cd2987f6cb6, type: 3}
       propertyPath: jumpForce
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -9064019959398950462, guid: 11e3fc1e301fedd42b6d4cd2987f6cb6, type: 3}
+      propertyPath: stepDistance
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -9064019959398950462, guid: 11e3fc1e301fedd42b6d4cd2987f6cb6, type: 3}
       propertyPath: characterCamera
