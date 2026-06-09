@@ -29,11 +29,17 @@ public class PlayerAnimator : MonoBehaviour
         float speed = controller.CurrentSpeed;
 
         if (speed < 0.1f)
+        {
             SetAnimation("Idle", IdleHash);
+        }
         else if (speed < controller.MoveSpeed)
+        {
             SetAnimation("Walk", WalkHash);
-        else
+        }
+       /* else
+        {
             SetAnimation("Run", RunHash);
+        }*/
     }
     #endregion
 
