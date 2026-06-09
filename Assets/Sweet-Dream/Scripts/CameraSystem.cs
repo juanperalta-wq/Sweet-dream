@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
-public class CameraSystem : MonoBehaviour, ITakePhoto
+public class CameraSystem : MonoBehaviour
 {
     [TabGroup("Referencias"), Required]
     [SerializeField] private Camera playerCamera;
