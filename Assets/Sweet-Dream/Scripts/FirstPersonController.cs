@@ -11,6 +11,11 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private CinemachineCamera characterCamera;
 
     [TabGroup("Movimiento"), LabelWidth(110)]
+    [PropertyRange(0.1f, 20f)]
+    [SerializeField] private float sprintSpeed = 10f;
+    private float baseMoveSpeed;
+
+    [TabGroup("Movimiento"), LabelWidth(110)]
     [PropertyRange(0.1f, 10f)]
     [SerializeField] private float moveSpeed = 5f;
 
@@ -39,6 +44,7 @@ public class FirstPersonController : MonoBehaviour
 
     public void Awake()
     {
+        baseMoveSpeed = moveSpeed;
         controller = GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -46,6 +52,7 @@ public class FirstPersonController : MonoBehaviour
 
     public void OnEnable()
     {
+        PlayerInputs.OnSprint += HandleSprint;
         PlayerInputs.OnMoveInputChange += HandleMove;
         PlayerInputs.OnJump += HandleJump;
         PlayerInputs.OnInteract += Interact;
@@ -56,6 +63,7 @@ public class FirstPersonController : MonoBehaviour
         PlayerInputs.OnMoveInputChange -= HandleMove;
         PlayerInputs.OnJump -= HandleJump;
         PlayerInputs.OnInteract -= Interact;
+        PlayerInputs.OnSprint -= HandleSprint;
     }
 
     public void Update()
@@ -99,6 +107,16 @@ public class FirstPersonController : MonoBehaviour
     }
     #endregion
 
+    #region Sprint
+    private void HandleSprint(bool isHolding)
+    {
+        if (isHolding)
+            moveSpeed = sprintSpeed;
+        else
+            moveSpeed = baseMoveSpeed;
+    }
+    #endregion
+
     #region Collider
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -109,7 +127,7 @@ public class FirstPersonController : MonoBehaviour
     }
     #endregion
 
-   /* #region Gizmos
+    #region Gizmos
     private void OnDrawGizmos()
     {
         if (characterCamera != null)
@@ -121,7 +139,7 @@ public class FirstPersonController : MonoBehaviour
             Gizmos.DrawSphere(characterCamera.transform.position + characterCamera.transform.forward * distancia, 0.1f);
         }
     }
-    #endregion*/
+    #endregion
 
     #region Interact
     public void Interact() //esto se puede mejorar con un sistema de eventos, pero por ahora es suficiente para el prototipo
