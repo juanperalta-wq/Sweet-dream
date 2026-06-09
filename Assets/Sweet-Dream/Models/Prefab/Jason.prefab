@@ -511,6 +511,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7893818473740123873}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8737442560656429190}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2917732114248417423}
   m_SourcePrefab: {fileID: 100100000, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
 --- !u!1 &2698114337042209591 stripped
 GameObject:
@@ -564,7 +570,7 @@ MonoBehaviour:
   isGrounded: 0
   Interactable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   distancia: 2
 --- !u!114 &-9197395436982064869
 MonoBehaviour:
@@ -578,6 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc926116e1dd4449abecacd5307ba78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimatorController
+  controller: {fileID: -9064019959398950462}
 --- !u!114 &6881398476372714008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +614,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   maxSlots: 10
   isOpen: 0
+--- !u!95 &8737442560656429190
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2698114337042209591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
+  m_Controller: {fileID: 9100000, guid: 14a2d304992edd447b1a998616b76a27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2917732114248417423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2698114337042209591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5f101c8e9dfac46afe40573e7bbb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputs
 --- !u!4 &3331098144862257549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}

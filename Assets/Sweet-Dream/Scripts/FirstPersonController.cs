@@ -137,4 +137,12 @@ public class FirstPersonController : MonoBehaviour
         }
     }
     #endregion
+
+    #region Getters
+    public float CurrentSpeed => controller.velocity.magnitude;
+    public float MoveSpeed => moveSpeed;
+    public float JumpForce => jumpForce;
+    public float PushForce => pushForce;
+    public bool IsGrounded => isGrounded;
+    #endregion
 }
