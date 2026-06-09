@@ -510,9 +510,6 @@ PrefabInstance:
       addedObject: {fileID: 6881398476372714008}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7893818473740123873}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8737442560656429190}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       insertIndex: -1
@@ -562,6 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
   controller: {fileID: -5044546078146161313}
   characterCamera: {fileID: 0}
+  sprintSpeed: 10
   moveSpeed: 5
   jumpForce: 10
   pushForce: 4
@@ -600,20 +598,6 @@ MonoBehaviour:
   sanity: 100
   pasiveSanityDrain: 0.5
   health: 100
---- !u!114 &7893818473740123873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2698114337042209591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3cbf74e3d5f55a4c9e91730239bca22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  maxSlots: 10
-  isOpen: 0
 --- !u!95 &8737442560656429190
 Animator:
   serializedVersion: 7
