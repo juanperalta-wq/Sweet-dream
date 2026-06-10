@@ -1,5 +1,8 @@
 using Sirenix.OdinInspector;
 using System;
+using System.Collections;
+using TMPro.Examples;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +20,12 @@ public class MainMenu : MonoBehaviour
     [BoxGroup("Eventos")]
     public Action<GameObject> onHighlight;
 
+    [BoxGroup("Referencias")]
+    public CinemachineCamera CameraIU;
+
+    [BoxGroup("Referencias")]
+    public GameObject Canvas;
+
     [BoxGroup("Eventos")]
     public Action<GameObject> onSelect;
 
@@ -24,6 +33,7 @@ public class MainMenu : MonoBehaviour
     private Node<GameObject> current;
 
     private CircularDoubleLinkedList<GameObject> menuItems = new();
+    [SerializeField] private CorrutinaCamera CorrutinaCamera;
 
     public void OnEnable()
     {
@@ -83,8 +93,14 @@ public class MainMenu : MonoBehaviour
     [Button("Play", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void PlayGame()
     {
-        SceneManager.LoadScene("Scene_Home");
+        CameraIU.Priority = 20;
+        gameObject.SetActive(false);
+
+        Debug.Log("Iniciando corrutina");
+        CorrutinaCamera.InitiationCorrutine();
+        Debug.Log("Corrutina iniciada");
     }
+
 
     [GUIColor(1f, 0.4f, 0.4f)]
     [Button("Salir", ButtonSizes.Large), ButtonGroup("Escenas")]
