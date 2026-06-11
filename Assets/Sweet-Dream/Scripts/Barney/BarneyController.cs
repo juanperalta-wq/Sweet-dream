@@ -33,10 +33,6 @@ public class BarneyController : MonoBehaviour
     [SerializeField] private float currentSpeed;
     #endregion
 
-    public static readonly int IdleHash = Animator.StringToHash("Idle");
-    public static readonly int WalkHash = Animator.StringToHash("Walk");
-    public static readonly int RunHash = Animator.StringToHash("Run");
-
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();

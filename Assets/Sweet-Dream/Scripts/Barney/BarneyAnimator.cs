@@ -7,6 +7,10 @@ public class BarneyAnimator : MonoBehaviour
 
     private string currentAnim;
 
+    public static readonly int IdleHash = Animator.StringToHash("Idle");
+    public static readonly int WalkHash = Animator.StringToHash("Walk");
+    public static readonly int RunHash = Animator.StringToHash("Run");
+
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
@@ -21,11 +25,11 @@ public class BarneyAnimator : MonoBehaviour
     public void Animations()
     {
         if (controller.CurrentSpeed < 0.1f)
-            SetAnimation("Idle", BarneyController.IdleHash);
+            SetAnimation("Idle", IdleHash);
         else if (controller.CurrentSpeed >= controller.RunSpeed * 0.5f)
-            SetAnimation("Run", BarneyController.RunHash);
+            SetAnimation("Run", WalkHash);
         else
-            SetAnimation("Walk", BarneyController.WalkHash);
+            SetAnimation("Walk", RunHash);
     }
     #endregion
 
@@ -35,9 +39,9 @@ public class BarneyAnimator : MonoBehaviour
         if (currentAnim == state) return;
         currentAnim = state;
 
-        anim.ResetTrigger(BarneyController.IdleHash);
-        anim.ResetTrigger(BarneyController.WalkHash);
-        anim.ResetTrigger(BarneyController.RunHash);
+        anim.ResetTrigger(IdleHash);
+        anim.ResetTrigger(WalkHash);
+        anim.ResetTrigger(RunHash);
         anim.SetTrigger(hash);
     }
     #endregion

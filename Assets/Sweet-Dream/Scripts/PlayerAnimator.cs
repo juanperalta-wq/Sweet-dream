@@ -6,6 +6,7 @@ public class PlayerAnimator : MonoBehaviour
     [FoldoutGroup("Referencias"), Required]
     [SerializeField] private FirstPersonController controller;
 
+    public PlayerInputs playerInputs;
     private Animator anim;
     private string currentAnim;
 
@@ -32,14 +33,14 @@ public class PlayerAnimator : MonoBehaviour
         {
             SetAnimation("Idle", IdleHash);
         }
-        else if (speed < controller.MoveSpeed)
+        else if (speed > controller.MoveSpeed)
+        {
+            SetAnimation("Run", RunHash);
+        }
+        else
         {
             SetAnimation("Walk", WalkHash);
         }
-       /* else
-        {
-            SetAnimation("Run", RunHash);
-        }*/
     }
     #endregion
 
