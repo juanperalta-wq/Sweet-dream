@@ -1,6 +1,6 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
-
+using System.Collections;
 public class PlayerStats : MonoBehaviour
 {
     private Color HealthColor => health > 60 ? Color.green : health > 30 ? Color.yellow : Color.red;
@@ -11,8 +11,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float sanity = 100f;
 
     [TabGroup("Stats"), LabelWidth(120)]
-    [Tooltip("Cuántos puntos de cordura pierde el jugador por segundo de forma pasiva")]
-    [SerializeField] private float pasiveSanityDrain = 0.5f;
+    [SerializeField] private float drainInterval = 1f;
+
+    [TabGroup("Stats"), LabelWidth(120)]
+    [SerializeField] private float drainAmount = 1f;
 
     [TabGroup("Stats"), LabelWidth(80)]
     [ProgressBar(0, 100, ColorGetter = "HealthColor")]
@@ -23,43 +25,31 @@ public class PlayerStats : MonoBehaviour
         Instance = this;
     }
 
-    void Update()
+    private void Start()
     {
-        SanityDrain();
+        StartCoroutine(SanityDrainRoutine());
     }
 
-    public void SanityDrain()
+    private IEnumerator SanityDrainRoutine()
     {
-        if (sanity > 0)
-            RemoveSanity(pasiveSanityDrain * Time.deltaTime);
+        while (true)
+        {
+            yield return new WaitForSeconds(drainInterval);
+            Sanity -= drainAmount;
+        }
     }
 
-    public void AddHealth(float amount)
+    #region Getters and Setters
+    public float Sanity
     {
-        health += amount;
-        health = Mathf.Clamp(health, 0f, 100f);
+        get => sanity;
+        set => sanity = Mathf.Clamp(value, 0, 100);
     }
 
-    public void RemoveHealth(float amount)
+    public float Health
     {
-        health -= amount;
-        health = Mathf.Clamp(health, 0f, 100f);
+        get => health;
+        set => health = Mathf.Clamp(value, 0, 100);
     }
-
-    public void AddSanity(float amount)
-    {
-        sanity += amount;
-        sanity = Mathf.Clamp(sanity, 0f, 100f);
-    }
-
-    public void RemoveSanity(float amount)
-    {
-        sanity -= amount;
-        sanity = Mathf.Clamp(sanity, 0f, 100f);
-    }
-
-    #region Getters
-    public float Sanity => sanity;
-    public float Health => health;
     #endregion
 }

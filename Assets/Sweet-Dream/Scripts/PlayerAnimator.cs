@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    [FoldoutGroup("Referencias"), Required]
-    [SerializeField] private FirstPersonController controller;
-
-    public PlayerInputs playerInputs;
     private Animator anim;
     private string currentAnim;
+
+    private Vector2 moveInput;
+    private bool isSprinting;
 
     private static readonly int IdleHash = Animator.StringToHash("Idle");
     private static readonly int WalkHash = Animator.StringToHash("Walk");
@@ -19,6 +18,21 @@ public class PlayerAnimator : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
+    private void OnEnable()
+    {
+        PlayerInputs.OnMoveInputChange += HandleMove;
+        PlayerInputs.OnSprint += HandleSprint;
+    }
+
+    private void OnDisable()
+    {
+        PlayerInputs.OnMoveInputChange -= HandleMove;
+        PlayerInputs.OnSprint -= HandleSprint;
+    }
+
+    private void HandleMove(Vector2 input) => moveInput = input;
+    private void HandleSprint(bool sprinting) => isSprinting = sprinting;
+
     private void Update()
     {
         Animations();
@@ -27,20 +41,12 @@ public class PlayerAnimator : MonoBehaviour
     #region Animations
     private void Animations()
     {
-        float speed = controller.CurrentSpeed;
-
-        if (speed < 0.1f)
-        {
+        if (moveInput == Vector2.zero)
             SetAnimation("Idle", IdleHash);
-        }
-        else if (speed > controller.MoveSpeed)
-        {
+        else if (isSprinting)
             SetAnimation("Run", RunHash);
-        }
         else
-        {
             SetAnimation("Walk", WalkHash);
-        }
     }
     #endregion
 

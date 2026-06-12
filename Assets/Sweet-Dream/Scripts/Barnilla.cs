@@ -3,19 +3,20 @@ using UnityEngine;
 public class Barnilla : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemData itemData;
+    [SerializeField] private float duration = 30f;
+    [SerializeField] private float sanityAmount = 10f;
 
     public void Interact()
     {
-        Debug.Log("Barnilla interactuada");
-        if (itemData != null)
+        Debug.Log("Interacted with Barnilla!");
+        BuffManager buffManager = PlayerStats.Instance.GetComponent<BuffManager>();
+
+        if (buffManager != null)
         {
-            Debug.Log("Sanity a agregar: " + itemData.Sanity);
-            PlayerStats.Instance.AddSanity(itemData.Sanity);
+            Debug.Log("BuffManager found, applying sanity buff.");
+            Buff buff = new SanityBuff(duration, sanityAmount);
+            buffManager.AddBuff(buff);
             Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("itemData es null");
         }
     }
 }

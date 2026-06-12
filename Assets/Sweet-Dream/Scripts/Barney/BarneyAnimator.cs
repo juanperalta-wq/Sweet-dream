@@ -27,9 +27,9 @@ public class BarneyAnimator : MonoBehaviour
         if (controller.CurrentSpeed < 0.1f)
             SetAnimation("Idle", IdleHash);
         else if (controller.CurrentSpeed >= controller.RunSpeed * 0.5f)
-            SetAnimation("Run", WalkHash);
+            SetAnimation("Run", RunHash);
         else
-            SetAnimation("Walk", RunHash);
+            SetAnimation("Walk", WalkHash);
     }
     #endregion
 
