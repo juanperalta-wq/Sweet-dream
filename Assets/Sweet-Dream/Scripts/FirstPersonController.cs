@@ -140,7 +140,7 @@ public class FirstPersonController : MonoBehaviour
         {
             int randomIndex = Random.Range(0, footstepNames.Length);
 
-            GameManager.Instance.musicPool.PlayAudio(footstepNames[randomIndex]);
+            //GameManager.Instance.musicPool.PlayAudio(footstepNames[randomIndex]);
 
             distanceTravelled = 0;
         }

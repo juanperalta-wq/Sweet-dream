@@ -17,5 +17,5 @@ MonoBehaviour:
   itemName: Barnilla
   type: 2
   sanity: 20
-  stackeable: 0
+  stackeable: 1
   description: Barnilla que aumenta tu cordura

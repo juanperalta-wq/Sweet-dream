@@ -13,6 +13,8 @@ public class PlayerInputs : MonoBehaviour
     public static event Action OnInteract;
     public static event Action OnInventory;
     public static event Action<bool> OnSprint;
+    public static event Action<int> OnSlotSelect;
+    public static event Action<float> OnSlotScroll;
 
     private void Awake()
     {
@@ -21,6 +23,16 @@ public class PlayerInputs : MonoBehaviour
     private void OnEnable()
     {
         inputs.Enable();
+        //Slot Scroll
+        inputs.Player.SlotScroll.performed += ctx => OnSlotScroll?.Invoke(ctx.ReadValue<Vector2>().y);
+        // Slot selection
+        inputs.Player.Slot1.performed += ctx => OnSlotSelect?.Invoke(0);
+        inputs.Player.Slot2.performed += ctx => OnSlotSelect?.Invoke(1);
+        inputs.Player.Slot3.performed += ctx => OnSlotSelect?.Invoke(2);
+        inputs.Player.Slot4.performed += ctx => OnSlotSelect?.Invoke(3);
+        inputs.Player.Slot5.performed += ctx => OnSlotSelect?.Invoke(4);
+        inputs.Player.Slot6.performed += ctx => OnSlotSelect?.Invoke(5);
+        // Player actions
         inputs.Player.Move.performed += ctx => OnMoveInputChange?.Invoke(ctx.ReadValue<Vector2>());
         inputs.Player.Move.canceled += ctx => OnMoveInputChange?.Invoke(Vector2.zero);
         inputs.Player.Jump.performed += ctx => OnJump?.Invoke();
@@ -33,6 +45,16 @@ public class PlayerInputs : MonoBehaviour
     }
     private void OnDisable()
     {
+        //slot scroll
+        inputs.Player.SlotScroll.performed -= ctx => OnSlotScroll?.Invoke(ctx.ReadValue<Vector2>().y);
+        // Slot selection
+        inputs.Player.Slot1.performed -= ctx => OnSlotSelect?.Invoke(0);
+        inputs.Player.Slot2.performed -= ctx => OnSlotSelect?.Invoke(1);
+        inputs.Player.Slot3.performed -= ctx => OnSlotSelect?.Invoke(2);
+        inputs.Player.Slot4.performed -= ctx => OnSlotSelect?.Invoke(3);
+        inputs.Player.Slot5.performed -= ctx => OnSlotSelect?.Invoke(4);
+        inputs.Player.Slot6.performed -= ctx => OnSlotSelect?.Invoke(5);
+        // General actions
         inputs.Player.Move.performed -= ctx => OnMoveInputChange?.Invoke(ctx.ReadValue<Vector2>());
         inputs.Player.Move.canceled -= ctx => OnMoveInputChange?.Invoke(Vector2.zero);
         inputs.Player.Jump.performed -= ctx => OnJump?.Invoke();
