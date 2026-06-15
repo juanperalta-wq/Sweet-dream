@@ -9,8 +9,9 @@ public class InventoryManager : MonoBehaviour
     public static event Action<CircularDoubleLinkedList<IInteractable>> OnInventoryChange;
     public static event Action<int> OnItemSelect;
 
-    [SerializeField] public Transform equipPoint; // dentro de FirstPersonCamera
+    [SerializeField] public Transform equipPoint;
     private ItemPickUp currentEquipped;
+    private Node<IInteractable> currentNode;
 
     private const int slotsMax = 6;
     private int selectedSlot = 0;
@@ -44,8 +45,9 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("Item agregado al slot " + InventoryData.Count);
         OnInventoryChange?.Invoke(InventoryData);
 
-        selectedSlot = InventoryData.Count - 1; // ← Selecciona el último
-        EquipSelectedItem();
+        currentNode = InventoryData.tail;
+        selectedSlot = InventoryData.Count - 1;
+        EquipNode(currentNode);
 
         return true;
     }
@@ -55,34 +57,49 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = index;
         Debug.Log("Slot seleccionado: " + (selectedSlot + 1));
         OnItemSelect?.Invoke(selectedSlot);
-        EquipSelectedItem();
+
+        int i = 0;
+        Node<IInteractable> current = InventoryData.head;
+        while (current != null)
+        {
+            if (i == selectedSlot)
+            {
+                currentNode = current;
+                break;
+            }
+            current = current.Next;
+            i++;
+        }
+
+        EquipNode(currentNode);
     }
 
     private void ScrollSlot(float direction)
     {
-        if (direction > 0)
-            selectedSlot = (selectedSlot - 1 + slotsMax) % slotsMax;
-        else
-            selectedSlot = (selectedSlot + 1) % slotsMax;
+        if (InventoryData.Count == 0) return;
 
-        Debug.Log("Slot seleccionado: " + (selectedSlot + 1));
+        if (currentNode == null)
+            currentNode = InventoryData.head;
+
+        if (direction > 0)
+            currentNode = currentNode.Prev;
+        else
+            currentNode = currentNode.Next;
+
+        Debug.Log("Slot seleccionado por scroll");
         OnItemSelect?.Invoke(selectedSlot);
-        EquipSelectedItem();
+        EquipNode(currentNode);
     }
 
-    private void EquipSelectedItem()
+    private void EquipNode(Node<IInteractable> node)
     {
-        // desactiva el item actual
         if (currentEquipped != null)
         {
             currentEquipped.OnUnequip();
             currentEquipped = null;
         }
 
-        // obtiene el item del slot seleccionado
-        IInteractable selected = GetSelectedItem();
-
-        if (selected is ItemPickUp item)
+        if (node?.Value is ItemPickUp item)
         {
             currentEquipped = item;
             currentEquipped.OnEquip(equipPoint);
@@ -92,14 +109,6 @@ public class InventoryManager : MonoBehaviour
 
     public IInteractable GetSelectedItem()
     {
-        int i = 0;
-        Node<IInteractable> current = InventoryData.head;
-        while (current != null)
-        {
-            if (i == selectedSlot) return current.Value;
-            current = current.Next;
-            i++;
-        }
-        return null;
+        return currentNode?.Value;
     }
 }
