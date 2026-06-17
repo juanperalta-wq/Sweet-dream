@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using TMPro.Examples;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,12 +27,16 @@ public class MainMenu : MonoBehaviour
     [BoxGroup("Referencias")]
     public GameObject Canvas;
 
+    [BoxGroup("Referencias")]
+    public GameObject CanvasOpciones;
+
     [BoxGroup("Eventos")]
     public Action<GameObject> onSelect;
 
     [FoldoutGroup("Debug"), ReadOnly, ShowInInspector]
     private Node<GameObject> current;
 
+    private MyStack<GameObject> Windows;
     private CircularDoubleLinkedList<GameObject> menuItems = new();
     [SerializeField] private CorrutinaCamera CorrutinaCamera;
 
@@ -39,12 +44,14 @@ public class MainMenu : MonoBehaviour
     {
         MenuInputs.OnNavigate += HandleNavigate;
         MenuInputs.OnSubmit += HandleSubmit;
+        MenuInputs.OnCancel += Escape;
     }
 
     public void OnDisable()
     {
         MenuInputs.OnNavigate -= HandleNavigate;
         MenuInputs.OnSubmit -= HandleSubmit;
+        MenuInputs.OnCancel -= Escape;
     }
 
     public void Start()
@@ -82,13 +89,6 @@ public class MainMenu : MonoBehaviour
         else if (current.Value == botonQuit) QuitGame();
     }
 
-    [GUIColor(0.6f, 0.8f, 1f)]
-    [Button("Opciones", ButtonSizes.Large), ButtonGroup("Escenas")]
-    public void OpenOptions()
-    {
-        Debug.Log("Options");
-    }
-
     [GUIColor(0.5f, 1f, 0.5f)]
     [Button("Play", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void PlayGame()
@@ -101,11 +101,25 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Corrutina iniciada");
     }
 
+    [GUIColor(0.6f, 0.8f, 1f)]
+    [Button("Opciones", ButtonSizes.Large), ButtonGroup("Escenas")]
+    public void OpenOptions()
+    {
+        if (Canvas == true)
+        {
+            CanvasOpciones.SetActive(true);
+
+        }
+    }
 
     [GUIColor(1f, 0.4f, 0.4f)]
     [Button("Salir", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void QuitGame()
     {
         Application.Quit();
+    }
+    public void Escape()
+    {
+        
     }
 }
