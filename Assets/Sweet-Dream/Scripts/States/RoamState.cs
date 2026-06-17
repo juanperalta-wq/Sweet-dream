@@ -9,6 +9,8 @@ public class RoamState : IState
     private ZoneNode currentNode;
     private float waitTimer;
 
+
+    private ZoneNode previousNode;
     public RoamState(StateMachine stateMachine, EnemyController enemyController)
     {
         this.stateMachine = stateMachine;
@@ -23,9 +25,7 @@ public class RoamState : IState
 
         if (currentNode != null)
         {
-            enemyController.Agent.SetDestination(
-                currentNode.transform.position
-            );
+            enemyController.Agent.SetDestination(currentNode.transform.position);
         }
 
         waitTimer = enemyController.NodeWaitTime;
@@ -39,8 +39,7 @@ public class RoamState : IState
             return;
         }
 
-        if (!enemyController.Agent.pathPending &&
-           enemyController.Agent.remainingDistance <= enemyController.Agent.stoppingDistance)
+        if (!enemyController.Agent.pathPending && enemyController.Agent.remainingDistance <= enemyController.Agent.stoppingDistance)
         {
             waitTimer -= Time.deltaTime;
 
@@ -64,19 +63,35 @@ public class RoamState : IState
         if (currentNode.Neighbors.Count == 0)
             return;
 
-        int randomIndex =
-            Random.Range(0, currentNode.Neighbors.Count);
+        ZoneNode nextNode;
 
-        currentNode = currentNode.Neighbors[randomIndex];
+        if (currentNode.Neighbors.Count == 1)
+        {
+            nextNode = currentNode.Neighbors[0];
+        }
+        else
+        {
+            do
+            {
+                int randomIndex = Random.Range(0, currentNode.Neighbors.Count);
+
+                nextNode = currentNode.Neighbors[randomIndex];
+
+            }
+            while (nextNode == previousNode);
+        }
+
+        previousNode = currentNode;
+        currentNode = nextNode;
 
         enemyController.Agent.SetDestination(currentNode.transform.position);
 
-        Debug.Log("Moviendose a: " + currentNode.name);
+        Debug.Log("Moving To: " + currentNode.name);
     }
 
     private bool PlayerInDetectionRange()
     {
-        Collider[] hits =Physics.OverlapSphere(enemyController.transform.position,enemyController.DetectionRange);
+        Collider[] hits = Physics.OverlapSphere(enemyController.transform.position, enemyController.DetectionRange);
 
         foreach (Collider collider in hits)
         {
