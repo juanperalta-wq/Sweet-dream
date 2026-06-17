@@ -20,6 +20,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        CoolDown();
+    }
+    public void CoolDown()
+    {
         if (cooldownTimer > 0)
             cooldownTimer -= Time.deltaTime;
     }
