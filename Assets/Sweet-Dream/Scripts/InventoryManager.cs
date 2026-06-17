@@ -54,13 +54,15 @@ public class InventoryManager : MonoBehaviour
 
     private void SelectSlot(int index)
     {
+        if (InventoryData.Count == 0) return;
+
         selectedSlot = index;
         Debug.Log("Slot seleccionado: " + (selectedSlot + 1));
         OnItemSelect?.Invoke(selectedSlot);
 
         int i = 0;
         Node<IInteractable> current = InventoryData.head;
-        while (current != null)
+        while (i < InventoryData.Count)
         {
             if (i == selectedSlot)
             {
@@ -86,9 +88,25 @@ public class InventoryManager : MonoBehaviour
         else
             currentNode = currentNode.Next;
 
-        Debug.Log("Slot seleccionado por scroll");
+        selectedSlot = GetIndexOfNode(currentNode);
+        Debug.Log("Slot seleccionado por scroll: " + (selectedSlot + 1));
         OnItemSelect?.Invoke(selectedSlot);
         EquipNode(currentNode);
+    }
+
+    private int GetIndexOfNode(Node<IInteractable> target)
+    {
+        if (target == null) return 0;
+
+        int i = 0;
+        Node<IInteractable> current = InventoryData.head;
+        for (int count = 0; count < InventoryData.Count; count++)
+        {
+            if (current == target) return i;
+            current = current.Next;
+            i++;
+        }
+        return 0;
     }
 
     private void EquipNode(Node<IInteractable> node)

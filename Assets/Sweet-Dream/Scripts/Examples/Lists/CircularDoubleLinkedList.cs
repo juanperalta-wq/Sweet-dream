@@ -1,46 +1,38 @@
 using System;
 using UnityEngine;
 
-public class CircularDoubleLinkedList<T>// : MonoBehaviour
+public class CircularDoubleLinkedList<T>
 {
     public Node<T> head = null;
     public Node<T> tail = null;
     public int Count;
 
-    //->O(1)
+    // O(1)
     public virtual void Add(T value)
     {
         Node<T> newNode = new(value);
 
-        //-> Cuando no hay nuingun elemento en la lista
         if (head == null)
         {
             head = newNode;
             tail = newNode;
-
             head.SetPrev(tail);
             tail.SetNext(head);
-
         }
-        else if (head != null)
+        else
         {
             tail.SetNext(newNode);
             newNode.SetPrev(tail);
             tail = newNode;
-
             head.SetPrev(tail);
             tail.SetNext(head);
         }
         Count++;
     }
 
-
-    //->O(1)
+    // O(1)
     public void RemoveLast()
     {
-
-        //Node<T> Evaluator = head;
-
         if (Count == 0)
         {
             Debug.Log("La lista esta vacia");
@@ -50,88 +42,83 @@ public class CircularDoubleLinkedList<T>// : MonoBehaviour
         {
             head = null;
             tail = null;
-            Count--;
         }
-        else if (Count >= 2)
+        else
         {
-            Node<T> Evaluator = tail.Prev;
+            Node<T> newTail = tail.Prev;
             tail.SetPrev(null);
-            Evaluator.SetNext(null);
-            tail = Evaluator;
-
-            head.SetPrev(tail);
+            tail.SetNext(null);
+            tail = newTail;
             tail.SetNext(head);
-
-            Count--;
+            head.SetPrev(tail);
         }
-
-
+        Count--;
     }
-    //-> O(1)
+
+    // O(1)
     public void RemoveFirst()
     {
-
-        if (Count <= 1)
+        if (Count == 0)
+        {
+            Debug.Log("La lista esta vacia");
+            return;
+        }
+        else if (Count == 1)
         {
             head = null;
             tail = null;
-            Count--;
+        }
+        else
+        {
+            Node<T> newHead = head.Next;
+            head.SetNext(null);
+            head.SetPrev(null);
+            head = newHead;
+            head.SetPrev(tail);
+            tail.SetNext(head);
+        }
+        Count--;
+    }
+    public void RemoveNode(Node<T> node)
+    {
+        if (node == null || Count == 0) return;
+
+        if (node == head)
+        {
+            RemoveFirst();
             return;
         }
 
-        Node<T> Evaluator = head.Next;
-        head.SetNext(null);
-        head.SetPrev(null);
-        head = Evaluator;
+        if (node == tail)
+        {
+            RemoveLast();
+            return;
+        }
 
-        head.SetPrev(tail);
-        tail.SetNext(head);
-
+        node.Prev.SetNext(node.Next);
+        node.Next.SetPrev(node.Prev);
+        node.SetNext(null);
+        node.SetPrev(null);
         Count--;
-
-
     }
 
     public void TraverseInOrder(Action<Node<T>> action)
     {
-        Node<T> Evaluator = head;
-        int count = 0;
-        while (count < Count)
+        Node<T> current = head;
+        for (int i = 0; i < Count; i++)
         {
-            //  Debug.Log(Evaluator.Value);
-            action(Evaluator);
-
-            Evaluator = Evaluator.Next;
-            count++;
+            action(current);
+            current = current.Next;
         }
     }
+
     public void TraverseInReverse(Action<Node<T>> action)
     {
-        Node<T> Evaluator = tail;
-        int count = 0;
-        while (count < Count)
+        Node<T> current = tail;
+        for (int i = 0; i < Count; i++)
         {
-            //  Debug.Log(Evaluator.Value);
-            action(Evaluator);
-
-            Evaluator = Evaluator.Prev;
-            count++;
+            action(current);
+            current = current.Prev;
         }
-    }
-    public void RemoveNode(Node<T> node)
-    {
-        if (node == null) return;
-
-        if (node.Prev != null)
-            node.Prev.SetNext(node.Next);
-        else
-            head = node.Next;
-
-        if (node.Next != null)
-            node.Next.SetPrev(node.Prev);
-        else
-            tail = node.Prev;
-
-        Count--;
     }
 }
