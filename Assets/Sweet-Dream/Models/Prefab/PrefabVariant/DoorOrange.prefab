@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6247533958366626781
+--- !u!1001 &482145499101390727
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -50,10 +50,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9144343626411015833, guid: ae3d45d4fd09f744fbdf8ad1f49eabac, type: 3}
       propertyPath: m_Name
-      value: DoorWhitKey
+      value: PivotDoor
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 528472723666900894, guid: ae3d45d4fd09f744fbdf8ad1f49eabac, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

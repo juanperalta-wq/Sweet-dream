@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - BoxTransition
   - TarjetaAmarilla
+  - TarjetaRoja
+  - TarjetaNaranja
   layers:
   - Default
   - TransparentFX

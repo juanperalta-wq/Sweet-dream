@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TarjetaPrefab Variant_Orange
       objectReference: {fileID: 0}
+    - target: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      propertyPath: m_TagString
+      value: TarjetaNaranja
+      objectReference: {fileID: 0}
     - target: {fileID: 2130114722215402349, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -56,8 +60,98 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7045647754959872072, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 29202cac2e9b7504faf948427e83a2d1, type: 2}
+    - target: {fileID: 8181922942695152423, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181922942695152423, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2535177054538993021}
+    - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7837636445840378421}
+    - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1440453605961194387}
   m_SourcePrefab: {fileID: 100100000, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+--- !u!1 &4558049618352116589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+  m_PrefabInstance: {fileID: 3567241431912147371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2535177054538993021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558049618352116589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc516ab2f8816e4abed42a215cf1c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
+  itemData: {fileID: 11400000, guid: 4dfce64a1a8840f4f916d09f6f257392, type: 2}
+  equipPosition: {x: 0, y: 0, z: 0}
+  equipRotation: {x: 0, y: 0, z: 0}
+  rb: {fileID: 7837636445840378421}
+--- !u!54 &7837636445840378421
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558049618352116589}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1440453605961194387
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558049618352116589}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6438618, y: 0.44176486, z: 0.104197115}
+  m_Center: {x: 0.08781487, y: 0.2132564, z: 0.0031765867}

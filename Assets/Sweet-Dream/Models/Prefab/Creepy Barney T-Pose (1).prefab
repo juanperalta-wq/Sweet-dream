@@ -100,16 +100,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 30ac7968c97bc5a4bb677316a5ddb57c, type: 2}
     - target: {fileID: -8679921383154817045, guid: 0bcd86c41f71b8e43a2626da59c94547, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0bcd86c41f71b8e43a2626da59c94547, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0bcd86c41f71b8e43a2626da59c94547, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0bcd86c41f71b8e43a2626da59c94547, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.333
+      value: -5.336096
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bcd86c41f71b8e43a2626da59c94547, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.61
+      value: -0.5024388
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bcd86c41f71b8e43a2626da59c94547, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.44
+      value: -9.154318
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bcd86c41f71b8e43a2626da59c94547, type: 3}
       propertyPath: m_LocalRotation.w
@@ -239,11 +251,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35d10582e28a3140991ffa2b79a2439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BarneyController
-  Player: {fileID: 0}
-  WalkSpeed: 1
-  RunSpeed: 4
-  RangeVision: 10
-  PlayerDetected: 0
+  player: {fileID: 0}
+  agent: {fileID: 0}
+  walkSpeed: 1
+  runSpeed: 4
+  rangeVision: 10
+  pointA: {fileID: 0}
+  playerDetected: 0
+  currentSpeed: 0
 --- !u!195 &165942106841791324
 NavMeshAgent:
   m_ObjectHideFlags: 0

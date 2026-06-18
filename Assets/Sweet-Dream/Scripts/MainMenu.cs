@@ -11,34 +11,35 @@ public class MainMenu : MonoBehaviour
 {
     [BoxGroup("Botones"), Required]
     [SerializeField] private GameObject botonPlay;
-
     [BoxGroup("Botones"), Required]
     [SerializeField] private GameObject botonOption;
-
     [BoxGroup("Botones"), Required]
     [SerializeField] private GameObject botonQuit;
 
-    [BoxGroup("Eventos")]
-    public Action<GameObject> onHighlight;
+    [BoxGroup("Paneles"), Required]
+    [SerializeField] private GameObject panelGeneral;
+    [BoxGroup("Paneles"), Required]
+    [SerializeField] private GameObject panelSonidos;
+    [BoxGroup("Paneles"), Required]
+    [SerializeField] private GameObject panelControles;
 
     [BoxGroup("Referencias"), Required]
     public CinemachineCamera CameraIU;
-
     [BoxGroup("Referencias"), Required]
     public GameObject Canvas;
-
     [BoxGroup("Referencias"), Required]
     public GameObject CanvasOpciones;
+    [BoxGroup("Referencias"), Required]
+    [SerializeField] private CorrutinaCamera CorrutinaCamera;
 
-    [BoxGroup("Eventos")]
-    public Action<GameObject> onSelect;
+    public event Action<GameObject> onHighlight;
+    public event Action<GameObject> onSelect;
 
     [FoldoutGroup("Debug"), ReadOnly, ShowInInspector]
     private Node<GameObject> current;
 
-    private MyStack<GameObject> Windows;
+    private MyStack<GameObject> Windows = new();
     private CircularDoubleLinkedList<GameObject> menuItems = new();
-    [SerializeField] private CorrutinaCamera CorrutinaCamera;
 
     public void OnEnable()
     {
@@ -66,22 +67,18 @@ public class MainMenu : MonoBehaviour
 
     private void HandleNavigate(Vector2 input)
     {
-        if (input.y < 0)
-        {
-            current = current.Next;
-            Debug.Log(current.Value.name);
-            onHighlight?.Invoke(current.Value);
-        }
-        else if (input.y > 0)
-        {
-            current = current.Prev;
-            Debug.Log(current.Value.name);
-            onHighlight?.Invoke(current.Value);
-        }
+        if (Windows.Count > 0) return;
+
+        if (input.y < 0) current = current.Next;
+        else if (input.y > 0) current = current.Prev;
+
+        onHighlight?.Invoke(current.Value);
     }
 
     private void HandleSubmit()
     {
+        if (Windows.Count > 0) return;
+
         onSelect?.Invoke(current.Value);
 
         if (current.Value == botonPlay) PlayGame();
@@ -90,19 +87,16 @@ public class MainMenu : MonoBehaviour
     }
 
     [GUIColor(0.5f, 1f, 0.5f)]
-    [Button("Play", ButtonSizes.Large), ButtonGroup("Escenas")]
+    [Button("Play", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void PlayGame()
     {
         CameraIU.Priority = 20;
         Canvas.SetActive(false);
-
-        Debug.Log("Iniciando corrutina");
         CorrutinaCamera.InitiationCorrutine();
-        Debug.Log("Corrutina iniciada");
     }
 
     [GUIColor(0.6f, 0.8f, 1f)]
-    [Button("Opciones", ButtonSizes.Large), ButtonGroup("Escenas")]
+    [Button("Opciones", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void OpenOptions()
     {
         Canvas.SetActive(false);
@@ -110,17 +104,25 @@ public class MainMenu : MonoBehaviour
     }
 
     [GUIColor(1f, 0.4f, 0.4f)]
-    [Button("Salir", ButtonSizes.Large), ButtonGroup("Escenas")]
+    [Button("Salir", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void QuitGame()
     {
         Application.Quit();
     }
+    public void OpenPanelGeneral() => OpenPanel(panelGeneral);
+    public void OpenPanelSonidos() => OpenPanel(panelSonidos);
+    public void OpenPanelControles() => OpenPanel(panelControles);
+    private void OpenPanel(GameObject panel)
+    {
+        panel.SetActive(true);
+        panel.transform.SetAsLastSibling();
+        Windows.Push(panel);
+    }
 
-    [GUIColor(1f, 0.4f, 0.4f)]
-    [Button("Escape", ButtonSizes.Large), ButtonGroup("Escenas")]
+    [GUIColor(1f, 0.8f, 0.4f)]
+    [Button("Escape", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void HandleCancel()
     {
-        Debug.Log("Cancelado");
         if (CanvasOpciones != null && CanvasOpciones.activeSelf)
         {
             CanvasOpciones.SetActive(false);
