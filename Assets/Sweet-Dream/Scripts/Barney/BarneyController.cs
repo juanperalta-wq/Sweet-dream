@@ -39,7 +39,6 @@ public class BarneyController : MonoBehaviour
         agent.speed = walkSpeed;
     }
 
-    // Agrega esto en Update:
     void Update()
     {
         currentSpeed = agent.velocity.magnitude;

@@ -173,6 +173,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -2505797976062891134, guid: 87fff7f7bb933f84992a7d8e3fb4d300, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 2059713031}
     - target: {fileID: 2772113021885287396, guid: 87fff7f7bb933f84992a7d8e3fb4d300, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -302,6 +306,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2535177054538993021, guid: 8a4dba0fa4515f14cb28869c769f4941, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 1833061887}
     - target: {fileID: 3174706936722977478, guid: 8a4dba0fa4515f14cb28869c769f4941, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
@@ -404,6 +412,7 @@ MonoBehaviour:
   equipRotation: {x: 0, y: 0, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   rb: {fileID: 621291916}
+  coll: {fileID: 621291918}
 --- !u!54 &621291916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -431,6 +440,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &621291918 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7619477334283513439, guid: 61c242f312063f64cb87525eb857406b, type: 3}
+  m_PrefabInstance: {fileID: 1750964454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &659375018
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +499,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1377,7 +1391,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4471,7 +4485,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5159,6 +5173,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -4312192124953215333, guid: 61c242f312063f64cb87525eb857406b, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 621291918}
     - target: {fileID: 485622639763525357, guid: 61c242f312063f64cb87525eb857406b, type: 3}
       propertyPath: m_Name
       value: TarjetaRed
@@ -5516,6 +5534,7 @@ MonoBehaviour:
   equipRotation: {x: 0, y: 0, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   rb: {fileID: 1833061885}
+  coll: {fileID: 0}
 --- !u!54 &1833061885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5543,6 +5562,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1833061887 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1440453605961194387, guid: 8a4dba0fa4515f14cb28869c769f4941, type: 3}
+  m_PrefabInstance: {fileID: 538601981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1914211383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5622,6 +5646,7 @@ MonoBehaviour:
   equipRotation: {x: 0, y: 0, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
   rb: {fileID: 2059713028}
+  coll: {fileID: 0}
 --- !u!54 &2059713028
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5649,6 +5674,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2059713031 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2951182765211925723, guid: 87fff7f7bb933f84992a7d8e3fb4d300, type: 3}
+  m_PrefabInstance: {fileID: 218812541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2102324931
 GameObject:
   m_ObjectHideFlags: 0
@@ -5888,6 +5918,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1413455690907770730}
+    - target: {fileID: 8542260545557875066, guid: b03230e5f1a04b547b9ed87391424e4f, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 1413455690907770731}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5928,6 +5962,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1413455690907770731 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7016729330995721375, guid: b03230e5f1a04b547b9ed87391424e4f, type: 3}
+  m_PrefabInstance: {fileID: 1413455690907770728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2084971433890995044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6098,6 +6137,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 8576935101011288564}
+    - target: {fileID: 534592959906656460, guid: f48d9fc549726b84fa3f7da1e61e09d4, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 8576935101011288569}
     - target: {fileID: 534592959906656460, guid: f48d9fc549726b84fa3f7da1e61e09d4, type: 3}
       propertyPath: equipPosition.x
       value: 0

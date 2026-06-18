@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2158329534408030152}
   - component: {fileID: 534592959906656460}
   - component: {fileID: 5505155900564402294}
+  - component: {fileID: 3823140547369383678}
   m_Layer: 3
   m_Name: Linterna
   m_TagString: Untagged
@@ -66,6 +67,9 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 0a278d78995cdd84ea7e51c923705503, type: 2}
   equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
+  rb: {fileID: 3823140547369383678}
+  coll: {fileID: 5505155900564402294}
 --- !u!65 &5505155900564402294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87,6 +91,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.44150686, y: 0.48794568, z: 1.002388}
   m_Center: {x: 0.032414198, y: 0.01843959, z: 0.1053915}
+--- !u!54 &3823140547369383678
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199143956305690828}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &9028824478914440183
 GameObject:
   m_ObjectHideFlags: 0

@@ -154,4 +154,6 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 12f90d74c4644894f920beeed03ee223, type: 2}
   equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
   rb: {fileID: -6678008471487796804}
+  coll: {fileID: 2951182765211925723}

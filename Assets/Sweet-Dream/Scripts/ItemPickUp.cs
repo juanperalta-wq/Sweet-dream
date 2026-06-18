@@ -7,6 +7,7 @@ public class ItemPickUp : MonoBehaviour, IInteractable
     [SerializeField] private Vector3 equipRotation;
     [SerializeField] private Vector3 originalScale;
     [SerializeField] private Rigidbody rb;
+    [SerializeField]private Collider coll;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class ItemPickUp : MonoBehaviour, IInteractable
     public void OnEquip(Transform equipPoint)
     {
         rb.isKinematic = true;
+        coll.isTrigger = true;
         transform.SetParent(equipPoint);
         transform.localPosition = equipPosition;
         transform.localRotation = Quaternion.Euler(equipRotation);
@@ -33,6 +35,7 @@ public class ItemPickUp : MonoBehaviour, IInteractable
     public void OnDrop(Vector3 equipPoint)
     {
         rb.isKinematic = false;
+        coll.isTrigger = false;
         transform.SetParent(null);
         transform.position = equipPoint;
         transform.localScale = originalScale;

@@ -133,7 +133,9 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 270e9a5e829ad7a4ea4bc3c193d4ab19, type: 2}
   equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
   rb: {fileID: -4586528102149243598}
+  coll: {fileID: 7619477334283513439}
 --- !u!65 &7619477334283513439
 BoxCollider:
   m_ObjectHideFlags: 0

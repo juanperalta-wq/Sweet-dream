@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 322925394732923494}
   - component: {fileID: 1225038697341828316}
   - component: {fileID: 4114292163747658403}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'CameraLens '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,8 @@ GameObject:
   - component: {fileID: 3097630055136193115}
   - component: {fileID: 8542260545557875066}
   - component: {fileID: 7016729330995721375}
-  m_Layer: 0
+  - component: {fileID: 2726618177794274994}
+  m_Layer: 3
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,6 +208,9 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 30fb97679a668f841888e1179e47a186, type: 2}
   equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
+  rb: {fileID: 2726618177794274994}
+  coll: {fileID: 0}
 --- !u!65 &7016729330995721375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -228,6 +232,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5434658, y: 0.35911053, z: 0.3461391}
   m_Center: {x: 0.005346626, y: 0.17242733, z: 0.028069556}
+--- !u!54 &2726618177794274994
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027768733929822143}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &4213970990398807941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +322,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e81909a90038dcd41aefc7c9be76768e, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e81909a90038dcd41aefc7c9be76768e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

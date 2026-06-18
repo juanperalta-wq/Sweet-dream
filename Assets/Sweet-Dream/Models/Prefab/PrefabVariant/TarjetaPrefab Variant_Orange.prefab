@@ -106,7 +106,9 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 4dfce64a1a8840f4f916d09f6f257392, type: 2}
   equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
   rb: {fileID: 7837636445840378421}
+  coll: {fileID: 1440453605961194387}
 --- !u!54 &7837636445840378421
 Rigidbody:
   m_ObjectHideFlags: 0
