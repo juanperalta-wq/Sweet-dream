@@ -1,23 +1,30 @@
 using System;
+using Unity.Hierarchy;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
-    public CircularDoubleLinkedList<IInteractable> InventoryData = new();
+    private CircularDoubleLinkedList<IInteractable> InventoryData = new();
     public static event Action<CircularDoubleLinkedList<IInteractable>> OnInventoryChange;
     public static event Action<int> OnItemSelect;
 
     [SerializeField] public Transform equipPoint;
+    [SerializeField] private int slotsMax = 6;
+
     private ItemPickUp currentEquipped;
     private Node<IInteractable> currentNode;
-
-    private const int slotsMax = 6;
     private int selectedSlot = 0;
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
@@ -25,12 +32,14 @@ public class InventoryManager : MonoBehaviour
     {
         PlayerInputs.OnSlotSelect += SelectSlot;
         PlayerInputs.OnSlotScroll += ScrollSlot;
+        PlayerInputs.OnRemoveItem += RemoveCurrentItem;
     }
 
     private void OnDisable()
     {
         PlayerInputs.OnSlotSelect -= SelectSlot;
         PlayerInputs.OnSlotScroll -= ScrollSlot;
+        PlayerInputs.OnRemoveItem -= RemoveCurrentItem;
     }
 
     public bool AddItem(IInteractable item)
@@ -43,50 +52,88 @@ public class InventoryManager : MonoBehaviour
 
         InventoryData.Add(item);
         Debug.Log("Item agregado al slot " + InventoryData.Count);
-        OnInventoryChange?.Invoke(InventoryData);
 
         currentNode = InventoryData.tail;
         selectedSlot = InventoryData.Count - 1;
+
+        OnInventoryChange?.Invoke(InventoryData);
+        OnItemSelect?.Invoke(selectedSlot);
         EquipNode(currentNode);
 
         return true;
     }
 
-    private void SelectSlot(int index)
+    // Remueve el item actualmente equipado
+    private void RemoveCurrentItem()
     {
-        if (InventoryData.Count == 0) return;
+        if (currentNode?.Value is IInteractable item)
+            RemoveItem(item);
+    }
 
-        selectedSlot = index;
-        Debug.Log("Slot seleccionado: " + (selectedSlot + 1));
-        OnItemSelect?.Invoke(selectedSlot);
+    // Remueve un item específico del inventario
+    public bool RemoveItem(IInteractable item)
+    {
+        if (item == null) return false;
+        if (InventoryData.Count == 0) return false;
 
-        int i = 0;
-        Node<IInteractable> current = InventoryData.head;
-        while (i < InventoryData.Count)
+        Node<IInteractable> found = null;
+        InventoryData.TraverseInOrder(n => { if (n.Value == item) found = n; });
+
+        if (found == null) return false;
+
+        // Si el item a remover es el actualmente equipado, desequipar y soltar
+        if (found == currentNode)
         {
-            if (i == selectedSlot)
+            if (currentEquipped != null)
             {
-                currentNode = current;
-                break;
+                currentEquipped.OnUnequip();
+                currentEquipped.OnDrop(equipPoint.position);
+                currentEquipped = null;
             }
-            current = current.Next;
-            i++;
         }
 
+        Node<IInteractable> newCurrent = null;
+        if (InventoryData.Count > 1)
+        {
+            newCurrent = (found == currentNode) ? found.Next : currentNode ?? InventoryData.head;
+        }
+
+        InventoryData.RemoveNode(found);
+
+        currentNode = newCurrent;
+        selectedSlot = currentNode != null ? GetIndexOfNode(currentNode) : -1;
+
+        OnInventoryChange?.Invoke(InventoryData);
+        OnItemSelect?.Invoke(selectedSlot);
+        EquipNode(currentNode);
+
+        return true;
+    }
+
+    // Selecciona el slot en la posición dada, si el índice es inválido o el inventario esta vacio no hace nada
+    private void SelectSlot(int index)
+    {
+        if (InventoryData.Count == 0 || index < 0 || index >= InventoryData.Count)
+            return;
+
+        selectedSlot = index;
+        currentNode = GetNodeAtIndex(index);
+
+        Debug.Log("Slot seleccionado: " + (selectedSlot + 1));
+        OnItemSelect?.Invoke(selectedSlot);
         EquipNode(currentNode);
     }
 
+    // El scroll se mueve en la dirección dada, si el inventario esta vacio no hace nada
     private void ScrollSlot(float direction)
     {
-        if (InventoryData.Count == 0) return;
+        if (InventoryData.Count == 0)
+            return;
 
         if (currentNode == null)
             currentNode = InventoryData.head;
 
-        if (direction > 0)
-            currentNode = currentNode.Prev;
-        else
-            currentNode = currentNode.Next;
+        currentNode = direction > 0 ? currentNode.Prev : currentNode.Next;
 
         selectedSlot = GetIndexOfNode(currentNode);
         Debug.Log("Slot seleccionado por scroll: " + (selectedSlot + 1));
@@ -94,21 +141,32 @@ public class InventoryManager : MonoBehaviour
         EquipNode(currentNode);
     }
 
-    private int GetIndexOfNode(Node<IInteractable> target)
+    // Obtiene el nodo en la posición dada, retorna null si el índice es inválido
+    private Node<IInteractable> GetNodeAtIndex(int index)
     {
-        if (target == null) return 0;
-
-        int i = 0;
         Node<IInteractable> current = InventoryData.head;
-        for (int count = 0; count < InventoryData.Count; count++)
-        {
-            if (current == target) return i;
+        for (int i = 0; i < index && current != null; i++)
             current = current.Next;
-            i++;
-        }
-        return 0;
+        return current;
     }
 
+    // Obtiene el índice del nodo dado, retorna -1 si el nodo no se encuentra en la lista
+    private int GetIndexOfNode(Node<IInteractable> target)
+    {
+        if (target == null)
+            return -1;
+
+        Node<IInteractable> current = InventoryData.head;
+        for (int i = 0; i < InventoryData.Count; i++)
+        {
+            if (current == target)
+                return i;
+            current = current.Next;
+        }
+        return -1;
+    }
+
+    // Hace el equipamiento del item, si ya hay uno equipado lo desequipa antes de equipar el nuevo
     private void EquipNode(Node<IInteractable> node)
     {
         if (currentEquipped != null)

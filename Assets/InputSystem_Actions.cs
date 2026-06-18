@@ -271,6 +271,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RemoveItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3859775-e492-40c7-81bb-beda23df7ed5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -735,6 +744,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Slot6"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""421a06a2-05bf-4b11-9679-c8b02345676c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RemoveItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -755,7 +775,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Submit"",
                     ""type"": ""Button"",
                     ""id"": ""7607c7b6-cd76-4816-beef-bd0341cfe950"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1340,6 +1360,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Slot4 = m_Player.FindAction("Slot4", throwIfNotFound: true);
         m_Player_Slot5 = m_Player.FindAction("Slot5", throwIfNotFound: true);
         m_Player_Slot6 = m_Player.FindAction("Slot6", throwIfNotFound: true);
+        m_Player_RemoveItem = m_Player.FindAction("RemoveItem", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1453,6 +1474,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Slot4;
     private readonly InputAction m_Player_Slot5;
     private readonly InputAction m_Player_Slot6;
+    private readonly InputAction m_Player_RemoveItem;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1545,6 +1567,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Slot6 => m_Wrapper.m_Player_Slot6;
         /// <summary>
+        /// Provides access to the underlying input action "Player/RemoveItem".
+        /// </summary>
+        public InputAction @RemoveItem => m_Wrapper.m_Player_RemoveItem;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1630,6 +1656,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Slot6.started += instance.OnSlot6;
             @Slot6.performed += instance.OnSlot6;
             @Slot6.canceled += instance.OnSlot6;
+            @RemoveItem.started += instance.OnRemoveItem;
+            @RemoveItem.performed += instance.OnRemoveItem;
+            @RemoveItem.canceled += instance.OnRemoveItem;
         }
 
         /// <summary>
@@ -1701,6 +1730,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Slot6.started -= instance.OnSlot6;
             @Slot6.performed -= instance.OnSlot6;
             @Slot6.canceled -= instance.OnSlot6;
+            @RemoveItem.started -= instance.OnRemoveItem;
+            @RemoveItem.performed -= instance.OnRemoveItem;
+            @RemoveItem.canceled -= instance.OnRemoveItem;
         }
 
         /// <summary>
@@ -2141,6 +2173,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSlot6(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RemoveItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRemoveItem(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

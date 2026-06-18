@@ -22,7 +22,12 @@ public class ItemPickUp : MonoBehaviour, IInteractable
         transform.localScale = Vector3.one;
         gameObject.SetActive(true);
     }
-
+    public void OnDrop(Vector3 equipPoint)
+    {
+        transform.SetParent(null);
+        transform.position = equipPoint;
+        gameObject.SetActive(true);
+    }
     public void OnUnequip()
     {
         gameObject.SetActive(false);

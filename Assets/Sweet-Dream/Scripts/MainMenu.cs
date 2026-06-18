@@ -21,13 +21,13 @@ public class MainMenu : MonoBehaviour
     [BoxGroup("Eventos")]
     public Action<GameObject> onHighlight;
 
-    [BoxGroup("Referencias")]
+    [BoxGroup("Referencias"), Required]
     public CinemachineCamera CameraIU;
 
-    [BoxGroup("Referencias")]
+    [BoxGroup("Referencias"), Required]
     public GameObject Canvas;
 
-    [BoxGroup("Referencias")]
+    [BoxGroup("Referencias"), Required]
     public GameObject CanvasOpciones;
 
     [BoxGroup("Eventos")]
@@ -44,14 +44,14 @@ public class MainMenu : MonoBehaviour
     {
         MenuInputs.OnNavigate += HandleNavigate;
         MenuInputs.OnSubmit += HandleSubmit;
-        MenuInputs.OnCancel += Escape;
+        MenuInputs.OnCancel += HandleCancel;
     }
 
     public void OnDisable()
     {
         MenuInputs.OnNavigate -= HandleNavigate;
         MenuInputs.OnSubmit -= HandleSubmit;
-        MenuInputs.OnCancel -= Escape;
+        MenuInputs.OnCancel -= HandleCancel;
     }
 
     public void Start()
@@ -94,7 +94,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         CameraIU.Priority = 20;
-        gameObject.SetActive(false);
+        Canvas.SetActive(false);
 
         Debug.Log("Iniciando corrutina");
         CorrutinaCamera.InitiationCorrutine();
@@ -105,11 +105,8 @@ public class MainMenu : MonoBehaviour
     [Button("Opciones", ButtonSizes.Large), ButtonGroup("Escenas")]
     public void OpenOptions()
     {
-        if (Canvas == true)
-        {
-            CanvasOpciones.SetActive(true);
-
-        }
+        Canvas.SetActive(false);
+        CanvasOpciones.SetActive(true);
     }
 
     [GUIColor(1f, 0.4f, 0.4f)]
@@ -118,8 +115,16 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-    public void Escape()
+
+    [GUIColor(1f, 0.4f, 0.4f)]
+    [Button("Escape", ButtonSizes.Large), ButtonGroup("Escenas")]
+    public void HandleCancel()
     {
-        
+        Debug.Log("Cancelado");
+        if (CanvasOpciones != null && CanvasOpciones.activeSelf)
+        {
+            CanvasOpciones.SetActive(false);
+            Canvas.SetActive(true);
+        }
     }
 }

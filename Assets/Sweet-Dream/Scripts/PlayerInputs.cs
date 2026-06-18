@@ -15,66 +15,67 @@ public class PlayerInputs : MonoBehaviour
     public static event Action<bool> OnSprint;
     public static event Action<int> OnSlotSelect;
     public static event Action<float> OnSlotScroll;
+    public static event Action OnRemoveItem;
 
     private void Awake()
     {
         inputs = new();
     }
+
     private void OnEnable()
     {
         inputs.Enable();
-        //Slot Scroll
-        inputs.Player.SlotScroll.performed += ctx => OnSlotScroll?.Invoke(ctx.ReadValue<Vector2>().y);
-        // Slot selection
+
+        inputs.Player.RemoveItem.performed += HandleRemoveItem;
+        inputs.Player.SlotScroll.performed += HandleSlotScroll;
+
         inputs.Player.Slot1.performed += ctx => OnSlotSelect?.Invoke(0);
         inputs.Player.Slot2.performed += ctx => OnSlotSelect?.Invoke(1);
         inputs.Player.Slot3.performed += ctx => OnSlotSelect?.Invoke(2);
         inputs.Player.Slot4.performed += ctx => OnSlotSelect?.Invoke(3);
         inputs.Player.Slot5.performed += ctx => OnSlotSelect?.Invoke(4);
         inputs.Player.Slot6.performed += ctx => OnSlotSelect?.Invoke(5);
-        // Player actions
-        inputs.Player.Move.performed += ctx => OnMoveInputChange?.Invoke(ctx.ReadValue<Vector2>());
-        inputs.Player.Move.canceled += ctx => OnMoveInputChange?.Invoke(Vector2.zero);
+
+        inputs.Player.Move.performed += HandleMove;
+        inputs.Player.Move.canceled += HandleMoveCanceled;
         inputs.Player.Jump.performed += ctx => OnJump?.Invoke();
         inputs.Player.Interact.performed += ctx => OnInteract?.Invoke();
-        inputs.Player.Sprint.started += SprintStarted;
-        inputs.Player.Sprint.canceled += SprintCanceled;
+        inputs.Player.Sprint.started += HandleSprintStarted;
+        inputs.Player.Sprint.canceled += HandleSprintCanceled;
         inputs.Player.Inventory.performed += ctx => OnInventory?.Invoke();
         inputs.Player.Flashlight.performed += ctx => OnFlashlight?.Invoke();
         inputs.Player.Photo.performed += ctx => OnTakePhoto?.Invoke();
     }
+
     private void OnDisable()
     {
-        //slot scroll
-        inputs.Player.SlotScroll.performed -= ctx => OnSlotScroll?.Invoke(ctx.ReadValue<Vector2>().y);
-        // Slot selection
+        inputs.Player.RemoveItem.performed -= HandleRemoveItem;
+        inputs.Player.SlotScroll.performed -= HandleSlotScroll;
+
         inputs.Player.Slot1.performed -= ctx => OnSlotSelect?.Invoke(0);
         inputs.Player.Slot2.performed -= ctx => OnSlotSelect?.Invoke(1);
         inputs.Player.Slot3.performed -= ctx => OnSlotSelect?.Invoke(2);
         inputs.Player.Slot4.performed -= ctx => OnSlotSelect?.Invoke(3);
         inputs.Player.Slot5.performed -= ctx => OnSlotSelect?.Invoke(4);
         inputs.Player.Slot6.performed -= ctx => OnSlotSelect?.Invoke(5);
-        // General actions
-        inputs.Player.Move.performed -= ctx => OnMoveInputChange?.Invoke(ctx.ReadValue<Vector2>());
-        inputs.Player.Move.canceled -= ctx => OnMoveInputChange?.Invoke(Vector2.zero);
+
+        inputs.Player.Move.performed -= HandleMove;
+        inputs.Player.Move.canceled -= HandleMoveCanceled;
         inputs.Player.Jump.performed -= ctx => OnJump?.Invoke();
         inputs.Player.Interact.performed -= ctx => OnInteract?.Invoke();
-        inputs.Player.Sprint.started -= SprintStarted;
-        inputs.Player.Sprint.canceled -= SprintCanceled;
+        inputs.Player.Sprint.started -= HandleSprintStarted;
+        inputs.Player.Sprint.canceled -= HandleSprintCanceled;
+        inputs.Player.Inventory.performed -= ctx => OnInventory?.Invoke();
         inputs.Player.Flashlight.performed -= ctx => OnFlashlight?.Invoke();
         inputs.Player.Photo.performed -= ctx => OnTakePhoto?.Invoke();
-        inputs.Player.Inventory.performed -= ctx => OnInventory?.Invoke();
+
         inputs.Disable();
     }
 
-    private void SprintStarted(InputAction.CallbackContext ctx)
-    {
-        OnSprint?.Invoke(true);
-    }
-
-    private void SprintCanceled(InputAction.CallbackContext ctx)
-    {
-        OnSprint?.Invoke(false);
-    }
-
+    private void HandleRemoveItem(InputAction.CallbackContext ctx) => OnRemoveItem?.Invoke();
+    private void HandleSlotScroll(InputAction.CallbackContext ctx) => OnSlotScroll?.Invoke(ctx.ReadValue<Vector2>().y);
+    private void HandleMove(InputAction.CallbackContext ctx) => OnMoveInputChange?.Invoke(ctx.ReadValue<Vector2>());
+    private void HandleMoveCanceled(InputAction.CallbackContext ctx) => OnMoveInputChange?.Invoke(Vector2.zero);
+    private void HandleSprintStarted(InputAction.CallbackContext ctx) => OnSprint?.Invoke(true);
+    private void HandleSprintCanceled(InputAction.CallbackContext ctx) => OnSprint?.Invoke(false);
 }

@@ -7,7 +7,7 @@ public class CircularDoubleLinkedList<T>
     public Node<T> tail = null;
     public int Count;
 
-    // O(1)
+    // agrega un nuevo nodo al final de la lista, O(1)
     public virtual void Add(T value)
     {
         Node<T> newNode = new(value);
@@ -30,7 +30,7 @@ public class CircularDoubleLinkedList<T>
         Count++;
     }
 
-    // O(1)
+    // remueve el ultimo nodo de la lista, O(1)
     public void RemoveLast()
     {
         if (Count == 0)
@@ -55,7 +55,7 @@ public class CircularDoubleLinkedList<T>
         Count--;
     }
 
-    // O(1)
+    //  remueve el primer nodo de la lista, O(1)
     public void RemoveFirst()
     {
         if (Count == 0)
@@ -79,6 +79,7 @@ public class CircularDoubleLinkedList<T>
         }
         Count--;
     }
+    //remueve un nodo especifico de la lista, O(1) si el nodo es head o tail, O(n) en el peor caso
     public void RemoveNode(Node<T> node)
     {
         if (node == null || Count == 0) return;
@@ -101,7 +102,7 @@ public class CircularDoubleLinkedList<T>
         node.SetPrev(null);
         Count--;
     }
-
+    // hace un recorrido de la lista desde head a tail, O(n)
     public void TraverseInOrder(Action<Node<T>> action)
     {
         Node<T> current = head;
