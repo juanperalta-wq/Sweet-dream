@@ -35,7 +35,7 @@ public class EnemyAnimator : MonoBehaviour
         {
             SetAnimation("Idle", IdleHash);
         }
-        else if (speed >= controller.RunSpeed * 0.5f)
+        else if (speed >= 5f)
         {
             SetAnimation("Run", RunHash);
         }
