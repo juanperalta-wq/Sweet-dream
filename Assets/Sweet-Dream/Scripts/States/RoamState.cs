@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoamState : IState
@@ -7,10 +6,15 @@ public class RoamState : IState
     private EnemyController enemyController;
 
     private ZoneNode currentNode;
+    private ZoneNode previousNode;
+
+    private PatrolZone currentZone;
+
     private float waitTimer;
 
+    private int visitedNodes;
+    private int targetNodesToVisit;
 
-    private ZoneNode previousNode;
     public RoamState(StateMachine stateMachine, EnemyController enemyController)
     {
         this.stateMachine = stateMachine;
@@ -23,10 +27,14 @@ public class RoamState : IState
 
         currentNode = enemyController.StartingNode;
 
-        if (currentNode != null)
-        {
-            enemyController.Agent.SetDestination(currentNode.transform.position);
-        }
+        if (currentNode == null)
+            return;
+
+        currentZone = currentNode.Zone;
+        visitedNodes = 0;
+        targetNodesToVisit = Random.Range(enemyController.MinNodesPerZone, enemyController.MaxNodesPerZone + 1);
+
+        enemyController.Agent.SetDestination(currentNode.transform.position);
 
         waitTimer = enemyController.NodeWaitTime;
     }
@@ -39,7 +47,7 @@ public class RoamState : IState
             return;
         }
 
-        if (!enemyController.Agent.pathPending && enemyController.Agent.remainingDistance <= enemyController.Agent.stoppingDistance)
+        if (!enemyController.Agent.pathPending &&  enemyController.Agent.remainingDistance <= enemyController.Agent.stoppingDistance)
         {
             waitTimer -= Time.deltaTime;
 
@@ -50,6 +58,7 @@ public class RoamState : IState
             }
         }
     }
+
     public void Exit()
     {
         enemyController.Agent.ResetPath();
@@ -57,6 +66,15 @@ public class RoamState : IState
 
     private void MoveToNextNode()
     {
+        visitedNodes++;
+
+        if (visitedNodes >= targetNodesToVisit)
+        {
+            Debug.Log("Intentando cambiar de zona");
+            ChangeZone();
+            return;
+        }
+
         if (currentNode == null)
             return;
 
@@ -73,10 +91,7 @@ public class RoamState : IState
         {
             do
             {
-                int randomIndex = Random.Range(0, currentNode.Neighbors.Count);
-
-                nextNode = currentNode.Neighbors[randomIndex];
-
+                nextNode = currentNode.Neighbors[Random.Range(0, currentNode.Neighbors.Count)];
             }
             while (nextNode == previousNode);
         }
@@ -89,9 +104,38 @@ public class RoamState : IState
         Debug.Log("Moving To: " + currentNode.name);
     }
 
+    private void ChangeZone()
+    {
+        Debug.Log("Entró a ChangeZone()");
+        if (enemyController.PatrolZones.Length == 0)
+            return;
+
+        PatrolZone nextZone;
+        do
+        {
+            nextZone = enemyController.PatrolZones[Random.Range(0,enemyController.PatrolZones.Length)];
+        }
+        while (nextZone == currentZone && enemyController.PatrolZones.Length > 1);
+
+        currentZone = nextZone;
+
+        if (currentZone.Nodes.Count == 0)
+            return;
+
+        currentNode = currentZone.Nodes[Random.Range(0, currentZone.Nodes.Count)];
+        previousNode = null;
+        visitedNodes = 0;
+
+        targetNodesToVisit = Random.Range(enemyController.MinNodesPerZone, enemyController.MaxNodesPerZone + 1);
+
+        enemyController.Agent.SetDestination(currentNode.transform.position);
+
+        Debug.Log("CAMBIANDO A ZONA: " + currentZone.name);
+    }
+
     private bool PlayerInDetectionRange()
     {
-        Collider[] hits = Physics.OverlapSphere(enemyController.transform.position, enemyController.DetectionRange);
+        Collider[] hits = Physics.OverlapSphere(enemyController.transform.position,enemyController.DetectionRange);
 
         foreach (Collider collider in hits)
         {
