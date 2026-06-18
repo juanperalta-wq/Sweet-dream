@@ -1,6 +1,4 @@
 using System;
-using Unity.Hierarchy;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -63,14 +61,12 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
-    // Remueve el item actualmente equipado
     private void RemoveCurrentItem()
     {
-        if (currentNode?.Value is IInteractable item)
-            RemoveItem(item);
+        if (currentNode != null)
+            RemoveItem(currentNode.Value);
     }
-
-    // Remueve un item espec√≠fico del inventario
+    // Permite remover un item especÌfico del inventario, asegurando que si el item removido es el actualmente equipado, se desequipe y se actualice el slot seleccionado
     public bool RemoveItem(IInteractable item)
     {
         if (item == null) return false;
@@ -81,7 +77,6 @@ public class InventoryManager : MonoBehaviour
 
         if (found == null) return false;
 
-        // Si el item a remover es el actualmente equipado, desequipar y soltar
         if (found == currentNode)
         {
             if (currentEquipped != null)
@@ -104,13 +99,13 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = currentNode != null ? GetIndexOfNode(currentNode) : -1;
 
         OnInventoryChange?.Invoke(InventoryData);
-        OnItemSelect?.Invoke(selectedSlot);
+        if (selectedSlot >= 0)
+            OnItemSelect?.Invoke(selectedSlot);
         EquipNode(currentNode);
 
         return true;
     }
-
-    // Selecciona el slot en la posici√≥n dada, si el √≠ndice es inv√°lido o el inventario esta vacio no hace nada
+    // Permite seleccionar un slot especÌfico usando n˙meros del 1 al 6, ajustando el Ìndice para que sea 0-based internamente
     private void SelectSlot(int index)
     {
         if (InventoryData.Count == 0 || index < 0 || index >= InventoryData.Count)
@@ -123,8 +118,7 @@ public class InventoryManager : MonoBehaviour
         OnItemSelect?.Invoke(selectedSlot);
         EquipNode(currentNode);
     }
-
-    // El scroll se mueve en la direcci√≥n dada, si el inventario esta vacio no hace nada
+    // Permite cambiar el slot seleccionado usando la rueda del mouse, con scroll hacia arriba para ir al slot anterior y hacia abajo para ir al siguiente
     private void ScrollSlot(float direction)
     {
         if (InventoryData.Count == 0)
@@ -141,7 +135,6 @@ public class InventoryManager : MonoBehaviour
         EquipNode(currentNode);
     }
 
-    // Obtiene el nodo en la posici√≥n dada, retorna null si el √≠ndice es inv√°lido
     private Node<IInteractable> GetNodeAtIndex(int index)
     {
         Node<IInteractable> current = InventoryData.head;
@@ -149,8 +142,7 @@ public class InventoryManager : MonoBehaviour
             current = current.Next;
         return current;
     }
-
-    // Obtiene el √≠ndice del nodo dado, retorna -1 si el nodo no se encuentra en la lista
+    // Devuelve el Ìndice del nodo dado, o -1 si no se encuentra
     private int GetIndexOfNode(Node<IInteractable> target)
     {
         if (target == null)
@@ -165,8 +157,7 @@ public class InventoryManager : MonoBehaviour
         }
         return -1;
     }
-
-    // Hace el equipamiento del item, si ya hay uno equipado lo desequipa antes de equipar el nuevo
+    // Maneja el equipamiento del item seleccionado, asegurando que solo un item estÈ equipado a la vez
     private void EquipNode(Node<IInteractable> node)
     {
         if (currentEquipped != null)
@@ -182,7 +173,7 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Equipado: " + item.ItemData.ItemName);
         }
     }
-
+    // Devuelve el item actualmente seleccionado, o null si no hay ninguno seleccionado
     public IInteractable GetSelectedItem()
     {
         return currentNode?.Value;
