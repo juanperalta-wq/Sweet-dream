@@ -1,4 +1,3 @@
-using System.Xml;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,11 +9,20 @@ public class EnemyController : MonoBehaviour
 
     [Header("Combat")]
     public float AttackCooldown = 1.5f;
-    public float AttackDamage = 10;
+    public float AttackDamage = 10f;
+
+    [Header("Movement")]
+    public float WalkSpeed = 1.5f;
+    public float RunSpeed = 4f;
 
     [Header("Graph Patrol")]
     public ZoneNode StartingNode;
     public float NodeWaitTime = 3f;
+
+    [Header("Zone Patrol")]
+    public PatrolZone[] PatrolZones;
+    public int MinNodesPerZone = 2;
+    public int MaxNodesPerZone = 5;
 
     [Header("Health")]
     public float MaxHealth = 100f;
@@ -23,13 +31,13 @@ public class EnemyController : MonoBehaviour
     [Header("Target")]
     public Transform PlayerTransform;
 
-    public NavMeshAgent Agent;
-    public StateMachine stateMachine;
+    [HideInInspector] public NavMeshAgent Agent;
+    [HideInInspector] public StateMachine stateMachine;
 
-    public RoamState RoamState;
-    public ChaseState ChaseState;
-    public AttackState AttackState;
-    public DeadState DeadState;
+    [HideInInspector] public RoamState RoamState;
+    [HideInInspector] public ChaseState ChaseState;
+    [HideInInspector] public AttackState AttackState;
+    [HideInInspector] public DeadState DeadState;
 
     private void Awake()
     {
