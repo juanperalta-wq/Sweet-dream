@@ -3,9 +3,9 @@ using UnityEngine;
 public class ItemPickUp : MonoBehaviour, IInteractable
 {
     [SerializeField] public ItemData itemData;
-    [SerializeField] private Vector3 equipPosition;
-    [SerializeField] private Vector3 equipRotation;
-    [SerializeField] private Vector3 originalScale;
+    private Vector3 equipPosition;
+    private Vector3 equipRotation;
+    private Vector3 originalScale;
     [SerializeField] private Rigidbody rb;
     [SerializeField]private Collider coll;
 
@@ -21,7 +21,7 @@ public class ItemPickUp : MonoBehaviour, IInteractable
             InventoryManager.Instance.AddItem(this);
         }
     }
-    // esta funcion se llama desde el InventoryManager para equipar el item
+    
     public void OnEquip(Transform equipPoint)
     {
         rb.isKinematic = true;

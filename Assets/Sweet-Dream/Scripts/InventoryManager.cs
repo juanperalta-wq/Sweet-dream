@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -66,14 +66,24 @@ public class InventoryManager : MonoBehaviour
         if (currentNode != null)
             RemoveItem(currentNode.Value);
     }
-    // Permite remover un item especÌfico del inventario, asegurando que si el item removido es el actualmente equipado, se desequipe y se actualice el slot seleccionado
+    // Permite remover un item espec√≠fico del inventario, asegurando que si el item removido es el actualmente equipado, se desequipe y se actualice el slot seleccionado
     public bool RemoveItem(IInteractable item)
     {
         if (item == null) return false;
         if (InventoryData.Count == 0) return false;
 
         Node<IInteractable> found = null;
-        InventoryData.TraverseInOrder(n => { if (n.Value == item) found = n; });
+        // Bucle expl√≠cito equivalente: recorre hasta encontrar y se detiene inmediatamente
+        Node<IInteractable> node = InventoryData.head;
+        for (int i = 0; i < InventoryData.Count && node != null; i++)
+        {
+            if (node.Value == item)
+            {
+                found = node;
+                break;
+            }
+            node = node.Next;
+        }
 
         if (found == null) return false;
 
@@ -105,7 +115,7 @@ public class InventoryManager : MonoBehaviour
 
         return true;
     }
-    // Permite seleccionar un slot especÌfico usando n˙meros del 1 al 6, ajustando el Ìndice para que sea 0-based internamente
+    // Permite seleccionar un slot espec√≠fico usando n√∫meros del 1 al 6, ajustando el √≠ndice para que sea 0-based internamente
     private void SelectSlot(int index)
     {
         if (InventoryData.Count == 0 || index < 0 || index >= InventoryData.Count)
@@ -142,7 +152,7 @@ public class InventoryManager : MonoBehaviour
             current = current.Next;
         return current;
     }
-    // Devuelve el Ìndice del nodo dado, o -1 si no se encuentra
+    // Devuelve el √≠ndice del nodo dado, o -1 si no se encuentra
     private int GetIndexOfNode(Node<IInteractable> target)
     {
         if (target == null)
@@ -157,7 +167,7 @@ public class InventoryManager : MonoBehaviour
         }
         return -1;
     }
-    // Maneja el equipamiento del item seleccionado, asegurando que solo un item estÈ equipado a la vez
+    // Maneja el equipamiento del item seleccionado, asegurando que solo un item est√° equipado a la vez
     private void EquipNode(Node<IInteractable> node)
     {
         if (currentEquipped != null)
