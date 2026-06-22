@@ -41,6 +41,7 @@ public class ItemPickUp : MonoBehaviour, IInteractable
         transform.localScale = originalScale;
         gameObject.SetActive(true);
     }
+   
     public void OnUnequip()
     {
         gameObject.SetActive(false);

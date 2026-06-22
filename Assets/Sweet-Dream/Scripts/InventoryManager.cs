@@ -73,7 +73,6 @@ public class InventoryManager : MonoBehaviour
         if (InventoryData.Count == 0) return false;
 
         Node<IInteractable> found = null;
-        // Bucle explícito equivalente: recorre hasta encontrar y se detiene inmediatamente
         Node<IInteractable> node = InventoryData.head;
         for (int i = 0; i < InventoryData.Count && node != null; i++)
         {

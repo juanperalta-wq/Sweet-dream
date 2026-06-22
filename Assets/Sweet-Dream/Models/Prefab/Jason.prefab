@@ -292,15 +292,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7865937493154655368, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7865937493154655368, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7865937493154655368, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7865937493154655368, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalPosition.x
@@ -316,15 +316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6058681868354798846, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6058681868354798846, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6058681868354798846, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6058681868354798846, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalPosition.x
@@ -340,15 +340,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1153839659810198550, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1153839659810198550, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1153839659810198550, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1153839659810198550, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalPosition.x
@@ -368,15 +368,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320764503449572466, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1320764503449572466, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1320764503449572466, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1320764503449572466, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalPosition.x
@@ -392,15 +392,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4167280743394806330, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4167280743394806330, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4167280743394806330, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4167280743394806330, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalPosition.x
@@ -440,15 +440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5653519914247303419, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5653519914247303419, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5653519914247303419, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5653519914247303419, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,15 +464,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8126480335662930300, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8126480335662930300, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8126480335662930300, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.577934
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8126480335662930300, guid: 83d5ae68fe3043841b6bf48020b13114, type: 3}
       propertyPath: m_LocalPosition.x
@@ -570,6 +570,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   distancia: 2
+  stepDistance: 2
 --- !u!114 &-9197395436982064869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,7 +583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc926116e1dd4449abecacd5307ba78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimatorController
-  controller: {fileID: -9064019959398950462}
 --- !u!114 &6881398476372714008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   sanity: 100
-  pasiveSanityDrain: 0.5
+  drainInterval: 1
+  drainAmount: 1
   health: 100
 --- !u!95 &8737442560656429190
 Animator:
