@@ -547,6 +547,7 @@ MonoBehaviour:
   onClose: {fileID: 1485793409}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!65 &355299027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7130,7 +7131,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9188849261553177593, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9188849261553177593, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
+    - {fileID: 5290382039359657119, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
+    - {fileID: 7198309022873748657, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7196,6 +7204,7 @@ MonoBehaviour:
   onClose: {fileID: 806891274}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!65 &1295190606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7810,7 +7819,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7198309022873748657, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9188849261553177593, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
+    - {fileID: 7198309022873748657, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
+    - {fileID: 5290382039359657119, guid: c0a02736b2bbf2e4cab4a41ad01941cd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -8290,6 +8306,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3331098144862257549, guid: 11e3fc1e301fedd42b6d4cd2987f6cb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881398476372714008, guid: 11e3fc1e301fedd42b6d4cd2987f6cb6, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8423850601703810932, guid: 11e3fc1e301fedd42b6d4cd2987f6cb6, type: 3}

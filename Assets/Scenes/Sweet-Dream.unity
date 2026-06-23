@@ -4103,6 +4103,10 @@ PrefabInstance:
       value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2930035413044032491, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2930035413044032491, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -4475,6 +4479,10 @@ PrefabInstance:
     - target: {fileID: 8267063958585652662, guid: 61c242f312063f64cb87525eb857406b, type: 3}
       propertyPath: m_Name
       value: TarjetaPrefab_Variant_Red (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267063958585652662, guid: 61c242f312063f64cb87525eb857406b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6214,6 +6222,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6238805283793352366, guid: 896f30cea4438c54884482b617c659d0, type: 3}
+      propertyPath: m_TagString
+      value: TarjetaMorada
+      objectReference: {fileID: 0}
     - target: {fileID: 6764231771822582804, guid: 896f30cea4438c54884482b617c659d0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -6425,7 +6437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1171774890
 Light:
   m_ObjectHideFlags: 0
@@ -7749,6 +7761,10 @@ PrefabInstance:
     - target: {fileID: 2491464419926969845, guid: 896f30cea4438c54884482b617c659d0, type: 3}
       propertyPath: m_Name
       value: KeyPurple (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491464419926969845, guid: 896f30cea4438c54884482b617c659d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2491464419926969845, guid: 896f30cea4438c54884482b617c659d0, type: 3}
       propertyPath: m_TagString
@@ -11650,6 +11666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TarjetaPrefab Variant_Orange (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4558049618352116589, guid: 8a4dba0fa4515f14cb28869c769f4941, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12127,6 +12147,10 @@ PrefabInstance:
     - target: {fileID: 6427924603910613509, guid: 87fff7f7bb933f84992a7d8e3fb4d300, type: 3}
       propertyPath: m_Name
       value: TarjetaPrefab Variant_Yellow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427924603910613509, guid: 87fff7f7bb933f84992a7d8e3fb4d300, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
