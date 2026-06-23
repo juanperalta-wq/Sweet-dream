@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d69eb639e86888c4695683882ba9befc, type: 3}
-  m_Name: Key Yellow
+  m_Name: Key Purple
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   icon: {fileID: 21300004, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
   id: 4
-  itemName: KeyYellow
+  itemName: KeyPurple
   type: 1
   sanity: 0
   stackeable: 0
-  description: Llave de menor nivel
+  description: llave morada

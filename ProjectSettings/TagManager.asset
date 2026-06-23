@@ -9,6 +9,7 @@ TagManager:
   - TarjetaAmarilla
   - TarjetaRoja
   - TarjetaNaranja
+  - TarjetaMorada
   layers:
   - Default
   - TransparentFX
