@@ -4,10 +4,11 @@ public class ItemPickUp : MonoBehaviour, IInteractable
 {
     [SerializeField] public ItemData itemData;
     private Vector3 equipPosition;
-    private Vector3 equipRotation;
+    [SerializeField]private Vector3 equipRotation;
     private Vector3 originalScale;
     [SerializeField] private Rigidbody rb;
     [SerializeField]private Collider coll;
+    private bool isEquipped = false;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class ItemPickUp : MonoBehaviour, IInteractable
     
     public void OnEquip(Transform equipPoint)
     {
+        isEquipped = true;
         rb.isKinematic = true;
         coll.isTrigger = true;
         transform.SetParent(equipPoint);
@@ -34,6 +36,7 @@ public class ItemPickUp : MonoBehaviour, IInteractable
     }
     public void OnDrop(Vector3 equipPoint)
     {
+        isEquipped = false;
         rb.isKinematic = false;
         coll.isTrigger = false;
         transform.SetParent(null);
@@ -48,4 +51,6 @@ public class ItemPickUp : MonoBehaviour, IInteractable
     }
 
     public ItemData ItemData => itemData;
+
+    public bool IsEquipped => isEquipped;
 }

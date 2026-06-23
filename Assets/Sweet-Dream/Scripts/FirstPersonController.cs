@@ -2,7 +2,7 @@ using UnityEngine;
 using Unity.Cinemachine;
 using Sirenix.OdinInspector;
 
-public class FirstPersonController : MonoBehaviour
+public class FirstPersonController : MonoBehaviour , IInteractable
 {
     [TabGroup("Referencias"), Required]
     [SerializeField] private CharacterController controller;
@@ -189,7 +189,7 @@ public class FirstPersonController : MonoBehaviour
     #endregion
 
     #region Interact
-    public void Interact() //esto se puede mejorar con un sistema de eventos, pero por ahora es suficiente para el prototipo
+    public void Interact()
     {
         Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, distancia, Interactable))
