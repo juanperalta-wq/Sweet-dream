@@ -1,20 +1,35 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class ShadowController : MonoBehaviour
 {
-    [SerializeField] private EnemyBaseData shadow;
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private float speed = 3f;
 
-    private void Awake()
+    private NavMeshAgent agent;
+    private Transform player;
+
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        if (PlayerStats.Instance != null)
+        {
+            player = PlayerStats.Instance.transform;
+        }
+
+        agent.speed = speed;
     }
-    public void OnPhotoHit()
+
+    private void Update()
     {
-        
-            Destroy(gameObject); 
+        if (player == null)
+            return;
+
+        agent.SetDestination(player.position);
+    }
+
+    public void DestroyShadow()
+    {
+        Destroy(gameObject);
     }
 }
