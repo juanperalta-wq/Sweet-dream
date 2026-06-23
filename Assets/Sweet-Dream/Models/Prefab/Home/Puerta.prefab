@@ -89,7 +89,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517752417631689375}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 3.8073144, y: 0.40887606, z: 7.09836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -98,7 +98,7 @@ Transform:
   - {fileID: 5612322866467273760}
   - {fileID: 1419086169901701715}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1950008318573201461
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +200,9 @@ GameObject:
   - component: {fileID: 5612632759035954934}
   - component: {fileID: 7977123101101594639}
   - component: {fileID: 5741664575834552887}
-  m_Layer: 0
+  - component: {fileID: 5723445624477599923}
+  - component: {fileID: 9046788296810955583}
+  m_Layer: 3
   m_Name: Puerta009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,6 +282,43 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5723445624477599923
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916067828234173392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.387781, y: 1.8000013, z: 0.249687}
+  m_Center: {x: 0.00889051, y: 0.00000041723263, z: 0.15433188}
+--- !u!114 &9046788296810955583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4916067828234173392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  onOpen: {fileID: 3104477400634299135}
+  onClose: {fileID: 7026985515970806699}
+  cooldown: 1
+  abierta: 0
 --- !u!1 &6119952324789349399
 GameObject:
   m_ObjectHideFlags: 0

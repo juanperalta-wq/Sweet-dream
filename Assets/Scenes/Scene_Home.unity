@@ -568,17 +568,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3877813, y: 1.8000014, z: 0.24968725}
   m_Center: {x: 0.008890533, y: 0.00000042479732, z: 0.15433164}
---- !u!114 &393583933 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3104477400634299135, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-  m_PrefabInstance: {fileID: 1788848773632530712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!1 &415726068
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,17 +6587,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 712931904282231835, guid: ef228519156d22648abea37997efb00e, type: 3}
   m_PrefabInstance: {fileID: 2491569251342233916}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &922204221 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7026985515970806699, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-  m_PrefabInstance: {fileID: 1788848773632530712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!1001 &949766348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8716,9 +8694,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf40cf2c48eb4a94aa4d3c2b03ede3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Barnilla: {fileID: 1592325557}
   Player: {fileID: 2136573700}
   Sillon: {fileID: 1256323419}
+  Barnilla: {fileID: 1592325557}
+  sceneToLoad: scene_Home
+  changeTime: 5
   itemPickUp: {fileID: 495115396}
 --- !u!1001 &2018649200
 PrefabInstance:
@@ -9287,14 +9267,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puerta
       objectReference: {fileID: 0}
-    - target: {fileID: 1517752417631689375, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1950008318573201461, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -9342,13 +9314,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8781352877547379987}
-    - targetCorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8781352877547379986}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c54d7ead06279547997d277757687ba, type: 3}
 --- !u!1001 &2491569251342233916
 PrefabInstance:
@@ -10700,48 +10666,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1281044089}
   m_SourcePrefab: {fileID: 100100000, guid: e6c326c3a3a72db45a673545e897f085, type: 3}
---- !u!1 &8781352877547379985 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-  m_PrefabInstance: {fileID: 1788848773632530712}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8781352877547379986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8781352877547379985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 393583933}
-  onClose: {fileID: 922204221}
-  cooldown: 1
-  abierta: 0
---- !u!65 &8781352877547379987
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8781352877547379985}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.387781, y: 1.8000013, z: 0.249687}
-  m_Center: {x: 0.00889051, y: 0.00000041723263, z: 0.15433188}
 --- !u!1001 &8965662035567580791
 PrefabInstance:
   m_ObjectHideFlags: 0
