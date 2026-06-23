@@ -56,5 +56,4 @@ public class AttackState : IState
         Debug.Log("Atacando .... !");
     }
 
-
 }
