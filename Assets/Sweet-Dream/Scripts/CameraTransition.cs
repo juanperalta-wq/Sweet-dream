@@ -36,10 +36,10 @@ public class CameraTransition : MonoBehaviour, IInteractable
             Barnilla.SetActive(true);
         }
 
-        IniciarCorrutina();
+        InitiationCorrutine();
     }
 
-    public void IniciarCorrutina()
+    public void InitiationCorrutine()
     {
         if (routine != null) StopCoroutine(routine);
         routine = StartCoroutine(ChargeScene());

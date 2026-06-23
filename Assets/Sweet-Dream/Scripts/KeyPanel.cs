@@ -67,7 +67,6 @@ public class KeyPanel : MonoBehaviour
     {
         if (other.CompareTag(requiredTag))
         {
-            Debug.Log($"Interacting with {gameObject.name} using {other.gameObject.name}");
             Interact();
         }
     }

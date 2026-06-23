@@ -1,9 +1,10 @@
-using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections;
+using UnityEngine;
+using MoreMountains.Tools;
 public class PlayerStats : MonoBehaviour
 {
-    private Color HealthColor => health > 60 ? Color.green : health > 30 ? Color.yellow : Color.red;
+
     public static PlayerStats Instance { get; private set; }
 
     [TabGroup("Stats"), LabelWidth(80)]
@@ -11,15 +12,17 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float sanity = 100f;
 
     [TabGroup("Stats"), LabelWidth(120)]
-    [SerializeField] private float drainInterval = 1f;
-
-    [TabGroup("Stats"), LabelWidth(120)]
     [SerializeField] private float drainAmount = 1f;
 
-    [TabGroup("Stats"), LabelWidth(80)]
-    [ProgressBar(0, 100, ColorGetter = "HealthColor")]
-    [SerializeField] private float health = 100f;
 
+    public MMProgressBar TargetProgressBar;
+    [Range(0f, 100f)] public float Value;
+    [MMInspectorButton("ChangeBarValue")] public bool ChangeBarValueBtn;
+
+    void ChangeBarValue()
+    {
+        TargetProgressBar.UpdateBar(Sanity, 0f, 100f);
+    }
     private void Awake()
     {
         Instance = this;
@@ -29,12 +32,16 @@ public class PlayerStats : MonoBehaviour
     {
         StartCoroutine(SanityDrainRoutine());
     }
+    private void FixedUpdate()
+    {
+        ChangeBarValue();
+    }
 
     private IEnumerator SanityDrainRoutine()
     {
         while (true)
         {
-            yield return new WaitForSeconds(drainInterval);
+            yield return new WaitForSeconds(1f);
             Sanity -= drainAmount;
         }
     }
@@ -44,12 +51,6 @@ public class PlayerStats : MonoBehaviour
     {
         get => sanity;
         set => sanity = Mathf.Clamp(value, 0, 100);
-    }
-
-    public float Health
-    {
-        get => health;
-        set => health = Mathf.Clamp(value, 0, 100);
     }
     #endregion
 }
