@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RoamState : IState
 {
@@ -96,6 +97,12 @@ public class RoamState : IState
             while (nextNode == previousNode);
         }
 
+        if (!CanReachNode(nextNode))
+        {
+            Debug.Log("Nodo inaccesible: " + nextNode.name);
+            return;
+        }
+
         previousNode = currentNode;
         currentNode = nextNode;
 
@@ -131,6 +138,14 @@ public class RoamState : IState
         enemyController.Agent.SetDestination(currentNode.transform.position);
 
         Debug.Log("CAMBIANDO A ZONA: " + currentZone.name);
+    }
+    private bool CanReachNode(ZoneNode node)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        enemyController.Agent.CalculatePath(node.transform.position,path);
+
+        return path.status == NavMeshPathStatus.PathComplete;
     }
 
     private bool PlayerInDetectionRange()

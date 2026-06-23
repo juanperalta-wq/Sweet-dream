@@ -18,6 +18,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
     [TabGroup("Debug"), ReadOnly]
     [SerializeField] private bool abierta = false;
 
+    [SerializeField] private DoorNavMesh doorNavMesh;
     private void Update()
     {
         CoolDown();
@@ -34,11 +35,19 @@ public class InteractableObject : MonoBehaviour, IInteractable
         if (!abierta)
         {
             onOpen.PlayFeedbacks();
+
+            if (doorNavMesh != null)
+                doorNavMesh.OpenDoor();
+
             abierta = true;
         }
         else
         {
             onClose.PlayFeedbacks();
+
+            if (doorNavMesh != null)
+                doorNavMesh.CloseDoor();
+
             abierta = false;
         }
 
