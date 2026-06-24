@@ -222,8 +222,8 @@ MonoBehaviour:
         Owner: {fileID: 3293869825348491933}
         DebugActive: 0
         AnimatePositionTarget: {fileID: 3095323058334692075}
-        Mode: 2
-        Space: 3
+        Mode: 0
+        Space: 0
         RandomizeRemap: 0
         MovementMode: 0
         AnimatePositionDuration: 1
@@ -418,7 +418,7 @@ MonoBehaviour:
         DeterminePositionsOnPlay: 0
         InitialPosition: {x: 0, y: 0, z: 0}
         DestinationPosition: {x: 0, y: 0, z: 0}
-        InitialPositionTransform: {fileID: 0}
+        InitialPositionTransform: {fileID: 1560543594992743145}
         DestinationPositionTransform: {fileID: 6069294544261697131}
         AnimatePositionCurveX:
           serializedVersion: 2
@@ -757,8 +757,8 @@ MonoBehaviour:
         Owner: {fileID: 7246455760456038448}
         DebugActive: 0
         AnimatePositionTarget: {fileID: 5215551590819165375}
-        Mode: 2
-        Space: 3
+        Mode: 0
+        Space: 0
         RandomizeRemap: 0
         MovementMode: 0
         AnimatePositionDuration: 1
@@ -953,8 +953,8 @@ MonoBehaviour:
         DeterminePositionsOnPlay: 0
         InitialPosition: {x: 0, y: 0, z: 0}
         DestinationPosition: {x: 0, y: 0, z: 0}
-        InitialPositionTransform: {fileID: 0}
-        DestinationPositionTransform: {fileID: 2305175505454243533}
+        InitialPositionTransform: {fileID: 2305175505454243533}
+        DestinationPositionTransform: {fileID: 1388561361160647648}
         AnimatePositionCurveX:
           serializedVersion: 2
           m_Curve: []
@@ -1402,7 +1402,19 @@ MonoBehaviour:
         m_Calls: []
     OnStop:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7246455760456038448}
+          m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
+          m_MethodName: PlayFeedbacks
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     OnResume:
       m_PersistentCalls:
         m_Calls: []
@@ -1517,8 +1529,8 @@ MonoBehaviour:
         Owner: {fileID: 8412294505303016892}
         DebugActive: 0
         AnimatePositionTarget: {fileID: 5215551590819165375}
-        Mode: 2
-        Space: 3
+        Mode: 0
+        Space: 0
         RandomizeRemap: 0
         MovementMode: 0
         AnimatePositionDuration: 1
@@ -1710,10 +1722,10 @@ MonoBehaviour:
           EnumConditions: 0000000000000000000000000000000000000000000000000000000000000000
         AllowAdditivePlays: 0
         RelativePosition: 1
-        DeterminePositionsOnPlay: 0
+        DeterminePositionsOnPlay: 1
         InitialPosition: {x: 0, y: 0, z: 0}
         DestinationPosition: {x: 0, y: 0, z: 0}
-        InitialPositionTransform: {fileID: 0}
+        InitialPositionTransform: {fileID: 2305175505454243533}
         DestinationPositionTransform: {fileID: 1388561361160647648}
         AnimatePositionCurveX:
           serializedVersion: 2
@@ -2010,7 +2022,19 @@ MonoBehaviour:
         m_Calls: []
     OnStop:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 3293869825348491933}
+          m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
+          m_MethodName: PlayFeedbacks
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     OnResume:
       m_PersistentCalls:
         m_Calls: []
@@ -2125,8 +2149,8 @@ MonoBehaviour:
         Owner: {fileID: 1332340377358408833}
         DebugActive: 0
         AnimatePositionTarget: {fileID: 3095323058334692075}
-        Mode: 2
-        Space: 3
+        Mode: 0
+        Space: 0
         RandomizeRemap: 0
         MovementMode: 0
         AnimatePositionDuration: 1
@@ -2318,10 +2342,10 @@ MonoBehaviour:
           EnumConditions: 0000000000000000000000000000000000000000000000000000000000000000
         AllowAdditivePlays: 0
         RelativePosition: 1
-        DeterminePositionsOnPlay: 0
+        DeterminePositionsOnPlay: 1
         InitialPosition: {x: 0, y: 0, z: 0}
         DestinationPosition: {x: 0, y: 0, z: 0}
-        InitialPositionTransform: {fileID: 0}
+        InitialPositionTransform: {fileID: 6069294544261697131}
         DestinationPositionTransform: {fileID: 1560543594992743145}
         AnimatePositionCurveX:
           serializedVersion: 2
