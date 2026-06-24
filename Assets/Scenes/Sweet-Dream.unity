@@ -825,18 +825,18 @@ MonoBehaviour:
   AttackRange: 2
   AttackCooldown: 1.5
   AttackDamage: 10
-  WalkSpeed: 1.5
+  WalkSpeed: 3
   RunSpeed: 4
   StartingNode: {fileID: 796805833}
-  NodeWaitTime: 3
+  NodeWaitTime: 2
   PatrolZones:
   - {fileID: 270597438}
   - {fileID: 990678354}
   - {fileID: 749057751}
   - {fileID: 1624084633}
   - {fileID: 1327209581}
-  MinNodesPerZone: 5
-  MaxNodesPerZone: 7
+  MinNodesPerZone: 3
+  MaxNodesPerZone: 5
   MaxHealth: 100
   CurrentHealth: 0
   PlayerTransform: {fileID: 1205563101}
@@ -1043,6 +1043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138508280}
+  - component: {fileID: 138508281}
   m_Layer: 0
   m_Name: Factory
   m_TagString: Untagged
@@ -1092,6 +1093,26 @@ Transform:
   - {fileID: 70464148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138508281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138508279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &151714246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1389,6 +1410,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 739866082}
     m_Modifications:
+    - target: {fileID: 256671211518024656, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70348525
+      objectReference: {fileID: 0}
+    - target: {fileID: 256671211518024656, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.70348525
+      objectReference: {fileID: 0}
+    - target: {fileID: 256671211518024656, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.071473636
+      objectReference: {fileID: 0}
+    - target: {fileID: 256671211518024656, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.071473636
+      objectReference: {fileID: 0}
+    - target: {fileID: 256671211518024656, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 78.397
+      objectReference: {fileID: 0}
+    - target: {fileID: 256671211518024656, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 256671211518024656, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 1352918371340390770, guid: 7c54d7ead06279547997d277757687ba, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -8704,7 +8753,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489122330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
@@ -8758,7 +8807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
   m_SerializedVersion: 0
   m_AgentTypeID: -334000983
-  m_CollectObjects: 0
+  m_CollectObjects: 3
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
@@ -9510,6 +9559,7 @@ GameObject:
   - component: {fileID: 1585463768}
   - component: {fileID: 1585463767}
   - component: {fileID: 1585463766}
+  - component: {fileID: 1585463771}
   m_Layer: 0
   m_Name: Suelo
   m_TagString: Untagged
@@ -9852,6 +9902,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &1585463771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585463764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1588941676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11559,7 +11629,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.694, y: 0.90000004, z: 0.125}
+  m_Extents: {x: 0.505, y: 0.90000004, z: 0.03}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
