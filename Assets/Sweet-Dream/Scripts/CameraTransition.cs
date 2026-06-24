@@ -17,6 +17,9 @@ public class CameraTransition : MonoBehaviour, IInteractable
     [Header("Requirements")]
     [SerializeField] private ItemPickUp itemPickUp;
 
+    [Header("Player")]
+    [SerializeField] private GameObject playerObject;
+
     private Coroutine routine;
 
     void Start()
@@ -27,12 +30,40 @@ public class CameraTransition : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (itemPickUp == null || !itemPickUp.IsEquipped) return;
+        if (itemPickUp == null || !itemPickUp.IsEquipped)
+            return;
 
-        if (Player != null && Sillon != null && Barnilla != null)
+        // Consumir la barnilla equipada
+        if (InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.ConsumeCurrentItem();
+
+            Debug.Log("Hijos equipados: " +
+                InventoryManager.Instance.equipPoint.childCount);
+
+            foreach (Transform child in InventoryManager.Instance.equipPoint)
+            {
+                Debug.Log("Item hijo: " + child.name +
+                          " Activo: " + child.gameObject.activeSelf);
+            }
+        }
+
+        // Ocultar jugador
+        if (playerObject != null)
+        {
+            playerObject.SetActive(false);
+        }
+
+        // Cambiar a cámara cinematográfica
+        if (Player != null && Sillon != null)
         {
             Sillon.Priority = 20;
             Player.Priority = 10;
+        }
+
+        // Mostrar barnilla de la cinemática
+        if (Barnilla != null)
+        {
             Barnilla.SetActive(true);
         }
 

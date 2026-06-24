@@ -187,4 +187,13 @@ public class InventoryManager : MonoBehaviour
     {
         return currentNode?.Value;
     }
+    public void ConsumeCurrentItem()
+    {
+        if (currentEquipped == null)
+            return;
+
+        Destroy(currentEquipped.gameObject);
+
+        currentEquipped = null;
+    }
 }
