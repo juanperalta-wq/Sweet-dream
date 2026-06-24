@@ -14,28 +14,20 @@ public class KeyPanel : MonoBehaviour
     [SerializeField, Min(0f), SuffixLabel("s", true)]
     [LabelText("Cooldown")]
     [Tooltip("Tiempo mínimo entre interacciones consecutivas.")]
-    private float cooldown = 1f;
+    private float cooldown = 3f;
 
     [Space(5)]
     [BoxGroup("Puerta 1")]
-    [LabelText("Abrir"), Required]
-    public MMFeedbacks onOpen1;
-
-    [BoxGroup("Puerta 1")]
-    [LabelText("Cerrar"), Required]
-    public MMFeedbacks onClose1;
-
-    [Space(5)]
-    [BoxGroup("Puerta 2")]
-    [LabelText("Abrir"), Required]
-    public MMFeedbacks onOpen2;
+    [LabelText("Feedback"), Required]
+    public MMF_Player puerta1;
 
     [BoxGroup("Puerta 2")]
-    [LabelText("Cerrar"), Required]
-    public MMFeedbacks onClose2;
+    [LabelText("Feedback"), Required]
+    public MMF_Player puerta2;
 
     private float cooldownTimer = 0f;
     private bool abierta = false;
+    private bool feedbacksAreReversed = false;
 
     public void Interact()
     {
@@ -43,18 +35,32 @@ public class KeyPanel : MonoBehaviour
 
         if (!abierta)
         {
-            onOpen1?.PlayFeedbacks();
-            onOpen2?.PlayFeedbacks();
+            if (feedbacksAreReversed)
+            {
+                puerta1.ChangeDirection();
+                puerta2.ChangeDirection();
+                feedbacksAreReversed = false;
+            }
+
+            puerta1.PlayFeedbacks();
+            puerta2.PlayFeedbacks();
             abierta = true;
         }
         else
         {
-            onClose1?.PlayFeedbacks();
-            onClose2?.PlayFeedbacks();
+            if (!feedbacksAreReversed)
+            {
+                puerta1.ChangeDirection();
+                puerta2.ChangeDirection();
+                feedbacksAreReversed = true;
+            }
+
+            puerta1.PlayFeedbacks();
+            puerta2.PlayFeedbacks();
             abierta = false;
         }
 
-        cooldownTimer = cooldown;
+        cooldownTimer = Mathf.Max(puerta1.TotalDuration, puerta2.TotalDuration, cooldown);
     }
 
     private void Update()
