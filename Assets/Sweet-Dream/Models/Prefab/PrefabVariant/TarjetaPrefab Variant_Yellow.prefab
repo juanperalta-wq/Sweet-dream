@@ -69,6 +69,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 306aa41e4980c344ba79a6e766cc4d53, type: 2}
     - target: {fileID: 8181922942695152423, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181922942695152423, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181922942695152423, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181922942695152423, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -76,47 +88,43 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 746577076897317758, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2951182765211925723}
+      addedObject: {fileID: 2138057714265878171}
     - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -6678008471487796804}
+      addedObject: {fileID: 6699481475424005866}
     - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2505797976062891134}
+      addedObject: {fileID: 926158942945543214}
   m_SourcePrefab: {fileID: 100100000, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
 --- !u!1 &6427924603910613509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
   m_PrefabInstance: {fileID: 6337833006266552515}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2951182765211925723
-BoxCollider:
+--- !u!114 &2138057714265878171
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427924603910613509}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.6336541, y: 0.4387208, z: 0.097212315}
-  m_Center: {x: 0.08548248, y: 0.21479268, z: 0}
---- !u!54 &-6678008471487796804
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc516ab2f8816e4abed42a215cf1c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
+  itemData: {fileID: 11400000, guid: 12f90d74c4644894f920beeed03ee223, type: 2}
+  equipRotation: {x: 0, y: 0, z: 0}
+  rb: {fileID: 6699481475424005866}
+  coll: {fileID: 926158942945543214}
+--- !u!54 &6699481475424005866
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,21 +151,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-2505797976062891134
-MonoBehaviour:
+--- !u!65 &926158942945543214
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427924603910613509}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc516ab2f8816e4abed42a215cf1c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
-  itemData: {fileID: 11400000, guid: 12f90d74c4644894f920beeed03ee223, type: 2}
-  equipPosition: {x: 0, y: 0, z: 0}
-  equipRotation: {x: 0, y: 0, z: 0}
-  originalScale: {x: 0, y: 0, z: 0}
-  rb: {fileID: -6678008471487796804}
-  coll: {fileID: 2951182765211925723}
+  serializedVersion: 3
+  m_Size: {x: 0.24407107, y: 0.1731402, z: 0.031084815}
+  m_Center: {x: 0.03454244, y: 0.08691268, z: -0.0011158353}

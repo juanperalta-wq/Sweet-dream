@@ -69,28 +69,28 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8847276652271944093, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 928845624588212342}
-    - targetCorrespondingSourceObject: {fileID: 8847276652271944093, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      addedObject: {fileID: 2435848015755104340}
+    - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3755122898071315247}
-    - targetCorrespondingSourceObject: {fileID: 8847276652271944093, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+      addedObject: {fileID: 1365504362583184496}
+    - targetCorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4826222485678197155}
+      addedObject: {fileID: 2174984705691921874}
   m_SourcePrefab: {fileID: 100100000, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
---- !u!1 &6238805283793352366 stripped
+--- !u!1 &2491464419926969845 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8847276652271944093, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1062870217481681606, guid: a303c9f53f935694abd2e54b5d5efbbb, type: 3}
   m_PrefabInstance: {fileID: 3194010241324021555}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &928845624588212342
+--- !u!114 &2435848015755104340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238805283793352366}
+  m_GameObject: {fileID: 2491464419926969845}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6dc516ab2f8816e4abed42a215cf1c34, type: 3}
@@ -98,15 +98,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemData: {fileID: 11400000, guid: 4e20b16a232179448b7e0deafc848cc5, type: 2}
   equipRotation: {x: 0, y: 0, z: 0}
-  rb: {fileID: 3755122898071315247}
-  coll: {fileID: 4826222485678197155}
---- !u!54 &3755122898071315247
+  rb: {fileID: 2174984705691921874}
+  coll: {fileID: 1365504362583184496}
+--- !u!65 &1365504362583184496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2491464419926969845}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6231135, y: 0.44609115, z: 0.0949015}
+  m_Center: {x: 0.08851117, y: 0.21699525, z: -0.0042828023}
+--- !u!54 &2174984705691921874
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238805283793352366}
+  m_GameObject: {fileID: 2491464419926969845}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -127,24 +148,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4826222485678197155
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238805283793352366}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.1255221, y: 0.018233296, z: 0.08633743}
-  m_Center: {x: 0.01743475, y: 0.0000000013969842, z: 0.043168716}
