@@ -1,11 +1,7 @@
 using Sirenix.OdinInspector;
 using System;
-using System.Collections;
-using TMPro.Examples;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -38,24 +34,23 @@ public class MainMenu : MonoBehaviour
     [FoldoutGroup("Debug"), ReadOnly, ShowInInspector]
     private Node<GameObject> current;
 
-    private MyStack<GameObject> Windows = new();
     private CircularDoubleLinkedList<GameObject> menuItems = new();
 
-    public void OnEnable()
+    private void OnEnable()
     {
         MenuInputs.OnNavigate += HandleNavigate;
         MenuInputs.OnSubmit += HandleSubmit;
         MenuInputs.OnCancel += HandleCancel;
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         MenuInputs.OnNavigate -= HandleNavigate;
         MenuInputs.OnSubmit -= HandleSubmit;
         MenuInputs.OnCancel -= HandleCancel;
     }
 
-    public void Start()
+    private void Start()
     {
         menuItems.Add(botonPlay);
         menuItems.Add(botonOption);
@@ -63,27 +58,30 @@ public class MainMenu : MonoBehaviour
 
         current = menuItems.head;
         onHighlight?.Invoke(current.Value);
+
+        CloseAllPanels();
     }
 
     private void HandleNavigate(Vector2 input)
     {
-        if (Windows.Count > 0) return;
-
-        if (input.y < 0) current = current.Next;
-        else if (input.y > 0) current = current.Prev;
+        if (input.y < 0)
+            current = current.Next;
+        else if (input.y > 0)
+            current = current.Prev;
 
         onHighlight?.Invoke(current.Value);
     }
 
     private void HandleSubmit()
     {
-        if (Windows.Count > 0) return;
-
         onSelect?.Invoke(current.Value);
 
-        if (current.Value == botonPlay) PlayGame();
-        else if (current.Value == botonOption) OpenOptions();
-        else if (current.Value == botonQuit) QuitGame();
+        if (current.Value == botonPlay)
+            PlayGame();
+        else if (current.Value == botonOption)
+            OpenOptions();
+        else if (current.Value == botonQuit)
+            QuitGame();
     }
 
     [GUIColor(0.5f, 1f, 0.5f)]
@@ -101,6 +99,9 @@ public class MainMenu : MonoBehaviour
     {
         Canvas.SetActive(false);
         CanvasOpciones.SetActive(true);
+
+        // Opcional: abrir General por defecto
+        OpenPanelGeneral();
     }
 
     [GUIColor(1f, 0.4f, 0.4f)]
@@ -109,14 +110,22 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void OpenPanelGeneral() => OpenPanel(panelGeneral);
     public void OpenPanelSonidos() => OpenPanel(panelSonidos);
     public void OpenPanelControles() => OpenPanel(panelControles);
+
+    private void CloseAllPanels()
+    {
+        panelGeneral.SetActive(false);
+        panelSonidos.SetActive(false);
+        panelControles.SetActive(false);
+    }
+
     private void OpenPanel(GameObject panel)
     {
+        CloseAllPanels();
         panel.SetActive(true);
-        panel.transform.SetAsLastSibling();
-        Windows.Push(panel);
     }
 
     [GUIColor(1f, 0.8f, 0.4f)]
@@ -125,6 +134,8 @@ public class MainMenu : MonoBehaviour
     {
         if (CanvasOpciones != null && CanvasOpciones.activeSelf)
         {
+            CloseAllPanels();
+
             CanvasOpciones.SetActive(false);
             Canvas.SetActive(true);
         }
