@@ -52,6 +52,16 @@ MonoBehaviour:
   flashlight: {fileID: 9201671303450935148}
   playerCamera: {fileID: 0}
   flashlightDistance: 12
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  detectInterval: 0.1
+  useBattery: 1
+  batteryDrainPerSecond: 0.01
+  currentBattery: 1
+  enableFlicker: 1
+  flickerIntensity: 0
+  flickerSpeed: 12
 --- !u!114 &534592959906656460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,9 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemData: {fileID: 11400000, guid: 0a278d78995cdd84ea7e51c923705503, type: 2}
-  equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
-  originalScale: {x: 0, y: 0, z: 0}
   rb: {fileID: 3823140547369383678}
   coll: {fileID: 5505155900564402294}
 --- !u!65 &5505155900564402294
@@ -163,7 +171,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 17.1
-  m_Range: 10
+  m_Range: 12
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}

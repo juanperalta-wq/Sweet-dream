@@ -189,11 +189,9 @@ public class InventoryManager : MonoBehaviour
     }
     public void ConsumeCurrentItem()
     {
-        if (currentEquipped == null)
-            return;
-
-        Destroy(currentEquipped.gameObject);
-
-        currentEquipped = null;
+        if (currentEquipped == null) return;
+        IInteractable item = currentEquipped;
+        RemoveItem(item);
+        Destroy(currentEquipped != null ? currentEquipped.gameObject : null);
     }
 }
