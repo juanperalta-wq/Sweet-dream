@@ -11,7 +11,6 @@ public class CameraTransition : MonoBehaviour, IInteractable
     public GameObject Barnilla;
 
     [Header("Scene")]
-    [SerializeField] private string sceneToLoad = "scene_Home";
     [SerializeField] private float changeTime = 5f;
 
     [Header("Requirements")]
