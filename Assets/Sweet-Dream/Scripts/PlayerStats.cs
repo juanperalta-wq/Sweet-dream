@@ -16,8 +16,6 @@ public class PlayerStats : MonoBehaviour
 
 
     public MMProgressBar TargetProgressBar;
-    [Range(0f, 100f)] public float Value;
-    [MMInspectorButton("ChangeBarValue")] public bool ChangeBarValueBtn;
 
     void ChangeBarValue()
     {
@@ -25,6 +23,7 @@ public class PlayerStats : MonoBehaviour
     }
     private void Awake()
     {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
     }
 
@@ -50,7 +49,11 @@ public class PlayerStats : MonoBehaviour
     public float Sanity
     {
         get => sanity;
-        set => sanity = Mathf.Clamp(value, 0, 100);
+        set
+        {
+            sanity = Mathf.Clamp(value, 0, 100);
+            TargetProgressBar?.UpdateBar(sanity, 0f, 100f);
+        }
     }
     #endregion
 }

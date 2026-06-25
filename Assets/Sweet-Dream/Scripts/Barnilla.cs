@@ -8,15 +8,12 @@ public class Barnilla : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Interacted with Barnilla!");
-        BuffManager buffManager = PlayerStats.Instance.GetComponent<BuffManager>();
+        if (PlayerStats.Instance == null) return;
 
-        if (buffManager != null)
-        {
-            Debug.Log("BuffManager found, applying sanity buff.");
-            Buff buff = new SanityBuff(duration, sanityAmount);
-            buffManager.AddBuff(buff);
-            Destroy(gameObject);
-        }
+        BuffManager buffManager = PlayerStats.Instance.GetComponent<BuffManager>();
+        if (buffManager == null) return;
+
+        buffManager.AddBuff(new SanityBuff(duration, sanityAmount));
+        Destroy(gameObject);
     }
 }

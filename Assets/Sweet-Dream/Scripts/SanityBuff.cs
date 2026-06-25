@@ -17,6 +17,6 @@ public class SanityBuff : Buff
     }
     public override void Remove(PlayerStats entity)
     {
-        entity.Sanity -= Amount;
+        //entity.Sanity -= Amount;
     }
 }
