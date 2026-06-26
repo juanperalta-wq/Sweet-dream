@@ -22,7 +22,7 @@ public class Charger : MonoBehaviour, IInteractable
 
         StartCoroutine(ChargeCorroutine(flashlight, item));
     }
-
+    //corrutina para cargar la linterna, deshabilita los inputs del jugador mientras se carga y mueve el objeto a la posición del cargador y luego de vuelta al equipPoint
     private IEnumerator ChargeCorroutine(FlashlightSystem flashlight, ItemPickUp item)
     {
         isCharging = true;
@@ -48,7 +48,7 @@ public class Charger : MonoBehaviour, IInteractable
         playerInputs.enabled = true;
         isCharging = false;
     }
-
+    // corrutina para mover un objeto a la posición de otro objeto, con una velocidad determinada
     private IEnumerator MoveToTarget(Transform obj, Transform target)
     {
         while (Vector3.Distance(obj.position, target.position) > 0.01f)
