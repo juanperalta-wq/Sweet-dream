@@ -3,11 +3,11 @@ using UnityEngine;
 public class ItemPickUp : MonoBehaviour, IInteractable
 {
     [SerializeField] public ItemData itemData;
-    private Vector3 equipPosition;
-    [SerializeField]private Vector3 equipRotation;
+    [SerializeField] private Vector3 equipPosition;
+    [SerializeField] private Vector3 equipRotation;
     private Vector3 originalScale;
     [SerializeField] private Rigidbody rb;
-    [SerializeField]private Collider coll;
+    [SerializeField] private Collider coll;
     private bool isEquipped = false;
 
     private void Awake()
@@ -15,14 +15,13 @@ public class ItemPickUp : MonoBehaviour, IInteractable
         if (rb == null) rb = GetComponent<Rigidbody>();
         originalScale = transform.localScale;
     }
+
     public void Interact()
     {
         if (itemData.Type == ItemType.Equipment || itemData.Type == ItemType.EasterEgg)
-        {
             InventoryManager.Instance.AddItem(this);
-        }
     }
-    
+
     public void OnEquip(Transform equipPoint)
     {
         isEquipped = true;
@@ -34,23 +33,25 @@ public class ItemPickUp : MonoBehaviour, IInteractable
         transform.localScale = originalScale;
         gameObject.SetActive(true);
     }
-    public void OnDrop(Vector3 equipPoint)
+
+    public void OnUnequip()
+    {
+        isEquipped = false;
+        transform.SetParent(null);
+        gameObject.SetActive(false);
+    }
+
+    public void OnDrop(Vector3 dropPosition)
     {
         isEquipped = false;
         rb.isKinematic = false;
         coll.isTrigger = false;
         transform.SetParent(null);
-        transform.position = equipPoint;
+        transform.position = dropPosition;
         transform.localScale = originalScale;
         gameObject.SetActive(true);
     }
-   
-    public void OnUnequip()
-    {
-        gameObject.SetActive(false);
-    }
 
     public ItemData ItemData => itemData;
-
     public bool IsEquipped => isEquipped;
 }

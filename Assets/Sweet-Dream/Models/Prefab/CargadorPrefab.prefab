@@ -64,6 +64,73 @@ Transform:
   - {fileID: 8026615292214686576}
   m_Father: {fileID: 1523589147583459420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1469390690279392281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8290323136181845486}
+  - component: {fileID: 6023826714010895965}
+  - component: {fileID: 1121522282822996931}
+  m_Layer: 0
+  m_Name: ZoneCharger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8290323136181845486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469390690279392281}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.70710707, z: 0, w: 0.70710653}
+  m_LocalPosition: {x: 0.52098423, y: -1.2194653, z: 0.73423535}
+  m_LocalScale: {x: 1.2836477, y: 1.2836477, z: 1.2836477}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1523589147583459420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6023826714010895965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469390690279392281}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2863157, y: 1, z: 3.131885}
+  m_Center: {x: 0.6431579, y: 0, z: 0.045646664}
+--- !u!114 &1121522282822996931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469390690279392281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52a6a78364405340b2e11e54851e6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneCharger
+  BaseCharger: {fileID: 7410121909245161372}
 --- !u!1 &2759907249604200391
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +167,7 @@ Transform:
   - {fileID: 941546534403585886}
   - {fileID: 8229388987737835112}
   - {fileID: 6264263919014568037}
+  - {fileID: 8290323136181845486}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5260924429522165104
@@ -135,10 +203,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab5b815df20b73429a39ba8a8228679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearCharger
-  mouthPoint: {fileID: 6264263919014568037}
+  pointCharger: {fileID: 6264263919014568037}
   chargeTime: 3
   rechargeAmount: 100
   moveSpeed: 2
+  playerInputs: {fileID: 0}
 --- !u!1 &3525529011807108175
 GameObject:
   m_ObjectHideFlags: 0
