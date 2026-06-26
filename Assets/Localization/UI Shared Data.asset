@@ -20,23 +20,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1402914811904
-    m_Key: language
+    m_Key: idioma
     m_Metadata:
       m_Items: []
   - m_Id: 1538973839360
-    m_Key: quality
+    m_Key: calidad
     m_Metadata:
       m_Items: []
   - m_Id: 1713318473728
-    m_Key: sensitivy
+    m_Key: 'sensibilidad:'
     m_Metadata:
       m_Items: []
   - m_Id: 1722441084928
-    m_Key: sounds
+    m_Key: sonidos
     m_Metadata:
       m_Items: []
   - m_Id: 1725981077504
-    m_Key: controls
+    m_Key: controles
     m_Metadata:
       m_Items: []
   m_Metadata:

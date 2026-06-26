@@ -7,24 +7,31 @@ public class MainMenu : MonoBehaviour
 {
     [BoxGroup("Botones"), Required]
     [SerializeField] private GameObject botonPlay;
+
     [BoxGroup("Botones"), Required]
     [SerializeField] private GameObject botonOption;
+
     [BoxGroup("Botones"), Required]
     [SerializeField] private GameObject botonQuit;
 
     [BoxGroup("Paneles"), Required]
     [SerializeField] private GameObject panelGeneral;
+
     [BoxGroup("Paneles"), Required]
     [SerializeField] private GameObject panelSonidos;
+
     [BoxGroup("Paneles"), Required]
     [SerializeField] private GameObject panelControles;
 
     [BoxGroup("Referencias"), Required]
     public CinemachineCamera CameraIU;
+
     [BoxGroup("Referencias"), Required]
     public GameObject Canvas;
+
     [BoxGroup("Referencias"), Required]
     public GameObject CanvasOpciones;
+
     [BoxGroup("Referencias"), Required]
     [SerializeField] private CorrutinaCamera CorrutinaCamera;
 
@@ -60,6 +67,7 @@ public class MainMenu : MonoBehaviour
         onHighlight?.Invoke(current.Value);
 
         CloseAllPanels();
+        OpenPanelGeneral();
     }
 
     private void HandleNavigate(Vector2 input)
@@ -84,8 +92,6 @@ public class MainMenu : MonoBehaviour
             QuitGame();
     }
 
-    [GUIColor(0.5f, 1f, 0.5f)]
-    [Button("Play", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void PlayGame()
     {
         CameraIU.Priority = 20;
@@ -93,19 +99,14 @@ public class MainMenu : MonoBehaviour
         CorrutinaCamera.InitiationCorrutine();
     }
 
-    [GUIColor(0.6f, 0.8f, 1f)]
-    [Button("Opciones", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void OpenOptions()
     {
         Canvas.SetActive(false);
         CanvasOpciones.SetActive(true);
 
-        // Opcional: abrir General por defecto
         OpenPanelGeneral();
     }
 
-    [GUIColor(1f, 0.4f, 0.4f)]
-    [Button("Salir", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void QuitGame()
     {
         Application.Quit();
@@ -128,8 +129,6 @@ public class MainMenu : MonoBehaviour
         panel.SetActive(true);
     }
 
-    [GUIColor(1f, 0.8f, 0.4f)]
-    [Button("Escape", ButtonSizes.Large), ButtonGroup("Acciones")]
     public void HandleCancel()
     {
         if (CanvasOpciones != null && CanvasOpciones.activeSelf)

@@ -23,15 +23,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1402914811904
-    m_Localized: Language
+    m_Localized: 'Language:'
     m_Metadata:
       m_Items: []
   - m_Id: 1538973839360
-    m_Localized: Quality
+    m_Localized: 'Quality:'
     m_Metadata:
       m_Items: []
   - m_Id: 1713318473728
-    m_Localized: Sensitivy
+    m_Localized: 'Sensitivy:'
     m_Metadata:
       m_Items: []
   - m_Id: 1722441084928
