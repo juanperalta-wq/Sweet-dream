@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 3adb70ebd1361684eaa09f8e6284c331
   m_currentHash:
     serializedVersion: 2
-    Hash: f87242d79377bb038947944d74d53908
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -60,7 +60,12 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: f213ba2d26f1eb147b7746812f7fd94a, type: 2}
+  - {fileID: 11400000, guid: 878c45fef5288c7489aa9e1681a8d695, type: 2}
   - {fileID: 11400000, guid: 4ecea80b799d0484f8d66a7ef0089a7e, type: 2}
+  - {fileID: 11400000, guid: 390ba82a4ef5d4f43b4477249583810d, type: 2}
+  - {fileID: 11400000, guid: 47ebe9171c5d1c14babe0f09e44e3d5e, type: 2}
+  - {fileID: 11400000, guid: e2486132f50df524e9728174f5238017, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -100,6 +105,11 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Locale
+    - Locale-en
+    - Locale-es
+    - Locale-fr
+    - Preload
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 7e90467d2811c6241a3115fea2612ca5, type: 2}
