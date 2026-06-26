@@ -5810,7 +5810,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: 2035499260
         Label: Camera Zoom
-        OriginalLabel: 
+        OriginalLabel: Camera Zoom
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -5920,7 +5920,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: 1649889991
         Label: Rotation
-        OriginalLabel: 
+        OriginalLabel: Rotation
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -6248,7 +6248,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: -402478196
         Label: Rotate Camera
-        OriginalLabel: 
+        OriginalLabel: Rotation
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -6612,7 +6612,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: 300619412
         Label: Sound
-        OriginalLabel: 
+        OriginalLabel: Sound
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -6898,7 +6898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &132865149
 Transform:
   m_ObjectHideFlags: 0
@@ -35773,7 +35773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1153873027
 MonoBehaviour:
   m_ObjectHideFlags: 0

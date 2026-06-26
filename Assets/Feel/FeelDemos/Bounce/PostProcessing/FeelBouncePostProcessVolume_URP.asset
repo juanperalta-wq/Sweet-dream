@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.8603326, y: 0.94031334, z: 1, w: 0}
+    m_Value: {x: 0.949593, y: 1, z: 0.9957448, w: 0.0000000062098486}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.93433166, z: 0.9972952, w: 0}
@@ -62,13 +62,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.8693166, y: 0.93915534, z: 1, w: 0}
+    m_Value: {x: 0.8693166, y: 0.93915534, z: 1, w: -0.016474465}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.96189195, y: 1, z: 0.99517655, w: 0}
+    m_Value: {x: 0.96189195, y: 1, z: 0.99517655, w: -0.016474463}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9508773, z: 0.94121003, w: 0}
+    m_Value: {x: 1, y: 0.9508773, z: 0.94121003, w: 0.000000007013626}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -95,19 +95,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   xMultiplier:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   yMultiplier:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   center:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   scale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -161,13 +161,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 23.74
+    m_Value: 3
   aperture:
     m_OverrideState: 1
-    m_Value: 5.6
+    m_Value: 22
   focalLength:
     m_OverrideState: 1
-    m_Value: 115.9
+    m_Value: 10
   bladeCount:
     m_OverrideState: 1
     m_Value: 5
@@ -201,7 +201,7 @@ MonoBehaviour:
     m_Value: 0.643
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.476
+    m_Value: 0.443
   rounded:
     m_OverrideState: 1
     m_Value: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
 --- !u!114 &6170051218366541664
 MonoBehaviour:
