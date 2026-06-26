@@ -79,7 +79,7 @@ public class PlayerStats : MonoBehaviour
         if (lensDistortion != null)
             lensDistortion.intensity.value = Mathf.Lerp(0f, -0.5f, effectT);
 
-        // Depth of Field: sin blur por encima de 70, blur máximo en 0
+        // sin blur por encima de 70, blur máximo en 0
         if (depthOfField != null)
         {
             depthOfField.focalLength.value = Mathf.Lerp(10f, 115.9f, effectT);

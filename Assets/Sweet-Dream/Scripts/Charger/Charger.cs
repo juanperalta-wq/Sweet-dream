@@ -20,10 +20,10 @@ public class Charger : MonoBehaviour, IInteractable
         FlashlightSystem flashlight = item.GetComponent<FlashlightSystem>();
         if (flashlight == null) return;
 
-        StartCoroutine(ChargeRoutine(flashlight, item));
+        StartCoroutine(ChargeCorroutine(flashlight, item));
     }
 
-    private IEnumerator ChargeRoutine(FlashlightSystem flashlight, ItemPickUp item)
+    private IEnumerator ChargeCorroutine(FlashlightSystem flashlight, ItemPickUp item)
     {
         isCharging = true;
         playerInputs.enabled = false;
