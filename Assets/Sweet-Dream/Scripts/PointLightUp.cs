@@ -1,37 +1,43 @@
 using System.Collections;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class PointLightUp : MonoBehaviour
 {
-    public Light SpotLightUp;
-    private int randomNumber;
+    [SerializeField] private Light spotLightUp;
+    [SerializeField] private MMF_Player lightFailFeedback;
+
+    [SerializeField] private float minIntensity = 0f;
+    [SerializeField] private float maxIntensity = 3f;
+    [SerializeField] private float flickerInterval = 0.5f;
+    [SerializeField] private float sparkInterval = 10f;
 
     private void Start()
     {
-
         StartCoroutine(LightFailureRoutine());
+        StartCoroutine(SparkRoutine());
     }
 
-    
     private IEnumerator LightFailureRoutine()
     {
+        var wait = new WaitForSeconds(flickerInterval);
+
         while (true)
         {
-            randomNumber = Random.Range(1, 11); 
+            bool isFail = Random.value < 0.5f;
+            spotLightUp.intensity = isFail ? minIntensity : maxIntensity;
+            yield return wait;
+        }
+    }
 
-            if (randomNumber % 2 == 0)
-            {
-                Debug.Log("Número par (Apagar): " + randomNumber);
-                SpotLightUp.intensity = 0;
+    private IEnumerator SparkRoutine()
+    {
+        var wait = new WaitForSeconds(sparkInterval);
 
-                yield return new WaitForSeconds(0.5f);
-            }
-            else
-            {
-                Debug.Log("Número impar (Encender): " + randomNumber);
-                SpotLightUp.intensity = 3;
-                yield return new WaitForSeconds(0.5f);
-            }
+        while (true)
+        {
+            lightFailFeedback?.PlayFeedbacks();
+            yield return wait;
         }
     }
 }

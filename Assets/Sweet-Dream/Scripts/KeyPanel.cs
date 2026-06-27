@@ -37,26 +37,26 @@ public class KeyPanel : MonoBehaviour
         {
             if (feedbacksAreReversed)
             {
-                puerta1.ChangeDirection();
-                puerta2.ChangeDirection();
+                puerta1?.ChangeDirection();
+                puerta2?.ChangeDirection();
                 feedbacksAreReversed = false;
             }
 
-            puerta1.PlayFeedbacks();
-            puerta2.PlayFeedbacks();
+            puerta1?.PlayFeedbacks();
+            puerta2?.PlayFeedbacks();
             abierta = true;
         }
         else
         {
             if (!feedbacksAreReversed)
             {
-                puerta1.ChangeDirection();
-                puerta2.ChangeDirection();
+                puerta1?.ChangeDirection();
+                puerta2?.ChangeDirection();
                 feedbacksAreReversed = true;
             }
 
-            puerta1.PlayFeedbacks();
-            puerta2.PlayFeedbacks();
+            puerta1?.PlayFeedbacks();
+            puerta2?.PlayFeedbacks();
             abierta = false;
         }
 

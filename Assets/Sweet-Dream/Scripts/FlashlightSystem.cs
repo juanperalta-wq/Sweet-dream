@@ -27,14 +27,25 @@ public class FlashlightSystem : MonoBehaviour
     private Coroutine batteryCoroutine;
     private Coroutine flickerCoroutine;
 
-    private void OnEnable()
+    public void OnEnable()
     {
         PlayerInputs.OnFlashlight += ToggleFlashlight;
+
+        // Si la linterna ya estaba encendida al equiparla, reanudar el drenaje
+        if (isOn && batteryCoroutine == null)
+            batteryCoroutine = StartCoroutine(BatteryDrainRoutine());
     }
 
     private void OnDisable()
     {
         PlayerInputs.OnFlashlight -= ToggleFlashlight;
+
+        // Al desequipar, detener el drenaje
+        if (batteryCoroutine != null)
+        {
+            StopCoroutine(batteryCoroutine);
+            batteryCoroutine = null;
+        }
     }
 
     private void Update()
@@ -102,10 +113,26 @@ public class FlashlightSystem : MonoBehaviour
 
     private IEnumerator FlickerCoroutine()
     {
+        var shortWait = new WaitForSeconds(0.05f);
+
         while (true)
         {
-            flashlight.intensity = (Random.value > 0.5f) ? 3f : 0f;
-            yield return new WaitForSeconds(Random.Range(0.05f, 0.2f));
+            if (Random.value < 0.3f)
+            {
+                // apagón breve
+                flashlight.intensity = 0f;
+                yield return shortWait;
+
+                // a veces doble apagón
+                if (Random.value < 0.3f)
+                    yield return shortWait;
+            }
+            else
+            {
+                // intensidad variable, no solo on/off
+                flashlight.intensity = Random.Range(0.5f, 3f);
+                yield return new WaitForSeconds(Random.Range(0.08f, 0.25f));
+            }
         }
     }
 

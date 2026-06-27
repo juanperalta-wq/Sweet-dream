@@ -5944,6 +5944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemData: {fileID: 11400000, guid: a76182df8e4cdac4ab678d7eb45c6e70, type: 2}
+  equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: -90, y: 0, z: 0}
   rb: {fileID: 495115395}
   coll: {fileID: 495115397}
@@ -6164,6 +6165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemData: {fileID: 11400000, guid: a76182df8e4cdac4ab678d7eb45c6e70, type: 2}
+  equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: -90, y: 0, z: 0}
   rb: {fileID: 705075104}
   coll: {fileID: 705075106}
@@ -8724,7 +8726,7 @@ Transform:
   m_GameObject: {fileID: 1856749041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.91, y: 8.54, z: 19.58}
+  m_LocalPosition: {x: 5.342825, y: 2.224132, z: 19.60128}
   m_LocalScale: {x: 12, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8833,7 +8835,6 @@ MonoBehaviour:
   Player: {fileID: 2136573700}
   Sillon: {fileID: 1256323419}
   Barnilla: {fileID: 1592325557}
-  sceneToLoad: scene_Home
   changeTime: 5
   itemPickUp: {fileID: 495115396}
   playerObject: {fileID: 1149261401}
