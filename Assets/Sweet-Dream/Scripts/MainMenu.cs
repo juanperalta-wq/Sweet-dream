@@ -96,7 +96,7 @@ public class MainMenu : MonoBehaviour
     {
         CameraIU.Priority = 20;
         Canvas.SetActive(false);
-        CorrutinaCamera.InitiationCorrutine();
+        CorrutinaCamera.InitiationCoroutine();
     }
 
     public void OpenOptions()

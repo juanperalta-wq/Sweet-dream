@@ -6,9 +6,6 @@ public class BarneyController : MonoBehaviour
 {
     #region Variables
     [TabGroup("Referencias"), Required]
-    [SerializeField] private Transform player;
-
-    [TabGroup("Referencias"), Required]
     [SerializeField] private NavMeshAgent agent;
 
     [TabGroup("Movimiento"), LabelWidth(110)]
@@ -31,44 +28,20 @@ public class BarneyController : MonoBehaviour
 
     [TabGroup("Debug"), ReadOnly]
     [SerializeField] private float currentSpeed;
+
     #endregion
 
     public void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         agent.speed = walkSpeed;
     }
 
     void Update()
     {
         currentSpeed = agent.velocity.magnitude;
-        Detection();
-
-        if (!playerDetected)
+        
             DetectPoint();
     }
-
-    #region Detection
-    public void Detection()
-    {
-        if (player == null) return;
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        if (distanceToPlayer <= rangeVision)
-        {
-            playerDetected = true;
-            agent.speed = runSpeed;
-            agent.ResetPath();
-            agent.SetDestination(player.position);
-        }
-        else
-        {
-            playerDetected = false;
-            agent.speed = walkSpeed;
-        }
-    }
-    #endregion
     #region Temporal
     public void DetectPoint()
     {
@@ -78,6 +51,16 @@ public class BarneyController : MonoBehaviour
             agent.SetDestination(pointA.position);
     }
     #endregion
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BoxTransition"))
+        {
+            Destroy(gameObject);
+            
+        }
+
+    }
 
     #region Getters Setters
     public float WalkSpeed => walkSpeed;

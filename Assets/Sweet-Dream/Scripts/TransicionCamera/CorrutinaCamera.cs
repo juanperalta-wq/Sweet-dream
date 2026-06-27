@@ -8,7 +8,7 @@ public class CorrutinaCamera : MonoBehaviour
 
 
 
-    public void InitiationCorrutine()
+    public void InitiationCoroutine()
     {
         StartCoroutine(CountForChangeScene());
     }
