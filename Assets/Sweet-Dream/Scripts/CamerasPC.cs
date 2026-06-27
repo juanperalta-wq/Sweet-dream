@@ -5,6 +5,7 @@ using MoreMountains.Feedbacks;
 
 public class CamerasPC : MonoBehaviour, IInteractable
 {
+    [SerializeField] private GameObject CreepyBarneyAnimation;
     [SerializeField] private CinemachineCamera cameraPlayer;
     [SerializeField] private CinemachineCamera cameraPC;
     [SerializeField] private PlayerInputs playerInputs;
@@ -21,6 +22,8 @@ public class CamerasPC : MonoBehaviour, IInteractable
     {
         if (isInteracting || hasBeenUsed) return;
         StartCoroutine(PCRoutine());
+        if (CreepyBarneyAnimation == null) return;
+        CreepyBarneyAnimation.SetActive(true);
     }
 
     private IEnumerator PCRoutine()
