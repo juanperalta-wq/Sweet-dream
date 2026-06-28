@@ -5944,6 +5944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemData: {fileID: 11400000, guid: a76182df8e4cdac4ab678d7eb45c6e70, type: 2}
+  equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: -90, y: 0, z: 0}
   rb: {fileID: 495115395}
   coll: {fileID: 495115397}
@@ -6164,6 +6165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemData: {fileID: 11400000, guid: a76182df8e4cdac4ab678d7eb45c6e70, type: 2}
+  equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: -90, y: 0, z: 0}
   rb: {fileID: 705075104}
   coll: {fileID: 705075106}
@@ -8833,7 +8835,6 @@ MonoBehaviour:
   Player: {fileID: 2136573700}
   Sillon: {fileID: 1256323419}
   Barnilla: {fileID: 1592325557}
-  sceneToLoad: scene_Home
   changeTime: 5
   itemPickUp: {fileID: 495115396}
   playerObject: {fileID: 1149261401}
@@ -9024,6 +9025,7 @@ GameObject:
   - component: {fileID: 2136573698}
   - component: {fileID: 2136573702}
   - component: {fileID: 2136573697}
+  - component: {fileID: 2136573703}
   m_Layer: 0
   m_Name: FirstPersonCamera
   m_TagString: Untagged
@@ -9208,6 +9210,19 @@ MonoBehaviour:
       m_Bits: 64
     MaximumRaycast: 10
     Damping: 0.5
+--- !u!114 &2136573703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136573696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b207df1bb97ef41bd5405e731c83f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MouseSensitivityManager
+  inputController: {fileID: 2136573697}
 --- !u!4 &543450651699989848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6959612234455506090, guid: 851d6ac5381eaa4468e455805bfb2b4e, type: 3}

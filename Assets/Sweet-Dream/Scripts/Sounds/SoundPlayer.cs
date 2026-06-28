@@ -18,12 +18,11 @@ public class SoundPlayer : MonoBehaviour
     public void PlayAudio(AudioClip clip)
     {
         audioSource.clip = clip;
+
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
         audioSource.Play();
 
-        //audioSource.clip.length
-
-        //->Corrutinas
-        //->Invoke
         Invoke(nameof(ReturnToPool), audioSource.clip.length);
     }
     public void ReturnToPool()
