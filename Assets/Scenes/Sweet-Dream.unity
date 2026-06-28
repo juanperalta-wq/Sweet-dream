@@ -4976,6 +4976,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TarjetaPurple
       objectReference: {fileID: 0}
+    - target: {fileID: 6065053725233328534, guid: 132392722b7ddb1468aeb666bdce334b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ba2c7343c6c2d244ad25e5d33f83e46, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5072,7 +5076,7 @@ PrefabInstance:
       objectReference: {fileID: 279787479}
     - target: {fileID: 5369061751876095257, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5537125099990384638, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
       propertyPath: equipPoint
@@ -10890,11 +10894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1214000049207711815, guid: 7e9478c5b7736a242abc27f89979d2bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9470444
+      value: 2.95
       objectReference: {fileID: 0}
     - target: {fileID: 1214000049207711815, guid: 7e9478c5b7736a242abc27f89979d2bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5043888
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: 1214000049207711815, guid: 7e9478c5b7736a242abc27f89979d2bf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22132,6 +22136,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1413780074}
     m_Modifications:
+    - target: {fileID: 5087443365337048322, guid: 2ace5ab8bdc90284daba572451a83e98, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 148cf36962c06f64cb2582ef85933a08, type: 2}
     - target: {fileID: 6255805640632622701, guid: 2ace5ab8bdc90284daba572451a83e98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 296.5125
@@ -32353,7 +32361,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1214000049207711815, guid: 7e9478c5b7736a242abc27f89979d2bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.76
+      value: 5.48
       objectReference: {fileID: 0}
     - target: {fileID: 1214000049207711815, guid: 7e9478c5b7736a242abc27f89979d2bf, type: 3}
       propertyPath: m_LocalPosition.y
