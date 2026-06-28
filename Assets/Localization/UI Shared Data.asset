@@ -87,6 +87,18 @@ MonoBehaviour:
     m_Key: default_values
     m_Metadata:
       m_Items: []
+  - m_Id: 759520236687360
+    m_Key: desarrollador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759812655173632
+    m_Key: creditos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759970772045824
+    m_Key: motor_grafico
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

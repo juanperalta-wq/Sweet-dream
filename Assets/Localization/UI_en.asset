@@ -90,6 +90,18 @@ MonoBehaviour:
     m_Localized: 'Default Values:'
     m_Metadata:
       m_Items: []
+  - m_Id: 759520236687360
+    m_Localized: Developer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759812655173632
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759970772045824
+    m_Localized: Game Engine
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

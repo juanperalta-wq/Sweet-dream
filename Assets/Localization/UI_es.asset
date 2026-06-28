@@ -90,6 +90,18 @@ MonoBehaviour:
     m_Localized: 'Valores Predeterminados:'
     m_Metadata:
       m_Items: []
+  - m_Id: 759520236687360
+    m_Localized: Desarrollador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759812655173632
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759970772045824
+    m_Localized: "Motor gr\xE1fico"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
