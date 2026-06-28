@@ -5,10 +5,10 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     [TabGroup("Feedbacks"), Required]
-    public MMFeedbacks onOpen;
+    public MMF_Player onOpen;
 
     [TabGroup("Feedbacks"), Required]
-    public MMFeedbacks onClose;
+    public MMF_Player onClose;
 
     [TabGroup("Configuracion")]
     [SerializeField] private float cooldown = 1f;

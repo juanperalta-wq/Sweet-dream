@@ -735,6 +735,7 @@ MonoBehaviour:
   onClose: {fileID: 6173966338129333253}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!1 &1905621492817765177
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +897,7 @@ MonoBehaviour:
   onClose: {fileID: 3943142317014847931}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!1 &2484146412445948238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,6 +3069,7 @@ MonoBehaviour:
   onClose: {fileID: 2897659407460545202}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!1 &7854477154711465944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,7 +3136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5629084884208175553, guid: 53a0de883ba7fb946a6954e167a7252c, type: 3}
+  - {fileID: 2100000, guid: 6a88ad9864a900f418a3139e94bb5bb8, type: 2}
   - {fileID: -7865565698888602925, guid: 53a0de883ba7fb946a6954e167a7252c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0

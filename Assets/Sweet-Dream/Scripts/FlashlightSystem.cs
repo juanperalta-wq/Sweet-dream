@@ -79,7 +79,7 @@ public class FlashlightSystem : MonoBehaviour
 
     private void UpdateFlickerRoutine()
     {
-        bool shouldFlicker = isOn && battery <= 90;
+        bool shouldFlicker = isOn && battery <= 50;
 
         if (shouldFlicker)
         {
