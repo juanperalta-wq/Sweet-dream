@@ -11,7 +11,7 @@ public class LanguageSelector : MonoBehaviour
     {
         yield return LocalizationSettings.InitializationOperation;
 
-        int savedLanguage = PlayerPrefs.GetInt("Language", 2);
+        int savedLanguage = PlayerPrefs.GetInt("Language", 0);
 
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[savedLanguage];
 

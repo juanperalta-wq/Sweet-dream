@@ -23,6 +23,9 @@ public class MainMenu : MonoBehaviour
     [BoxGroup("Paneles"), Required]
     [SerializeField] private GameObject panelControles;
 
+    [BoxGroup("Paneles"), Required]
+    [SerializeField] private GameObject panelCreditos;
+
     [BoxGroup("Referencias"), Required]
     public CinemachineCamera CameraIU;
 
@@ -112,15 +115,18 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    // Paneles
     public void OpenPanelGeneral() => OpenPanel(panelGeneral);
     public void OpenPanelSonidos() => OpenPanel(panelSonidos);
     public void OpenPanelControles() => OpenPanel(panelControles);
+    public void OpenPanelCreditos() => OpenPanel(panelCreditos);
 
     private void CloseAllPanels()
     {
         panelGeneral.SetActive(false);
         panelSonidos.SetActive(false);
         panelControles.SetActive(false);
+        panelCreditos.SetActive(false);
     }
 
     private void OpenPanel(GameObject panel)

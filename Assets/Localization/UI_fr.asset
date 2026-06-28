@@ -42,6 +42,66 @@ MonoBehaviour:
     m_Localized: "Contr\xF4les"
     m_Metadata:
       m_Items: []
+  - m_Id: 743465267253248
+    m_Localized: Sauter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743317724221440
+    m_Localized: Courir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743229165686784
+    m_Localized: "Se d\xE9placer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743555855831040
+    m_Localized: Interagir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743677465481216
+    m_Localized: Lampe ON/OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743919871086592
+    m_Localized: "Utiliser la cam\xE9ra"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 744041153581056
+    m_Localized: Changer d'objet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 744173693587456
+    m_Localized: "S\xE9lectionner un emplacement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 745934219137024
+    m_Localized: 'Volume Principal:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 746046056058880
+    m_Localized: 'Musique:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 746333248442368
+    m_Localized: 'Effets sonores:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 746403620474880
+    m_Localized: "Valeurs par d\xE9faut:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759520236687360
+    m_Localized: "D\xE9veloppeur"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759812655173632
+    m_Localized: "Cr\xE9dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759970772045824
+    m_Localized: Moteur de jeu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

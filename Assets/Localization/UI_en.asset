@@ -42,6 +42,66 @@ MonoBehaviour:
     m_Localized: Controls
     m_Metadata:
       m_Items: []
+  - m_Id: 743465267253248
+    m_Localized: Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743317724221440
+    m_Localized: Run
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743229165686784
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743555855831040
+    m_Localized: Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743677465481216
+    m_Localized: Flashlight ON/OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743919871086592
+    m_Localized: Use camera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 744041153581056
+    m_Localized: Change item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 744173693587456
+    m_Localized: Select slot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 745934219137024
+    m_Localized: 'Master Volume:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 746046056058880
+    m_Localized: 'Music:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 746333248442368
+    m_Localized: 'SFX:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 746403620474880
+    m_Localized: 'Default Values:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759520236687360
+    m_Localized: Developer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759812655173632
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 759970772045824
+    m_Localized: Game Engine
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
