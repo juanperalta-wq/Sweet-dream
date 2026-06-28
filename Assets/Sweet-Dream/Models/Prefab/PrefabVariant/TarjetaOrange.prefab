@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 296.5125
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.99998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 38.88018
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42,11 +42,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -60,9 +60,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d473365453a44134e802bc6134d43d49, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 29202cac2e9b7504faf948427e83a2d1, type: 2}
     - target: {fileID: 919132149155446097, guid: d473365453a44134e802bc6134d43d49, type: 3}
       propertyPath: m_Name
       value: TarjetaOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d473365453a44134e802bc6134d43d49, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d473365453a44134e802bc6134d43d49, type: 3}
+      propertyPath: m_TagString
+      value: TarjetaNaranja
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -112,7 +124,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7106131078919965047}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -144,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   itemData: {fileID: 11400000, guid: 4dfce64a1a8840f4f916d09f6f257392, type: 2}
+  equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
   rb: {fileID: 1198566905308667874}
   coll: {fileID: 3206716702364557269}

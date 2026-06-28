@@ -4,7 +4,7 @@ using DG.Tweening;
 public class CameraIdleRotation : MonoBehaviour
 {
     [SerializeField] private float angle = 45f;
-    [SerializeField] private float moveTime = 4f;
+    [SerializeField] private float moveTime = 1000f;
     [SerializeField] private float waitTime = 1.5f;
 
     private void Start()
