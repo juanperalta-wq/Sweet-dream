@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69eb639e86888c4695683882ba9befc, type: 3}
   m_Name: Camera
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  icon: {fileID: 21300004, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+  icon: {fileID: -1992527379, guid: eb2fa4f15959af049a15a7845c7fb029, type: 3}
   id: 6
   itemName: Camera
   type: 1

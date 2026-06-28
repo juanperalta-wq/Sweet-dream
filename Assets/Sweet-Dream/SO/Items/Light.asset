@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69eb639e86888c4695683882ba9befc, type: 3}
   m_Name: Light
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  icon: {fileID: 21300004, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+  icon: {fileID: 159603173, guid: d101a0d83f3b9b64d985d669be40e1f1, type: 3}
   id: 5
   itemName: Light
   type: 1
