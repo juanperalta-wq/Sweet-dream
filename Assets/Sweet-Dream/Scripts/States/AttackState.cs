@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackState : IState
@@ -6,8 +5,8 @@ public class AttackState : IState
     private StateMachine stateMachine;
     private EnemyController enemyController;
 
-
     private float cooldownTimer;
+
     public AttackState(StateMachine stateMachine, EnemyController enemyController)
     {
         this.stateMachine = stateMachine;
@@ -16,44 +15,48 @@ public class AttackState : IState
 
     public void Enter()
     {
-        Debug.Log("En rango de ataque");
+        Debug.Log("Entrando en estado de ataque");
+
         enemyController.Agent.isStopped = true;
-        cooldownTimer = 0;
+
+        // Empezar con cooldown completo: el primer ataque requiere que el enemigo "se prepare" antes de golpear
+        cooldownTimer = enemyController.AttackCooldown;
     }
+
     public void Update()
     {
-        float distanceToPlayer = Vector3.Distance(enemyController.transform.position, enemyController.PlayerTransform.position);
+        float distanceToPlayer = enemyController.DistanceToPlayer();
 
+        // Si el jugador se aleja, volvemos a perseguir
         if (distanceToPlayer > enemyController.AttackRange)
         {
             stateMachine.ChangeState(enemyController.ChaseState);
             return;
         }
+        if (enemyController.PlayerTransform != null)
+            enemyController.RotateTowards(enemyController.PlayerTransform.position);
 
         cooldownTimer -= Time.deltaTime;
 
-        if (cooldownTimer <= 0)
+        if (cooldownTimer <= 0f)
         {
             PerformAttack();
             cooldownTimer = enemyController.AttackCooldown;
         }
-
-
-        Vector3 directionToPlayer = (enemyController.PlayerTransform.position - enemyController.transform.position).normalized;
-        directionToPlayer.y = 0f;
-
-        enemyController.transform.rotation = Quaternion.LookRotation(directionToPlayer);
-
     }
+
     public void Exit()
     {
-        Debug.Log("saliendo del estado de ataque");
         enemyController.Agent.isStopped = false;
     }
 
-    public void PerformAttack()
+    private void PerformAttack()
     {
-        Debug.Log("Atacando .... !");
-    }
+        Debug.Log("Barney atacó al jugador por " + enemyController.AttackDamage + " de daño");
 
+        // TODO: conectar con el sistema de salud del jugador:
+        // PlayerHealth playerHealth = enemyController.PlayerTransform.GetComponent<PlayerHealth>();
+        // if (playerHealth != null)
+        //     playerHealth.TakeDamage(enemyController.AttackDamage);
+    }
 }
