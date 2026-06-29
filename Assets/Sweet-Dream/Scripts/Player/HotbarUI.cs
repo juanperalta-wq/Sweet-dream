@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class HotbarUI : MonoBehaviour
 {
     [SerializeField] private List<Image> slots;
-    [SerializeField] private Color selectedColor = Color.yellow;
+    [SerializeField] private Color selectedColor;
     [SerializeField] private Color defaultColor = Color.white;
     [SerializeField] private Color emptyColor = new Color(1, 1, 1, 0);
 
@@ -25,14 +25,11 @@ public class HotbarUI : MonoBehaviour
 
     private void UpdateSlots(CircularDoubleLinkedList<IInteractable> inventory)
     {
-        // Limpiar todos los slots
         foreach (Image slot in slots)
         {
             slot.sprite = null;
             slot.color = emptyColor;
         }
-
-        // Llenar slots con los items del inventario
         Node<IInteractable> current = inventory.head;
         for (int i = 0; i < inventory.Count && i < slots.Count; i++)
         {
