@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69eb639e86888c4695683882ba9befc, type: 3}
   m_Name: Key Orange
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  icon: {fileID: 21300004, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+  icon: {fileID: 1810554679, guid: 2c9194d434a7add459c9865435cceb1c, type: 3}
   id: 2
   itemName: KeyOrange
   type: 1
