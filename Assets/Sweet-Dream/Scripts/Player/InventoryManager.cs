@@ -26,6 +26,12 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
     private void OnEnable()
     {
         PlayerInputs.OnSlotSelect += SelectSlot;
@@ -187,7 +193,6 @@ public class InventoryManager : MonoBehaviour
     {
         return currentNode?.Value;
     }
-
 
     public void ConsumeCurrentItem()
     {

@@ -8,16 +8,16 @@ public class AudioSettingsManager : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
-    private const string MASTER_KEY = "MasterVolume";
-    private const string MUSIC_KEY = "MusicVolume";
-    private const string SFX_KEY = "SFXVolume";
+    private const string Master_Key = "MasterVolume";
+    private const string Music_Key = "MusicVolume";
+    private const string SFX_Key = "SFXVolume";
 
     private void Start()
     {
         // Cargar valores guardados
-        masterSlider.value = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
-        musicSlider.value = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
-        sfxSlider.value = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+        masterSlider.value = PlayerPrefs.GetFloat(Master_Key, 1f);
+        musicSlider.value = PlayerPrefs.GetFloat(Music_Key, 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat(SFX_Key, 1f);
 
         // Aplicar volumen maestro inmediatamente
         AudioListener.volume = masterSlider.value;
@@ -32,19 +32,19 @@ public class AudioSettingsManager : MonoBehaviour
     {
         AudioListener.volume = value;
 
-        PlayerPrefs.SetFloat(MASTER_KEY, value);
+        PlayerPrefs.SetFloat(Master_Key, value);
         PlayerPrefs.Save();
     }
 
     public void SetMusicVolume(float value)
     {
-        PlayerPrefs.SetFloat(MUSIC_KEY, value);
+        PlayerPrefs.SetFloat(Music_Key, value);
         PlayerPrefs.Save();
     }
 
     public void SetSFXVolume(float value)
     {
-        PlayerPrefs.SetFloat(SFX_KEY, value);
+        PlayerPrefs.SetFloat(SFX_Key, value);
         PlayerPrefs.Save();
     }
 
@@ -54,9 +54,9 @@ public class AudioSettingsManager : MonoBehaviour
         musicSlider.value = 1f;
         sfxSlider.value = 1f;
 
-        PlayerPrefs.SetFloat(MASTER_KEY, 1f);
-        PlayerPrefs.SetFloat(MUSIC_KEY, 1f);
-        PlayerPrefs.SetFloat(SFX_KEY, 1f);
+        PlayerPrefs.SetFloat(Master_Key, 1f);
+        PlayerPrefs.SetFloat(Music_Key, 1f);
+        PlayerPrefs.SetFloat(SFX_Key, 1f);
 
         PlayerPrefs.Save();
 

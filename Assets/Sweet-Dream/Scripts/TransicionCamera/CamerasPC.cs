@@ -22,13 +22,13 @@ public class CamerasPC : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (isInteracting || hasBeenUsed) return;
-        StartCoroutine(PCRoutine());
+        StartCoroutine(PCCoroutine());
         if (CreepyBarneyAnimation == null) return;
         CreepyBarneyAnimation.SetActive(true);
         cameraIdleRotation.enabled = true;
     }
 
-    private IEnumerator PCRoutine()
+    private IEnumerator PCCoroutine()
     {
         isInteracting = true;
         hasBeenUsed = true;

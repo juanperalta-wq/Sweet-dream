@@ -11,11 +11,11 @@ NavMeshProjectSettings:
     cost: 1
   - name: Jump
     cost: 2
-  - name: 
+  - name: VidrioRoto
     cost: 1
-  - name: 
+  - name: BarnillaDerramada
     cost: 1
-  - name: 
+  - name: variacion de velocidad Floor
     cost: 1
   - name: 
     cost: 1
@@ -144,7 +144,7 @@ NavMeshProjectSettings:
     debug:
       m_Flags: 0
   m_SettingNames:
-  - Humanoid
+  - Player
   - Barney
   - ShadowEnemy
   - BarneyAnimation

@@ -179,9 +179,10 @@ public class FirstPersonController : MonoBehaviour , IInteractable
     {
         if (characterCamera != null)
         {
+            // muestra la dirección de la cámara y la distancia de interacción
             Gizmos.color = Color.red;
             Gizmos.DrawRay(characterCamera.transform.position, characterCamera.transform.forward * distancia);
-
+            // muestra un punto en la distancia de interacción
             Gizmos.color = Color.blue;
             Gizmos.DrawSphere(characterCamera.transform.position + characterCamera.transform.forward * distancia, 0.1f);
         }
