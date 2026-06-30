@@ -17,7 +17,7 @@ public class PointLightUp : MonoBehaviour
         StartCoroutine(LightFailureRoutine());
         StartCoroutine(SparkRoutine());
     }
-
+    
     private IEnumerator LightFailureRoutine()
     {
         var wait = new WaitForSeconds(flickerInterval);

@@ -795,9 +795,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   sanity: 100
   drainAmount: 1
+  maxHits: 3
+  invincibilityTime: 1
   postProcessVolume: {fileID: 5451553940917767620}
   sanityScareAt50: {fileID: 4255959699336954796}
   sanityScareAt25: {fileID: 4255959699336954796}
+  damageFeedback: {fileID: 0}
+  gameOverFeedback: {fileID: 0}
   TargetProgressBar: {fileID: 2782241991256996720}
 --- !u!114 &7956196897006216445
 MonoBehaviour:
@@ -2394,7 +2398,7 @@ Transform:
   m_GameObject: {fileID: 4096424912845286029}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.39280295, y: 0.5995916, z: 1.8870908}
+  m_LocalPosition: {x: -0.39279938, y: 0.5995916, z: 1.8870926}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3540,7 +3544,7 @@ Transform:
   m_GameObject: {fileID: 5369061751876095257}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.613087, y: -1.99125, z: -6.75}
+  m_LocalPosition: {x: -7.613106, y: -1.99125, z: -6.7499995}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
