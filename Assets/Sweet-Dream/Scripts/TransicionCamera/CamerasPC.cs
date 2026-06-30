@@ -16,6 +16,7 @@ public class CamerasPC : MonoBehaviour, IInteractable
     [SerializeField] private float fadeFromBlackDuration = 1f;
     [SerializeField] private float viewDuration = 10f;
     [SerializeField] private CameraIdleRotation cameraIdleRotation;
+    [SerializeField] private GameObject HotbarContainer;
     private bool isInteracting = false;
     private bool hasBeenUsed = false;
 
@@ -34,6 +35,7 @@ public class CamerasPC : MonoBehaviour, IInteractable
         hasBeenUsed = true;
         playerInputs.enabled = false;
         CanvasPlayer.SetActive(false);
+        HotbarContainer.SetActive(false);
         fadeToBlack?.PlayFeedbacks();
         yield return new WaitForSeconds(fadeToBlackDuration);
 
@@ -53,6 +55,7 @@ public class CamerasPC : MonoBehaviour, IInteractable
 
         fadeFromBlack?.PlayFeedbacks();
         CanvasPlayer.SetActive(true);
+        HotbarContainer?.SetActive(true);
         yield return new WaitForSeconds(fadeFromBlackDuration);
         playerInputs.enabled = true;
         isInteracting = false;

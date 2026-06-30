@@ -3814,6 +3814,11 @@ Transform:
   - {fileID: 541289275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &586807056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8878331022292318413, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
+  m_PrefabInstance: {fileID: 815306706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &589526217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5371,6 +5376,10 @@ PrefabInstance:
     - target: {fileID: 8878331022292318413, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878331022292318413, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9008334992391537926, guid: 44a6acfb78ed91f44b48e89c545468ff, type: 3}
       propertyPath: m_Layer
@@ -23967,6 +23976,10 @@ PrefabInstance:
       propertyPath: playerInputs
       value: 
       objectReference: {fileID: 1205563105}
+    - target: {fileID: 6069094628814656269, guid: b0996c1980e16c241baad246dc27947e, type: 3}
+      propertyPath: HotbarContainer
+      value: 
+      objectReference: {fileID: 586807056}
     - target: {fileID: 6069094628814656269, guid: b0996c1980e16c241baad246dc27947e, type: 3}
       propertyPath: cameraIdleRotation
       value: 
