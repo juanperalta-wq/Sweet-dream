@@ -3,7 +3,11 @@ public interface IInteractable
     void Interact();
 }
 
-public interface ITakeDamage
+public interface IDamageable
 {
-    void TakeDamage();
+    void TakeDamage() { }
+}
+public interface IDamageDealer
+{
+    void DealDamage() {  }
 }

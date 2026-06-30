@@ -1,13 +1,15 @@
+using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
-using MoreMountains.Tools;
-using MoreMountains.Feedbacks;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour , IDamageable
 {
+    #region Variables
     public static PlayerStats Instance { get; private set; }
 
     [TabGroup("Stats"), LabelWidth(80)]
@@ -16,6 +18,12 @@ public class PlayerStats : MonoBehaviour
 
     [TabGroup("Stats"), LabelWidth(120)]
     [SerializeField] private float drainAmount = 1f;
+
+    [TabGroup("Stats")]
+    [SerializeField] private int maxHits = 3;
+
+    [TabGroup("Stats")]
+    [SerializeField] private float invincibilityTime = 1f;
 
     [TabGroup("Effects")]
     [SerializeField] private Volume postProcessVolume;
@@ -26,22 +34,32 @@ public class PlayerStats : MonoBehaviour
     [TabGroup("Effects")]
     [SerializeField] private MMF_Player sanityScareAt25;
 
-    public MMProgressBar TargetProgressBar;
+    [TabGroup("Effects")]
+    [SerializeField] private MMF_Player damageFeedback;
 
+    [TabGroup("Effects")]
+    [SerializeField] private MMF_Player gameOverFeedback;
+
+    private Coroutine drainCoroutine;
+    public MMProgressBar TargetProgressBar;
     private ColorAdjustments colorAdjustments;
     private Vignette vignette;
     private ChromaticAberration chromaticAberration;
     private LensDistortion lensDistortion;
     private DepthOfField depthOfField;
 
+    private int currentHits;
+    private float lastDamageTime;
+    #endregion
     private void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        currentHits = 0;
     }
 
     private void Start()
-    {
+    {// Inicializamos los efectos de postprocesado
         if (postProcessVolume != null)
         {
             postProcessVolume.profile.TryGet(out colorAdjustments);
@@ -51,9 +69,16 @@ public class PlayerStats : MonoBehaviour
             postProcessVolume.profile.TryGet(out depthOfField);
         }
 
-        StartCoroutine(SanityDrainRoutine());
+        drainCoroutine = StartCoroutine(SanityDrainRoutine());
     }
-
+    // Aseguramos que la instancia se limpie al destruirse el objeto
+    private void OnDestroy()
+    {
+        if (drainCoroutine != null)
+            StopCoroutine(drainCoroutine);
+        if (Instance == this)
+            Instance = null;
+    }
     private void FixedUpdate()
     {
         ApplySanityEffects();
@@ -85,6 +110,23 @@ public class PlayerStats : MonoBehaviour
             depthOfField.focalLength.value = Mathf.Lerp(10f, 115.9f, effectT);
             depthOfField.aperture.value = Mathf.Lerp(22f, 5.6f, effectT);
         }
+    }
+
+    public void TakeDamage()
+    {
+        if (Time.time - lastDamageTime < invincibilityTime) return;
+        lastDamageTime = Time.time;
+
+        currentHits++;
+        damageFeedback?.PlayFeedbacks();
+
+        if (currentHits >= maxHits)
+            GameOver();
+    }
+    private void GameOver()
+    {
+        gameOverFeedback?.PlayFeedbacks();
+        SceneManager.LoadScene("UI_Derrota");
     }
 
     private IEnumerator SanityDrainRoutine()

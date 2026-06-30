@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackState : IState
+public class AttackState : IState, IDamageDealer
 {
     private StateMachine stateMachine;
     private EnemyController enemyController;
@@ -40,7 +40,7 @@ public class AttackState : IState
 
         if (cooldownTimer <= 0f)
         {
-            PerformAttack();
+            DealDamage();
             cooldownTimer = enemyController.AttackCooldown;
         }
     }
@@ -50,13 +50,11 @@ public class AttackState : IState
         enemyController.Agent.isStopped = false;
     }
 
-    private void PerformAttack()
+    private void DealDamage()
     {
-        Debug.Log("Barney atacó al jugador por " + enemyController.AttackDamage + " de daño");
+        Debug.Log("Barney ataco al jugador por " + enemyController.AttackDamage + " de dano");
 
-        // TODO: conectar con el sistema de salud del jugador:
-        // PlayerHealth playerHealth = enemyController.PlayerTransform.GetComponent<PlayerHealth>();
-        // if (playerHealth != null)
-        //     playerHealth.TakeDamage(enemyController.AttackDamage);
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.TakeDamage();
     }
 }
