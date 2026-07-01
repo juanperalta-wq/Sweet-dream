@@ -173,10 +173,7 @@ public class EnemyController : MonoBehaviour
         if (direction == Vector3.zero) return;
 
         Quaternion desired = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            desired,
-            RotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, desired, RotationSpeed * Time.deltaTime);
     }
     public float DistanceToPlayer()
     {

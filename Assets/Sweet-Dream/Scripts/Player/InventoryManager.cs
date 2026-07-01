@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using DulceSueño.Algorithms;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -37,6 +39,7 @@ public class InventoryManager : MonoBehaviour
         PlayerInputs.OnSlotSelect += SelectSlot;
         PlayerInputs.OnSlotScroll += ScrollSlot;
         PlayerInputs.OnRemoveItem += RemoveCurrentItem;
+        PlayerInputs.OnSortInventory += SortInventory;
     }
 
     private void OnDisable()
@@ -44,6 +47,7 @@ public class InventoryManager : MonoBehaviour
         PlayerInputs.OnSlotSelect -= SelectSlot;
         PlayerInputs.OnSlotScroll -= ScrollSlot;
         PlayerInputs.OnRemoveItem -= RemoveCurrentItem;
+        PlayerInputs.OnSortInventory -= SortInventory;
     }
 
     public bool AddItem(IInteractable item)
@@ -73,6 +77,7 @@ public class InventoryManager : MonoBehaviour
             RemoveItem(currentNode.Value);
     }
 
+    //-> O(n): recorre la lista enlazada buscando el nodo que contiene el item
     public bool RemoveItem(IInteractable item)
     {
         if (item == null) return false;
@@ -123,6 +128,57 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
+    // NUEVO: ordena el inventario por tipo de item y luego por ID, usando Selection Sort.
+    // Pensado para un botón de "organizar inventario" en la UI.
+    //-> O(n) para extraer los items + O(n^2) del Selection Sort + O(n) para reinsertar.
+    // Con slotsMax = 6 el costo real es insignificante; se eligió Selection Sort (en vez
+    // de Insertion Sort, que ya se usa en SearchState) para tener los dos algoritmos
+    // pedidos por la rúbrica, cada uno resolviendo un problema distinto.
+    public void SortInventory()
+    {
+        if (InventoryData.Count <= 1) return;
+
+        // 1. Extraer todos los items a una lista temporal, recorriendo la lista enlazada
+        List<IInteractable> items = new List<IInteractable>();
+        Node<IInteractable> node = InventoryData.head;
+        for (int i = 0; i < InventoryData.Count; i++)
+        {
+            items.Add(node.Value);
+            node = node.Next;
+        }
+
+        // 2. Ordenar por tipo de item y, si empatan, por ID
+        SortAlgorithms.SelectionSort(items, (a, b) =>
+        {
+            ItemData dataA = (a as ItemPickUp)?.itemData;
+            ItemData dataB = (b as ItemPickUp)?.itemData;
+
+            if (dataA == null || dataB == null) return 0;
+
+            int typeComparison = dataA.Type.CompareTo(dataB.Type);
+            return typeComparison != 0 ? typeComparison : dataA.ID.CompareTo(dataB.ID);
+        });
+
+        // 3. Vaciar la lista enlazada actual
+        while (InventoryData.Count > 0)
+        {
+            InventoryData.RemoveNode(InventoryData.head);
+        }
+
+        // 4. Reinsertar en el nuevo orden
+        foreach (IInteractable item in items)
+        {
+            InventoryData.Add(item);
+        }
+
+        // 5. Reapuntar el nodo seleccionado y avisar a la UI
+        currentNode = InventoryData.head;
+        selectedSlot = 0;
+
+        OnInventoryChange?.Invoke(InventoryData);
+        OnItemSelect?.Invoke(selectedSlot);
+        EquipNode(currentNode);
+    }
     private void SelectSlot(int index)
     {
         if (InventoryData.Count == 0 || index < 0 || index >= InventoryData.Count)
@@ -135,7 +191,6 @@ public class InventoryManager : MonoBehaviour
         OnItemSelect?.Invoke(selectedSlot);
         EquipNode(currentNode);
     }
-
     private void ScrollSlot(float direction)
     {
         if (InventoryData.Count == 0)
@@ -151,7 +206,6 @@ public class InventoryManager : MonoBehaviour
         OnItemSelect?.Invoke(selectedSlot);
         EquipNode(currentNode);
     }
-
     private Node<IInteractable> GetNodeAtIndex(int index)
     {
         Node<IInteractable> current = InventoryData.head;
@@ -159,7 +213,6 @@ public class InventoryManager : MonoBehaviour
             current = current.Next;
         return current;
     }
-
     private int GetIndexOfNode(Node<IInteractable> target)
     {
         if (target == null) return -1;
@@ -185,15 +238,13 @@ public class InventoryManager : MonoBehaviour
         {
             currentEquipped = item;
             currentEquipped.OnEquip(equipPoint);
-            Debug.Log("Equipado: " + item.ItemData.ItemName);
+            Debug.Log("Equipado: " + item.itemData.ItemName);
         }
     }
-
     public IInteractable GetSelectedItem()
     {
         return currentNode?.Value;
     }
-
     public void ConsumeCurrentItem()
     {
         if (currentEquipped == null) return;

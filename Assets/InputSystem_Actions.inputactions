@@ -194,6 +194,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SortInventory",
+                    "type": "Button",
+                    "id": "78af5599-96bb-4bd8-9332-19cdaf5b5527",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -667,6 +676,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RemoveItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adc79126-9d96-4aa6-815a-4106a47df3d9",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SortInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -14,7 +14,6 @@ public class MusicPool : MonoBehaviour
 
     public static Action<SoundPlayer> OnFinishAudio;
 
-
     private void OnEnable()
     {
         OnFinishAudio += EnqueueAudio;
@@ -25,26 +24,51 @@ public class MusicPool : MonoBehaviour
         CreateSoundPlayerObjs(size);
     }
 
+    // Sobrecarga #1 (comportamiento original): busca el audio en la base de datos y lo
+    // reproduce con el volumen guardado en PlayerPrefs.
     public void PlayAudio(string audioName)
+    {
+        AudioClip clip = GameManager.Instance.musicDatabase.GetAudio(audioName);
+        PlayClip(clip, PlayerPrefs.GetFloat("SFXVolume", 1f));
+    }
+
+    // Sobrecarga #2: igual que la anterior, pero permite forzar un volumen específico.
+    // Útil para sonidos que SIEMPRE deben sonar fuerte (ej. jumpscares) sin importar
+    // la configuración de audio del jugador.
+    public void PlayAudio(string audioName, float volumeOverride)
+    {
+        AudioClip clip = GameManager.Instance.musicDatabase.GetAudio(audioName);
+        PlayClip(clip, volumeOverride);
+    }
+
+    // Sobrecarga #3: reproduce un AudioClip directo, sin pasar por la base de datos.
+    // Útil para un clip propio de un objeto puntual que no necesita estar registrado
+    // globalmente en MusicDatabase.
+    public void PlayAudio(AudioClip clip)
+    {
+        PlayClip(clip, PlayerPrefs.GetFloat("SFXVolume", 1f));
+    }
+
+    private void PlayClip(AudioClip clip, float volume)
     {
         if (Pool.Head == null || Pool.Count == 0)
         {
             Debug.Log("Se agrando la lista");
             CreateSoundPlayerObjs(5);
-            // PlayAudio(audioName);
             return;
         }
-        AudioClip clip = GameManager.Instance.musicDatabase.GetAudio(audioName);
 
         SoundPlayer soundPlayer = Pool.Dequeue();
         soundPlayer.gameObject.SetActive(true);
-        soundPlayer.PlayAudio(clip);
+        soundPlayer.PlayAudio(clip, volume);
     }
+
     private void EnqueueAudio(SoundPlayer soundPlayer)
     {
         soundPlayer.gameObject.SetActive(false);
         Pool.Enqueue(soundPlayer);
     }
+
     [Button]
     private void CreateSoundPlayerObjs(int quantity)
     {
@@ -55,12 +79,14 @@ public class MusicPool : MonoBehaviour
             Pool.Enqueue(obj);
         }
     }
+
     [Button]
     public void Test(string audioName)
     {
         PlayAudio(audioName);
         Debug.Log(Pool.Count);
     }
+
     [Button]
     public void Test2()
     {

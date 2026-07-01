@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DulceSueño.Algorithms;
 
 public class SearchState : IState
 {
@@ -20,7 +21,7 @@ public class SearchState : IState
     private bool isLooking = false;
 
     // Búsqueda activa por nodos cercanos
-    private float searchMoveRadius = 8f;  // radio para buscar nodos cercanos
+    private float searchMoveRadius = 8f;
 
     // Anti-stuck
     private float stuckTimer;
@@ -38,7 +39,7 @@ public class SearchState : IState
     {
         Debug.Log("Buscando al jugador activamente...");
 
-        enemyController.Agent.speed = enemyController.WalkSpeed * 1.3f; // un poco más rápido que pasear
+        enemyController.Agent.speed = enemyController.WalkSpeed * 1.3f;
         enemyController.Agent.SetDestination(enemyController.LastSeenPosition);
         searchTimer = searchDuration;
         lookTimer = 0f;
@@ -51,27 +52,23 @@ public class SearchState : IState
 
     public void Update()
     {
-        // Si vuelve a ver al jugador
         if (enemyController.CanSeePlayer())
         {
             stateMachine.ChangeState(enemyController.ChaseState);
             return;
         }
         searchTimer -= Time.deltaTime;
-        // Se rindió
         if (searchTimer <= 0f)
         {
             Debug.Log("Jugador no encontrado, volviendo a patrullar.");
             stateMachine.ChangeState(enemyController.RoamState);
             return;
         }
-        // Aún viajando hacia un punto
         if (!enemyController.HasReachedDestination())
         {
             CheckIfStuck();
             return;
         }
-        // Llegó a un punto: mirar alrededor primero
         if (!isLooking)
         {
             isLooking = true;
@@ -88,8 +85,7 @@ public class SearchState : IState
             {
                 if (lookStepIndex < lookAngles.Length)
                 {
-                    // Rotar a siguiente ángulo
-                    Quaternion target = baseRotation *Quaternion.Euler(0f, lookAngles[lookStepIndex], 0f);
+                    Quaternion target = baseRotation * Quaternion.Euler(0f, lookAngles[lookStepIndex], 0f);
 
                     enemyController.transform.rotation = Quaternion.Slerp(enemyController.transform.rotation, target, 8f * Time.deltaTime);
 
@@ -98,7 +94,6 @@ public class SearchState : IState
                 }
                 else
                 {
-                    // Terminó de mirar, ir al siguiente nodo cercano
                     isLooking = false;
                     MoveToNearbyNode();
                 }
@@ -109,12 +104,12 @@ public class SearchState : IState
     {
         enemyController.Agent.ResetPath();
     }
+
     private void MoveToNearbyNode()
     {
-        // Buscar todos los nodos dentro del radio de búsqueda
         List<ZoneNode> candidates = new List<ZoneNode>();
 
-        // Buscar en todas las zonas de patrulla
+        // O(z * n): recorre todas las zonas de patrullaje y todos los nodos de cada una
         foreach (PatrolZone zone in enemyController.PatrolZones)
         {
             foreach (ZoneNode node in zone.Nodes)
@@ -128,13 +123,24 @@ public class SearchState : IState
 
         if (candidates.Count == 0)
         {
-            // No hay nodos cercanos, solo mirar y esperar
             Debug.Log("Search: sin nodos cercanos, esperando...");
             return;
         }
 
-        // Elegir un nodo aleatorio de los candidatos
-        ZoneNode target = candidates[Random.Range(0, candidates.Count)];
+        // Insertion Sort: ordenamos los candidatos por distancia ascendente.
+        // Antes se elegía un nodo al azar entre los candidatos; ahora el enemigo investiga
+        // primero el punto más cercano, lo que es un comportamiento de búsqueda más creíble
+        // (y más fácil de defender en la exposición que "Random.Range").
+        //-> O(n^2) peor caso, O(n) si la lista ya viene casi ordenada (frecuente aquí,
+        //   porque el enemigo se mueve poco entre una llamada y la siguiente)
+        SortAlgorithms.InsertionSort(candidates, (a, b) =>
+        {
+            float distA = Vector3.Distance(enemyController.transform.position, a.transform.position);
+            float distB = Vector3.Distance(enemyController.transform.position, b.transform.position);
+            return distA.CompareTo(distB);
+        });
+
+        ZoneNode target = candidates[0];
         enemyController.Agent.SetDestination(target.transform.position);
         Debug.Log("Search: moviéndose a nodo cercano — " + target.name);
     }

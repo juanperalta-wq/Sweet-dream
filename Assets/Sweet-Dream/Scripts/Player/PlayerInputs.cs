@@ -16,6 +16,7 @@ public class PlayerInputs : MonoBehaviour
     public static event Action<int> OnSlotSelect;
     public static event Action<float> OnSlotScroll;
     public static event Action OnRemoveItem;
+    public static event Action OnSortInventory;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class PlayerInputs : MonoBehaviour
         inputs.Player.Inventory.performed += ctx => OnInventory?.Invoke();
         inputs.Player.Flashlight.performed += ctx => OnFlashlight?.Invoke();
         inputs.Player.Photo.performed += ctx => OnTakePhoto?.Invoke();
+        inputs.Player.SortInventory.performed += ctx => OnSortInventory?.Invoke();
     }
 
     private void OnDisable()
@@ -68,6 +70,7 @@ public class PlayerInputs : MonoBehaviour
         inputs.Player.Inventory.performed -= ctx => OnInventory?.Invoke();
         inputs.Player.Flashlight.performed -= ctx => OnFlashlight?.Invoke();
         inputs.Player.Photo.performed -= ctx => OnTakePhoto?.Invoke();
+        inputs.Player.SortInventory.performed -= ctx => OnSortInventory?.Invoke();
 
         inputs.Disable();
     }

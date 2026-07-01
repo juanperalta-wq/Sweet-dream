@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-public class PlayerStats : MonoBehaviour , IDamageable
+public class PlayerStats : MonoBehaviour, IDamageable
 {
     #region Variables
     public static PlayerStats Instance { get; private set; }
@@ -153,5 +153,13 @@ public class PlayerStats : MonoBehaviour , IDamageable
             if (previous > 25f && sanity <= 25f)
                 sanityScareAt25?.PlayFeedbacks();
         }
+    }
+
+    // NUEVO: expone drainAmount para que buffs como SanityDrainPauseBuff puedan
+    // pausarlo temporalmente y restaurarlo después, sin tocar el resto del script.
+    public float DrainAmount
+    {
+        get => drainAmount;
+        set => drainAmount = value;
     }
 }

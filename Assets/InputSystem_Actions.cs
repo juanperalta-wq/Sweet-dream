@@ -280,6 +280,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SortInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""78af5599-96bb-4bd8-9332-19cdaf5b5527"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -753,6 +762,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RemoveItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""adc79126-9d96-4aa6-815a-4106a47df3d9"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SortInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1361,6 +1381,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Slot5 = m_Player.FindAction("Slot5", throwIfNotFound: true);
         m_Player_Slot6 = m_Player.FindAction("Slot6", throwIfNotFound: true);
         m_Player_RemoveItem = m_Player.FindAction("RemoveItem", throwIfNotFound: true);
+        m_Player_SortInventory = m_Player.FindAction("SortInventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1475,6 +1496,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Slot5;
     private readonly InputAction m_Player_Slot6;
     private readonly InputAction m_Player_RemoveItem;
+    private readonly InputAction m_Player_SortInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1571,6 +1593,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @RemoveItem => m_Wrapper.m_Player_RemoveItem;
         /// <summary>
+        /// Provides access to the underlying input action "Player/SortInventory".
+        /// </summary>
+        public InputAction @SortInventory => m_Wrapper.m_Player_SortInventory;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1659,6 +1685,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @RemoveItem.started += instance.OnRemoveItem;
             @RemoveItem.performed += instance.OnRemoveItem;
             @RemoveItem.canceled += instance.OnRemoveItem;
+            @SortInventory.started += instance.OnSortInventory;
+            @SortInventory.performed += instance.OnSortInventory;
+            @SortInventory.canceled += instance.OnSortInventory;
         }
 
         /// <summary>
@@ -1733,6 +1762,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @RemoveItem.started -= instance.OnRemoveItem;
             @RemoveItem.performed -= instance.OnRemoveItem;
             @RemoveItem.canceled -= instance.OnRemoveItem;
+            @SortInventory.started -= instance.OnSortInventory;
+            @SortInventory.performed -= instance.OnSortInventory;
+            @SortInventory.canceled -= instance.OnSortInventory;
         }
 
         /// <summary>
@@ -2180,6 +2212,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRemoveItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SortInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSortInventory(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
