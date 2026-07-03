@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 3097630055136193115}
   - component: {fileID: 8542260545557875066}
   - component: {fileID: 7016729330995721375}
-  - component: {fileID: 2726618177794274994}
+  - component: {fileID: 3893043486525500983}
   m_Layer: 3
   m_Name: Camera
   m_TagString: Untagged
@@ -208,9 +208,8 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 30fb97679a668f841888e1179e47a186, type: 2}
   equipPosition: {x: 0, y: 0, z: 0}
   equipRotation: {x: 0, y: 0, z: 0}
-  originalScale: {x: 0, y: 0, z: 0}
-  rb: {fileID: 2726618177794274994}
-  coll: {fileID: 0}
+  rb: {fileID: 3893043486525500983}
+  coll: {fileID: 7016729330995721375}
 --- !u!65 &7016729330995721375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -232,7 +231,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5434658, y: 0.35911053, z: 0.3461391}
   m_Center: {x: 0.005346626, y: 0.17242733, z: 0.028069556}
---- !u!54 &2726618177794274994
+--- !u!54 &3893043486525500983
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

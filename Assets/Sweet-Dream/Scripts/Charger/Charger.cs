@@ -53,7 +53,9 @@ public class Charger : MonoBehaviour, IInteractable
     {
         while (Vector3.Distance(obj.position, target.position) > 0.01f)
         {
+            //mueve el objeto hacia el objetivo
             obj.position = Vector3.MoveTowards(obj.position, target.position, moveSpeed * Time.deltaTime);
+            //rota el objeto hacia el objetivo
             obj.rotation = Quaternion.RotateTowards(obj.rotation, target.rotation, moveSpeed * 180f * Time.deltaTime);
             yield return null;
         }
