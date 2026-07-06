@@ -11651,10 +11651,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.43999797
       objectReference: {fileID: 0}
+    - target: {fileID: 4573550227972974773, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+      propertyPath: OnOpen
+      value: 
+      objectReference: {fileID: 3005241007224947594}
+    - target: {fileID: 4573550227972974773, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+      propertyPath: OnClose
+      value: 
+      objectReference: {fileID: 3005241007224947593}
     - target: {fileID: 5415552175995659990, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
       propertyPath: m_Name
       value: Refrigerador
       objectReference: {fileID: 0}
+    - target: {fileID: 7742137776241166088, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+      propertyPath: OnOpen
+      value: 
+      objectReference: {fileID: 3005241007224947592}
+    - target: {fileID: 7742137776241166088, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+      propertyPath: OnClose
+      value: 
+      objectReference: {fileID: 3005241007224947591}
     - target: {fileID: 8033835662377307170, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.269
@@ -11718,6 +11734,50 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7872975952599963057}
   m_SourcePrefab: {fileID: 100100000, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+--- !u!114 &3005241007224947591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2755087871259373411, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+  m_PrefabInstance: {fileID: 3005241007224947590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
+--- !u!114 &3005241007224947592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4070061422029039978, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+  m_PrefabInstance: {fileID: 3005241007224947590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
+--- !u!114 &3005241007224947593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1420958877995651372, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+  m_PrefabInstance: {fileID: 3005241007224947590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
+--- !u!114 &3005241007224947594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 783212199806790612, guid: 34d1b4a37eca8564ba92d1be4c0c42a0, type: 3}
+  m_PrefabInstance: {fileID: 3005241007224947590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!1001 &3083748847804140838
 PrefabInstance:
   m_ObjectHideFlags: 0

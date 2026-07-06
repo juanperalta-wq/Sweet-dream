@@ -1,8 +1,4 @@
-using Sirenix.OdinInspector;
 using System;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager.UI;
-using UnityEngine;
 
 public class WindowManager : MyStack<Window>
 {
