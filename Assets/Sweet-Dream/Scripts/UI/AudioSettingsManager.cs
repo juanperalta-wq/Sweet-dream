@@ -1,8 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class AudioSettingsManager : MonoBehaviour
 {
+    [Header("Mixer")]
+    [SerializeField] private AudioMixer mainMixer;
+
     [Header("Sliders")]
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
@@ -14,38 +18,36 @@ public class AudioSettingsManager : MonoBehaviour
 
     private void Start()
     {
-        // Cargar valores guardados
         masterSlider.value = PlayerPrefs.GetFloat(Master_Key, 1f);
         musicSlider.value = PlayerPrefs.GetFloat(Music_Key, 1f);
         sfxSlider.value = PlayerPrefs.GetFloat(SFX_Key, 1f);
 
-        // Aplicar volumen maestro inmediatamente
-        AudioListener.volume = masterSlider.value;
+        ApplyVolume(Master_Key, masterSlider.value);
+        ApplyVolume(Music_Key, musicSlider.value);
+        ApplyVolume(SFX_Key, sfxSlider.value);
 
-        // Escuchar cambios del usuario
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }
 
-    public void SetMasterVolume(float value)
-    {
-        AudioListener.volume = value;
+    public void SetMasterVolume(float value) => SetVolume(Master_Key, value);
+    public void SetMusicVolume(float value) => SetVolume(Music_Key, value);
+    public void SetSFXVolume(float value) => SetVolume(SFX_Key, value);
 
-        PlayerPrefs.SetFloat(Master_Key, value);
+    private void SetVolume(string key, float value)
+    {
+        PlayerPrefs.SetFloat(key, value);
         PlayerPrefs.Save();
+        ApplyVolume(key, value);
     }
 
-    public void SetMusicVolume(float value)
+    private void ApplyVolume(string key, float sliderValue)
     {
-        PlayerPrefs.SetFloat(Music_Key, value);
-        PlayerPrefs.Save();
-    }
-
-    public void SetSFXVolume(float value)
-    {
-        PlayerPrefs.SetFloat(SFX_Key, value);
-        PlayerPrefs.Save();
+        // El slider va de 0 a 1 (lineal), el Mixer espera dB (logarítmico).
+        // 0.0001f evita log(0) = -infinito cuando el slider está en 0.
+        float dB = sliderValue > 0.0001f ? Mathf.Log10(sliderValue) * 20f : -80f;
+        mainMixer.SetFloat(key, dB);
     }
 
     public void ResetToDefaults()
@@ -53,13 +55,6 @@ public class AudioSettingsManager : MonoBehaviour
         masterSlider.value = 1f;
         musicSlider.value = 1f;
         sfxSlider.value = 1f;
-
-        PlayerPrefs.SetFloat(Master_Key, 1f);
-        PlayerPrefs.SetFloat(Music_Key, 1f);
-        PlayerPrefs.SetFloat(SFX_Key, 1f);
-
-        PlayerPrefs.Save();
-
-        AudioListener.volume = 1f;
+        // El onValueChanged de cada slider ya dispara SetVolume() automáticamente
     }
 }

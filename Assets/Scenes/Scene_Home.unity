@@ -698,17 +698,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 50442864039391846, guid: 59c17b9342f3c5e49b1f2c10615a553b, type: 3}
   m_PrefabInstance: {fileID: 2831740999019976965}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &221991015 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3104477400634299135, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-  m_PrefabInstance: {fileID: 572473349}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!1 &223164010
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,23 +925,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
   m_PrefabInstance: {fileID: 572473349}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &355299026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355299022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 221991015}
-  onClose: {fileID: 1485793409}
-  cooldown: 1
-  abierta: 0
-  doorNavMesh: {fileID: 0}
 --- !u!65 &355299027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6765,9 +6737,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 355299027}
-    - targetCorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 355299026}
   m_SourcePrefab: {fileID: 100100000, guid: 7c54d7ead06279547997d277757687ba, type: 3}
 --- !u!4 &600645730 stripped
 Transform:
@@ -7248,17 +7217,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3188976623972115273, guid: 768beafdc9464c04d8005401537ab62d, type: 3}
   m_PrefabInstance: {fileID: 1706554387}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &806891274 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7026985515970806699, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-  m_PrefabInstance: {fileID: 2018649200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!1001 &811685011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8332,23 +8290,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
   m_PrefabInstance: {fileID: 2018649200}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1295190605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295190601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 1546368126}
-  onClose: {fileID: 806891274}
-  cooldown: 1
-  abierta: 0
-  doorNavMesh: {fileID: 0}
 --- !u!65 &1295190606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8709,17 +8650,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7503662, y: 0.5822438, z: 1.7845669}
   m_Center: {x: -0.0076417923, y: -0.000000059604645, z: 0.0000009536743}
---- !u!114 &1485793409 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7026985515970806699, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-  m_PrefabInstance: {fileID: 572473349}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!1 &1516752216
 GameObject:
   m_ObjectHideFlags: 0
@@ -8909,17 +8839,6 @@ MonoBehaviour:
   cameraSystem: {fileID: 0}
   musicPool: {fileID: 223164012}
   musicDatabase: {fileID: 11400000, guid: 800193694aff3b74790834dd473ec553, type: 2}
---- !u!114 &1546368126 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3104477400634299135, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-  m_PrefabInstance: {fileID: 2018649200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
 --- !u!1 &1548490342
 GameObject:
   m_ObjectHideFlags: 0
@@ -9735,8 +9654,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 8965662035567580793}
-  onClose: {fileID: 8965662035567580793}
+  OnOpen: {fileID: 0}
+  OnClose: {fileID: 0}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
   doorNavMesh: {fileID: 0}
@@ -10840,9 +10761,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1295190606}
-    - targetCorrespondingSourceObject: {fileID: 4916067828234173392, guid: 7c54d7ead06279547997d277757687ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1295190605}
   m_SourcePrefab: {fileID: 100100000, guid: 7c54d7ead06279547997d277757687ba, type: 3}
 --- !u!1 &2020252090 stripped
 GameObject:
@@ -11409,6 +11327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 415726069}
     m_Modifications:
+    - target: {fileID: 1352918371340390770, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1517752417631689375, guid: 7c54d7ead06279547997d277757687ba, type: 3}
       propertyPath: m_Name
       value: Puerta
@@ -11456,6 +11378,14 @@ PrefabInstance:
     - target: {fileID: 5701345768730584423, guid: 7c54d7ead06279547997d277757687ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046788296810955583, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: OnOpen
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046788296810955583, guid: 7c54d7ead06279547997d277757687ba, type: 3}
+      propertyPath: OnClose
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9046788296810955583, guid: 7c54d7ead06279547997d277757687ba, type: 3}
       propertyPath: m_Enabled

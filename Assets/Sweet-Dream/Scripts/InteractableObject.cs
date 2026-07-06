@@ -5,10 +5,18 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     [TabGroup("Feedbacks"), Required]
-    public MMF_Player onOpen;
+    public MMF_Player OnOpen;
 
     [TabGroup("Feedbacks"), Required]
-    public MMF_Player onClose;
+    public MMF_Player OnClose;
+
+    [TabGroup("Feedbacks"), Required]
+    public MMF_Player SoundOpen;
+
+    [TabGroup("Feedbacks"), Required]
+    public MMF_Player SoundClose;
+
+
 
     [TabGroup("Configuracion")]
     [SerializeField] private float cooldown = 1f;
@@ -34,7 +42,8 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
         if (!abierta)
         {
-            onOpen.PlayFeedbacks();
+            OnOpen?.PlayFeedbacks();
+            SoundOpen?.PlayFeedbacks();
 
             if (doorNavMesh != null)
                 doorNavMesh.OpenDoor();
@@ -43,7 +52,8 @@ public class InteractableObject : MonoBehaviour, IInteractable
         }
         else
         {
-            onClose.PlayFeedbacks();
+            OnClose?.PlayFeedbacks();
+            SoundClose?.PlayFeedbacks();
 
             if (doorNavMesh != null)
                 doorNavMesh.CloseDoor();

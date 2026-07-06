@@ -20,6 +20,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: c1273d05b6639b948803ad19e4177b6e, type: 3}
     - {fileID: 8300000, guid: ea6ac78cdbda10844b3e5861081e12f2, type: 3}
     - {fileID: 8300000, guid: ddeda978250379947a0e1506666d607b, type: 3}
+    - {fileID: 8300000, guid: 2dc28ee740da5c4499be562bf1e8f328, type: 3}
+    - {fileID: 8300000, guid: 632a94ac216a8534c816297822d5f176, type: 3}
+    - {fileID: 8300000, guid: 298d7bd2414f5ac4e9996559b868a681, type: 3}
+    - {fileID: 8300000, guid: c41a90d2f3f06934786d2afe09689d60, type: 3}
+    - {fileID: 8300000, guid: 5f37e271321f20b44a1e63edd225f2dd, type: 3}
+    - {fileID: 8300000, guid: 4c08436cceeebed4fafec4254a6bbaa6, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -38,7 +44,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 10
     - Name: 
       Entry: 7
       Data: 
@@ -84,6 +90,78 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: MainMenuMusic
+    - Name: $v
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: LinternaSound
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: CameraSound
+    - Name: $v
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: HorrorSoundGritobarney
+    - Name: $v
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: HorrorSound2
+    - Name: $v
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: ParanormalSound
+    - Name: $v
+      Entry: 10
+      Data: 9
     - Name: 
       Entry: 8
       Data: 

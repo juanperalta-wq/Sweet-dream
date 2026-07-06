@@ -9446,7 +9446,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: 1623801395
         Label: Set Inactive B Button
-        OriginalLabel: 
+        OriginalLabel: Set Active
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -9535,7 +9535,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: 21701407
         Label: Set Active A Button
-        OriginalLabel: 
+        OriginalLabel: Set Active
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -9624,7 +9624,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: -611736676
         Label: Click Sound
-        OriginalLabel: 
+        OriginalLabel: MMSoundManager Sound
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -9843,7 +9843,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: 1398897698
         Label: MMPlaylist
-        OriginalLabel: 
+        OriginalLabel: MMPlaylist
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}

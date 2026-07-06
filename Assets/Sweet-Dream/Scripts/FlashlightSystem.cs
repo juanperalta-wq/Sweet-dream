@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using Sirenix.OdinInspector;
 using System.Collections;
@@ -16,6 +17,10 @@ public class FlashlightSystem : MonoBehaviour
     [TabGroup("Light")]
     [Range(1, 20)]
     [SerializeField] private float flashlightDistance = 12f;
+
+    [TabGroup("Sound")]
+    [Required]
+    [SerializeField] private MMF_Player toggleFeedback;
 
     public MMProgressBar TargetProgressBar;
 
@@ -74,6 +79,8 @@ public class FlashlightSystem : MonoBehaviour
             }
         }
 
+        toggleFeedback?.PlayFeedbacks();   // se dispara para ambos casos
+
         UpdateFlickerRoutine();
     }
 
@@ -95,7 +102,7 @@ public class FlashlightSystem : MonoBehaviour
             }
 
             if (isOn)
-                flashlight.intensity = 3f;
+                flashlight.intensity = 10f;
         }
     }
     public void Recharge(float amount)
@@ -130,7 +137,7 @@ public class FlashlightSystem : MonoBehaviour
             else
             {
                 // intensidad variable, no solo on/off
-                flashlight.intensity = Random.Range(0.5f, 3f);
+                flashlight.intensity = Random.Range(0.5f, 10f);
                 yield return new WaitForSeconds(Random.Range(0.08f, 0.25f));
             }
         }

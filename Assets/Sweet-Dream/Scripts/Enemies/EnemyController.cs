@@ -102,6 +102,15 @@ public class EnemyController : MonoBehaviour
     [FoldoutGroup("Memory")]
     [ReadOnly]
     public float LastTimeSeenPlayer;
+
+    // Dirección (normalizada, plano XZ) hacia la que se movía el jugador la
+    // última vez que lo vimos. Sirve para que la búsqueda continúe "de frente"
+    // en vez de solo mirar la posición puntual donde se perdió.
+    [FoldoutGroup("Memory")]
+    [ReadOnly]
+    public Vector3 LastSeenDirection;
+
+    private bool hasSeenPlayerBefore = false;
     #endregion
 
     #region State Machine
@@ -211,8 +220,23 @@ public class EnemyController : MonoBehaviour
         }
 
         // Camino libre, jugador detectado
-        LastSeenPosition = PlayerTransform.position;
+        Vector3 newSeenPosition = PlayerTransform.position;
+
+        if (hasSeenPlayerBefore)
+        {
+            Vector3 moveDelta = newSeenPosition - LastSeenPosition;
+            moveDelta.y = 0f;
+
+            // Solo actualizamos la dirección si el movimiento es significativo,
+            // para evitar que pequeños jitters de posición generen direcciones falsas
+            if (moveDelta.sqrMagnitude > 0.04f) // ~0.2m
+                LastSeenDirection = moveDelta.normalized;
+        }
+
+        LastSeenPosition = newSeenPosition;
         LastTimeSeenPlayer = Time.time;
+        hasSeenPlayerBefore = true;
+
         Debug.DrawLine(origin, target, Color.green);
         return true;
     }

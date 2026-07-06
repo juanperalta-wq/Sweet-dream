@@ -20,11 +20,21 @@ public class SoundPlayer : MonoBehaviour
     // cuando quiere forzar un volumen distinto al de la configuración del jugador).
     public void PlayAudio(AudioClip clip, float volume)
     {
+        if (clip == null)
+        {
+            Debug.LogWarning($"{nameof(SoundPlayer)}: se intentó reproducir un clip null.");
+            ReturnToPool();
+            return;
+        }
+
+        // Evita dobles Invoke si este objeto se reutiliza antes de tiempo.
+        CancelInvoke(nameof(ReturnToPool));
+
         audioSource.clip = clip;
         audioSource.volume = volume;
         audioSource.Play();
 
-        Invoke(nameof(ReturnToPool), audioSource.clip.length);
+        Invoke(nameof(ReturnToPool), clip.length);
     }
 
     public void ReturnToPool()

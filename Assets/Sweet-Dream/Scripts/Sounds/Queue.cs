@@ -1,6 +1,3 @@
-using UnityEngine;
-
-
 namespace DulceSueño.Collections
 {
     public class Queue<T>
@@ -32,11 +29,7 @@ namespace DulceSueño.Collections
         public T Dequeue()
         {
             if (head == null)
-            {
-                Clear();
-                throw new System.Exception("Queue Empty");
-            }
-
+                throw new System.InvalidOperationException("Queue Empty");
 
             T value = head.Value;
             head = head.Next;
@@ -48,17 +41,15 @@ namespace DulceSueño.Collections
 
             return value;
         }
+
         public T Peek()
         {
             if (head == null)
-            {
-                Clear();
-                throw new System.Exception("Queue Empty");
-            }
-
+                throw new System.InvalidOperationException("Queue Empty");
 
             return head.Value;
         }
+
         public void Clear()
         {
             head = null;
@@ -70,7 +61,6 @@ namespace DulceSueño.Collections
         #region Getters
         public int Count => count;
         public QueueNode<T> Head => head;
-
         #endregion
     }
 }

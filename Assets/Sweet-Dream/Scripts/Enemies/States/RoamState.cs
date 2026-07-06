@@ -14,6 +14,11 @@ public class RoamState : IState
     private int visitedNodes;
     private int targetNodesToVisit;
 
+    // Solo la primera vez que arranca el estado usamos StartingNode.
+    // Las siguientes veces (por ejemplo, al volver de SearchState) retomamos
+    // desde el nodo más cercano a la posición actual del enemigo.
+    private bool hasStartedOnce = false;
+
     public RoamState(StateMachine stateMachine, EnemyController enemyController)
     {
         this.stateMachine = stateMachine;
@@ -26,14 +31,25 @@ public class RoamState : IState
 
         enemyController.Agent.speed = enemyController.WalkSpeed;
 
-        currentNode = enemyController.StartingNode;
+        if (!hasStartedOnce)
+        {
+            currentNode = enemyController.StartingNode;
+            hasStartedOnce = true;
+        }
+        else
+        {
+            currentNode = FindNearestReachableNode();
+            Debug.Log($"[Roam] hasStartedOnce={hasStartedOnce} | posición enemigo={enemyController.transform.position} | nodo elegido={currentNode?.name} | pos nodo={currentNode?.transform.position}");
+        }
 
         if (currentNode == null)
         {
-            Debug.LogError("RoamState: no hay StartingNode asignado en EnemyController.");
+            Debug.LogError("RoamState: no hay nodo válido para iniciar patrulla.");
             return;
         }
+
         currentZone = currentNode.Zone;
+        previousNode = null;
         visitedNodes = 0;
 
         targetNodesToVisit = Random.Range(enemyController.MinNodesPerZone, enemyController.MaxNodesPerZone + 1);
@@ -65,6 +81,33 @@ public class RoamState : IState
     {
         enemyController.Agent.ResetPath();
     }
+
+    // Busca el nodo alcanzable más cercano a la posición actual del enemigo,
+    // recorriendo todas las zonas de patrullaje. Se usa al retomar la patrulla
+    // después de perseguir/buscar al jugador desde cualquier punto del mapa.
+    private ZoneNode FindNearestReachableNode()
+    {
+        ZoneNode nearest = null;
+        float nearestDist = Mathf.Infinity;
+
+        foreach (PatrolZone zone in enemyController.PatrolZones)
+        {
+            foreach (ZoneNode node in zone.Nodes)
+            {
+                float dist = Vector3.Distance(enemyController.transform.position, node.transform.position);
+
+                if (dist < nearestDist && CanReachNode(node))
+                {
+                    nearestDist = dist;
+                    nearest = node;
+                }
+            }
+        }
+
+        // Fallback por si por algún motivo no se encontró ningún nodo alcanzable
+        return nearest != null ? nearest : enemyController.StartingNode;
+    }
+
     private void MoveToNextNode()
     {
         visitedNodes++;

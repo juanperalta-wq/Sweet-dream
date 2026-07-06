@@ -8,7 +8,8 @@ public class MusicPool : MonoBehaviour
     // public MusicDatabase Database;
     public SoundPlayer SoundPlayerPrefab;
 
-    public Queue<SoundPlayer> Pool = new();
+    [ShowInInspector, ReadOnly]
+    private Queue<SoundPlayer> pool = new();
 
     public int size = 20;
 
@@ -17,6 +18,11 @@ public class MusicPool : MonoBehaviour
     private void OnEnable()
     {
         OnFinishAudio += EnqueueAudio;
+    }
+
+    private void OnDisable()
+    {
+        OnFinishAudio -= EnqueueAudio;
     }
 
     void Start()
@@ -51,14 +57,13 @@ public class MusicPool : MonoBehaviour
 
     private void PlayClip(AudioClip clip, float volume)
     {
-        if (Pool.Head == null || Pool.Count == 0)
+        if (pool.Count == 0)
         {
-            Debug.Log("Se agrando la lista");
+            Debug.Log("Se agrandó la lista");
             CreateSoundPlayerObjs(5);
-            return;
         }
 
-        SoundPlayer soundPlayer = Pool.Dequeue();
+        SoundPlayer soundPlayer = pool.Dequeue();
         soundPlayer.gameObject.SetActive(true);
         soundPlayer.PlayAudio(clip, volume);
     }
@@ -66,7 +71,7 @@ public class MusicPool : MonoBehaviour
     private void EnqueueAudio(SoundPlayer soundPlayer)
     {
         soundPlayer.gameObject.SetActive(false);
-        Pool.Enqueue(soundPlayer);
+        pool.Enqueue(soundPlayer);
     }
 
     [Button]
@@ -76,7 +81,7 @@ public class MusicPool : MonoBehaviour
         {
             SoundPlayer obj = Instantiate(SoundPlayerPrefab, transform);
             obj.gameObject.SetActive(false);
-            Pool.Enqueue(obj);
+            pool.Enqueue(obj);
         }
     }
 
@@ -84,12 +89,12 @@ public class MusicPool : MonoBehaviour
     public void Test(string audioName)
     {
         PlayAudio(audioName);
-        Debug.Log(Pool.Count);
+        Debug.Log(pool.Count);
     }
 
     [Button]
     public void Test2()
     {
-        Debug.Log(Pool.Count);
+        Debug.Log(pool.Count);
     }
 }

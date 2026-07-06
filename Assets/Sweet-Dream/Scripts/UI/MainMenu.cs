@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using Sirenix.OdinInspector;
 using System;
 using Unity.Cinemachine;
@@ -38,6 +39,13 @@ public class MainMenu : MonoBehaviour
     [BoxGroup("Referencias"), Required]
     [SerializeField] private CorrutinaCamera CorrutinaCamera;
 
+    [BoxGroup("Sound")]
+    [Required]
+    [SerializeField] private MMF_Player BTNFeedBack;
+    [BoxGroup("Sound")]
+    [Required]
+    [SerializeField] private AudioClip menuMusic;
+
     public event Action<GameObject> onHighlight;
     public event Action<GameObject> onSelect;
 
@@ -71,6 +79,7 @@ public class MainMenu : MonoBehaviour
 
         CloseAllPanels();
         OpenPanelGeneral();
+        MusicPlayer.Instance.Play(menuMusic);
     }
 
     private void HandleNavigate(Vector2 input)
@@ -97,13 +106,16 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        BTNFeedBack?.PlayFeedbacks();
         CameraIU.Priority = 20;
         Canvas.SetActive(false);
         CorrutinaCamera.InitiationCoroutine();
+        MusicPlayer.Instance.Stop();
     }
 
     public void OpenOptions()
     {
+        BTNFeedBack?.PlayFeedbacks();
         Canvas.SetActive(false);
         CanvasOpciones.SetActive(true);
 
@@ -112,14 +124,41 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        BTNFeedBack?.PlayFeedbacks();
         Application.Quit();
     }
 
     // Paneles
+    // Paneles - lógica pura, sin sonido (usado también desde Start())
     public void OpenPanelGeneral() => OpenPanel(panelGeneral);
     public void OpenPanelSonidos() => OpenPanel(panelSonidos);
     public void OpenPanelControles() => OpenPanel(panelControles);
     public void OpenPanelCreditos() => OpenPanel(panelCreditos);
+
+    // Wrappers con sonido — conectá ESTOS a los botones/tabs en el inspector (OnClick)
+    public void OnClickPanelGeneral()
+    {
+        OpenPanelGeneral();
+        BTNFeedBack?.PlayFeedbacks();
+    }
+
+    public void OnClickPanelSonidos()
+    {
+        OpenPanelSonidos();
+        BTNFeedBack?.PlayFeedbacks();
+    }
+
+    public void OnClickPanelControles()
+    {
+        OpenPanelControles();
+        BTNFeedBack?.PlayFeedbacks();
+    }
+
+    public void OnClickPanelCreditos()
+    {
+        OpenPanelCreditos();
+        BTNFeedBack?.PlayFeedbacks();
+    }
 
     private void CloseAllPanels()
     {
