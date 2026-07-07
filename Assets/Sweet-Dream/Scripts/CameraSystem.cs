@@ -41,9 +41,11 @@ public class CameraSystem : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, photoDistance, enemyLayer))
         {
-            EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
-            if (enemy != null)
-                enemy.OnPhotoHit();
+            // Antes buscaba "EnemyBase", que ya no existe.
+            // Las Shadows viven en ShadowAI: la foto las hace desaparecer (ReturnToPool).
+            ShadowAI shadow = hit.collider.GetComponent<ShadowAI>();
+            if (shadow != null)
+                shadow.OnPhotoHit();
         }
     }
     #endregion

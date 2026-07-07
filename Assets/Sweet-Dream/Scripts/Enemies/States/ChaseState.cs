@@ -29,7 +29,7 @@ public class ChaseState : IState
     {
         Debug.Log("Persiguiendo al jugador");
 
-        enemyController.Agent.speed = enemyController.RunSpeed;
+        enemyController.SetAgentSpeed(enemyController.RunSpeed);
         enemyController.Agent.isStopped = false;
 
         enemyController.Agent.SetDestination(enemyController.PlayerTransform.position);

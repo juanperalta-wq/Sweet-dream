@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -262,6 +263,47 @@ public class EnemyController : MonoBehaviour
             StateMachine.ChangeState(DeadState);
         }
     }
+
+    #region Flashlight Slow
+    [BoxGroup("Flashlight")]
+    [Range(0.1f, 1f)]
+    public float FlashlightSlowMultiplier = 0.4f;
+
+    [BoxGroup("Flashlight")]
+    public float FlashlightSlowDuration = 3f;
+
+    private float baseAgentSpeed;
+    private float speedMultiplier = 1f;
+    private Coroutine slowCoroutine;
+
+    public void SetAgentSpeed(float speed)
+    {
+        baseAgentSpeed = speed;
+        Agent.speed = baseAgentSpeed * speedMultiplier;
+    }
+
+    public void OnFlashlightHit()
+    {
+        if (StateMachine.CurrentState == DeadState) return;
+
+        if (slowCoroutine != null)
+            StopCoroutine(slowCoroutine);
+
+        slowCoroutine = StartCoroutine(FlashlightSlowRoutine());
+    }
+
+    private IEnumerator FlashlightSlowRoutine()
+    {
+        speedMultiplier = FlashlightSlowMultiplier;
+        Agent.speed = baseAgentSpeed * speedMultiplier;
+
+        yield return new WaitForSeconds(FlashlightSlowDuration);
+
+        speedMultiplier = 1f;
+        Agent.speed = baseAgentSpeed;
+        slowCoroutine = null;
+    }
+    #endregion
     private void OnDrawGizmosSelected()
     {
         // Rango de detección
