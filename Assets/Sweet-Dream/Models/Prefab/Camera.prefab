@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 8542260545557875066}
   - component: {fileID: 7016729330995721375}
   - component: {fileID: 3893043486525500983}
+  - component: {fileID: 1512268467024441867}
   m_Layer: 3
   m_Name: Camera
   m_TagString: Untagged
@@ -167,7 +168,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.41602498, y: 0.41602498, z: 0.41602498}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4463543557465634926}
@@ -191,7 +192,7 @@ MonoBehaviour:
   photoDistance: 15
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   isTakingPhoto: 0
 --- !u!114 &8542260545557875066
 MonoBehaviour:
@@ -258,6 +259,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1512268467024441867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027768733929822143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426c3d01ae3887249ad807357bce7f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectDescription
+  description: '[Camara]'
 --- !u!1001 &4213970990398807941
 PrefabInstance:
   m_ObjectHideFlags: 0

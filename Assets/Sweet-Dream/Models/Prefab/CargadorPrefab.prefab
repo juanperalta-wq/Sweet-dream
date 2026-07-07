@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 1523589147583459420}
   - component: {fileID: 5260924429522165104}
   - component: {fileID: 1295151457611215870}
+  - component: {fileID: 5667253419444098486}
   m_Layer: 3
   m_Name: CargadorPrefab
   m_TagString: Untagged
@@ -208,6 +209,19 @@ MonoBehaviour:
   rechargeAmount: 100
   moveSpeed: 2
   playerInputs: {fileID: 0}
+--- !u!114 &5667253419444098486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759907249604200391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426c3d01ae3887249ad807357bce7f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectDescription
+  description: '[Cargador para la Linterna]'
 --- !u!1 &3525529011807108175
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,8 +947,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  onOpen: {fileID: 7410121909245161372}
-  onClose: {fileID: 0}
+  OnOpen: {fileID: 0}
+  OnClose: {fileID: 0}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
   doorNavMesh: {fileID: 0}

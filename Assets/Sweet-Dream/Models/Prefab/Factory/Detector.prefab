@@ -44,7 +44,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 2
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.537543, b: 0, a: 1}
   m_Intensity: 10
   m_Range: 0.02
   m_SpotAngle: 30
@@ -259,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Detector_Tarjetas
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a362751c483e3634dae6ba5f12bfac53, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -269,7 +273,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a362751c483e3634dae6ba5f12bfac53, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5912501088974014302}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a362751c483e3634dae6ba5f12bfac53, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6462326749166701784}
   m_SourcePrefab: {fileID: 100100000, guid: a362751c483e3634dae6ba5f12bfac53, type: 3}
+--- !u!23 &312776676007434112 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a362751c483e3634dae6ba5f12bfac53, type: 3}
+  m_PrefabInstance: {fileID: 1411492670996597508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1449060008207363311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a362751c483e3634dae6ba5f12bfac53, type: 3}
@@ -313,7 +325,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5436a8c93bfec834194c8006bcd993eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeyPanel
-  requiredTag: 
+  requiredTag: TarjetaNaranja
   cooldown: 1
   puerta1: {fileID: 0}
   puerta2: {fileID: 0}
+--- !u!114 &6462326749166701784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258494512317658709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426c3d01ae3887249ad807357bce7f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectDescription
+  description: '[]'
+  useFlash: 1
+  meshRenderer: {fileID: 312776676007434112}
+  materialIndex: 0

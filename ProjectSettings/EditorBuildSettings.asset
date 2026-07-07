@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/UI_Inicio.unity
     guid: f4d62fb21b8dfab4d8761a3e280c589b
@@ -15,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_Home.unity
     guid: dc04200f7e5b4f845bbedbe41a03aafb
   - enabled: 1
+    path: Assets/Scenes/Sweet-Dream.unity
+    guid: 3e58b3bd8219c8542a82a6c80fe3a35e
+  - enabled: 1
     path: Assets/Scenes/UI_Victoria.unity
     guid: 645aa39742c38a64f98aa94c975fa17e
   - enabled: 1
-    path: Assets/Scenes/Sweet-Dream.unity
-    guid: 3e58b3bd8219c8542a82a6c80fe3a35e
+    path: Assets/Scenes/UI_Derrota.unity
+    guid: f19c4a770eed1e243ad0dd82111106c2
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: deaff1b577d5a684ab2295f63044e91a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

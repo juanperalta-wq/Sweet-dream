@@ -9,11 +9,13 @@ public class ItemPickUp : MonoBehaviour, IInteractable
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Collider coll;
     private bool isEquipped = false;
+    private ObjectDescription objectDescription;
 
     private void Awake()
     {
         if (rb == null) rb = GetComponent<Rigidbody>();
         originalScale = transform.localScale;
+        objectDescription = GetComponent<ObjectDescription>();
     }
 
     public void Interact()
@@ -32,6 +34,8 @@ public class ItemPickUp : MonoBehaviour, IInteractable
         transform.localRotation = Quaternion.Euler(equipRotation);
         transform.localScale = originalScale;
         gameObject.SetActive(true);
+
+        if (objectDescription != null) objectDescription.Agarrar();
     }
 
     public void OnUnequip()
@@ -39,6 +43,8 @@ public class ItemPickUp : MonoBehaviour, IInteractable
         isEquipped = false;
         transform.SetParent(null);
         gameObject.SetActive(false);
+
+        if (objectDescription != null) objectDescription.Soltar();
     }
 
     public void OnDrop(Vector3 dropPosition)
@@ -50,6 +56,8 @@ public class ItemPickUp : MonoBehaviour, IInteractable
         transform.position = dropPosition;
         transform.localScale = originalScale;
         gameObject.SetActive(true);
+
+        if (objectDescription != null) objectDescription.Soltar();
     }
 
     public ItemData ItemData => itemData;
