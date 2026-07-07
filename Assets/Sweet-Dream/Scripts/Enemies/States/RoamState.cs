@@ -29,7 +29,7 @@ public class RoamState : IState
     {
         Debug.Log("Iniciando patrulla");
 
-        enemyController.Agent.speed = enemyController.WalkSpeed;
+        enemyController.SetAgentSpeed(enemyController.WalkSpeed);
 
         if (!hasStartedOnce)
         {

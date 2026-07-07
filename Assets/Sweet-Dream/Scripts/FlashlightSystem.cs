@@ -143,15 +143,17 @@ public class FlashlightSystem : MonoBehaviour
         }
     }
 
+    // Antes buscaba "EnemyBase", que ya no existe en el proyecto.
+    // Barney vive en EnemyController, así que apuntamos directo ahí.
     private void DetectEnemy()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, flashlightDistance, enemyLayer))
         {
-            EnemyBase enemy = hit.collider.GetComponent<EnemyBase>();
-            if (enemy != null)
-                enemy.OnFlashlightHit();
+            EnemyController barney = hit.collider.GetComponent<EnemyController>();
+            if (barney != null)
+                barney.OnFlashlightHit();
         }
     }
 

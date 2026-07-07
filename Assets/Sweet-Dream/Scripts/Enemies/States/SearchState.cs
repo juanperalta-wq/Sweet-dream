@@ -57,7 +57,7 @@ public class SearchState : IState
     {
         Debug.Log("Buscando al jugador activamente...");
 
-        enemyController.Agent.speed = enemyController.WalkSpeed * 1.3f;
+        enemyController.SetAgentSpeed(enemyController.WalkSpeed * 1.3f);
         enemyController.Agent.SetDestination(enemyController.LastSeenPosition);
         searchTimer = searchDuration;
         lookStepIndex = 0;
@@ -123,12 +123,12 @@ public class SearchState : IState
 
         if (progress > 0.66f)
         {
-            enemyController.Agent.speed = enemyController.WalkSpeed * 1.6f;
+            enemyController.SetAgentSpeed(enemyController.WalkSpeed * 1.6f);
             lookInterval = 0.6f;
         }
         else
         {
-            enemyController.Agent.speed = enemyController.WalkSpeed * 1.3f;
+            enemyController.SetAgentSpeed(enemyController.WalkSpeed * 1.3f);
             lookInterval = 1f;
         }
     }
@@ -145,10 +145,7 @@ public class SearchState : IState
 
         Quaternion target = baseRotation * Quaternion.Euler(0f, lookAngles[lookStepIndex], 0f);
 
-        enemyController.transform.rotation = Quaternion.Slerp(
-            enemyController.transform.rotation,
-            target,
-            LookRotationSpeed * Time.deltaTime);
+        enemyController.transform.rotation = Quaternion.Slerp(enemyController.transform.rotation, target, LookRotationSpeed * Time.deltaTime);
 
         if (Quaternion.Angle(enemyController.transform.rotation, target) < LookAngleThreshold)
         {

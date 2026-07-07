@@ -281,4 +281,8 @@ public class ShadowAI : MonoBehaviour
 
         return false;
     }
+    public void OnPhotoHit()
+    {
+        ReturnToPool();
+    }
 }
