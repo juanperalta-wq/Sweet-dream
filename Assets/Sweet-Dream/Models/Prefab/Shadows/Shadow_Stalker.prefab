@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7095894722037401988}
   - component: {fileID: 7305354362606604840}
   - component: {fileID: 8261787175318778768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shadow_Stalker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +165,10 @@ MonoBehaviour:
   stalkerEscalateChance: 0.35
   phantomEscalateChance: 0.3
   jitterRange: {x: 0.85, y: 1.15}
+  doorPhaseDelay: 1
+  stuckTimeout: 2.5
+  phaseSampleRadius: 3
+  minPhaseReactionTime: 1
   seenMaxAngle: 45
   seenMaxDistance: 15
   obstacleMask:

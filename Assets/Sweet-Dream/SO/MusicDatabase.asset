@@ -19,13 +19,14 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1d282c84858c7fc4ca3250619c6d47f3, type: 3}
     - {fileID: 8300000, guid: c1273d05b6639b948803ad19e4177b6e, type: 3}
     - {fileID: 8300000, guid: ea6ac78cdbda10844b3e5861081e12f2, type: 3}
-    - {fileID: 8300000, guid: ddeda978250379947a0e1506666d607b, type: 3}
+    - {fileID: 8300000, guid: 97ba267b122adf642a55caca6a3f8e55, type: 3}
     - {fileID: 8300000, guid: 2dc28ee740da5c4499be562bf1e8f328, type: 3}
-    - {fileID: 8300000, guid: 632a94ac216a8534c816297822d5f176, type: 3}
-    - {fileID: 8300000, guid: 298d7bd2414f5ac4e9996559b868a681, type: 3}
-    - {fileID: 8300000, guid: c41a90d2f3f06934786d2afe09689d60, type: 3}
-    - {fileID: 8300000, guid: 5f37e271321f20b44a1e63edd225f2dd, type: 3}
-    - {fileID: 8300000, guid: 4c08436cceeebed4fafec4254a6bbaa6, type: 3}
+    - {fileID: 8300000, guid: 44435829dd5491842a719585569c82eb, type: 3}
+    - {fileID: 8300000, guid: afeacd6cac2f2a749b229800cc2079cf, type: 3}
+    - {fileID: 8300000, guid: bb38df3f6cafefd4890a8824a0706b21, type: 3}
+    - {fileID: 8300000, guid: b3ef8e444c0173f40b38e73cd286bce1, type: 3}
+    - {fileID: 8300000, guid: d92d765aa07ec9549a2b7ade9309f661, type: 3}
+    - {fileID: 8300000, guid: 7c1fbe5dd7c1e8f4fa505d3ef429d902, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -44,7 +45,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 10
+      Data: 11
     - Name: 
       Entry: 7
       Data: 
@@ -162,6 +163,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: VictorySound
+    - Name: $v
+      Entry: 10
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
