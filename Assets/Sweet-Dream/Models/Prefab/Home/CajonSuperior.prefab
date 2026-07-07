@@ -814,10 +814,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 881994778364527674}
-  onClose: {fileID: 8635686942533850432}
+  OnOpen: {fileID: 881994778364527674}
+  OnClose: {fileID: 8635686942533850432}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!65 &6167021729645985920
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1802,10 +1805,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 7928492620133131897}
-  onClose: {fileID: 4994942120088830147}
+  OnOpen: {fileID: 7928492620133131897}
+  OnClose: {fileID: 4994942120088830147}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!65 &6077471878343307379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2820,10 +2826,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 6543732976205795348}
-  onClose: {fileID: 3618303553663650584}
+  OnOpen: {fileID: 6543732976205795348}
+  OnClose: {fileID: 3618303553663650584}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
+  doorNavMesh: {fileID: 0}
 --- !u!65 &5136603083705827704
 BoxCollider:
   m_ObjectHideFlags: 0

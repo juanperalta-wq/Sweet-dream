@@ -731,8 +731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 2483644448938836307}
-  onClose: {fileID: 6173966338129333253}
+  OnOpen: {fileID: 2483644448938836307}
+  OnClose: {fileID: 6173966338129333253}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
   doorNavMesh: {fileID: 0}
@@ -893,8 +895,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 8132047794638397348}
-  onClose: {fileID: 3943142317014847931}
+  OnOpen: {fileID: 8132047794638397348}
+  OnClose: {fileID: 3943142317014847931}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
   doorNavMesh: {fileID: 0}
@@ -3065,8 +3069,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef614b3b41da3e48a16ccfdbd551b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  onOpen: {fileID: 2470784654275410597}
-  onClose: {fileID: 2897659407460545202}
+  OnOpen: {fileID: 2470784654275410597}
+  OnClose: {fileID: 2897659407460545202}
+  SoundOpen: {fileID: 0}
+  SoundClose: {fileID: 0}
   cooldown: 1
   abierta: 0
   doorNavMesh: {fileID: 0}

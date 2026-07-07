@@ -65,7 +65,8 @@ public class CameraTransition : MonoBehaviour, IInteractable
         {
             Barnilla.SetActive(true);
         }
-
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.DrainAmount += 20f;
         InitiationCorrutine();
     }
 
